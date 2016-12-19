@@ -1,0 +1,823 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A808C01E1D70217100F568EA /* lang-ml.js in Resources */ = {isa = PBXBuildFile; fileRef = A808BFFF1D70217100F568EA /* lang-ml.js */; };
+		A808C01F1D70217100F568EA /* prettify.css in Resources */ = {isa = PBXBuildFile; fileRef = A808C0001D70217100F568EA /* prettify.css */; };
+		A808C0201D70217100F568EA /* lang-yaml.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0011D70217100F568EA /* lang-yaml.js */; };
+		A808C0211D70217100F568EA /* lang-xq.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0021D70217100F568EA /* lang-xq.js */; };
+		A808C0221D70217100F568EA /* lang-wiki.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0031D70217100F568EA /* lang-wiki.js */; };
+		A808C0231D70217100F568EA /* lang-vhdl.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0041D70217100F568EA /* lang-vhdl.js */; };
+		A808C0241D70217100F568EA /* lang-vb.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0051D70217100F568EA /* lang-vb.js */; };
+		A808C0251D70217100F568EA /* lang-tex.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0061D70217100F568EA /* lang-tex.js */; };
+		A808C0261D70217100F568EA /* lang-tcl.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0071D70217100F568EA /* lang-tcl.js */; };
+		A808C0271D70217100F568EA /* lang-sql.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0081D70217100F568EA /* lang-sql.js */; };
+		A808C0281D70217100F568EA /* lang-scala.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0091D70217100F568EA /* lang-scala.js */; };
+		A808C0291D70217100F568EA /* lang-rd.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C00A1D70217100F568EA /* lang-rd.js */; };
+		A808C02A1D70217100F568EA /* lang-r.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C00B1D70217100F568EA /* lang-r.js */; };
+		A808C02B1D70217100F568EA /* lang-proto.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C00C1D70217100F568EA /* lang-proto.js */; };
+		A808C02C1D70217100F568EA /* lang-pascal.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C00D1D70217100F568EA /* lang-pascal.js */; };
+		A808C02D1D70217100F568EA /* lang-n.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C00E1D70217100F568EA /* lang-n.js */; };
+		A808C02E1D70217100F568EA /* lang-mumps.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C00F1D70217100F568EA /* lang-mumps.js */; };
+		A808C02F1D70217100F568EA /* lang-matlab.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0101D70217100F568EA /* lang-matlab.js */; };
+		A808C0301D70217100F568EA /* lang-lua.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0111D70217100F568EA /* lang-lua.js */; };
+		A808C0311D70217100F568EA /* lang-llvm.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0121D70217100F568EA /* lang-llvm.js */; };
+		A808C0321D70217100F568EA /* lang-lisp.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0131D70217100F568EA /* lang-lisp.js */; };
+		A808C0331D70217100F568EA /* lang-hs.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0141D70217100F568EA /* lang-hs.js */; };
+		A808C0341D70217100F568EA /* lang-go.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0151D70217100F568EA /* lang-go.js */; };
+		A808C0351D70217100F568EA /* lang-erlang.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0161D70217100F568EA /* lang-erlang.js */; };
+		A808C0361D70217100F568EA /* lang-dart.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0171D70217100F568EA /* lang-dart.js */; };
+		A808C0371D70217100F568EA /* lang-css.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0181D70217100F568EA /* lang-css.js */; };
+		A808C0381D70217100F568EA /* lang-clj.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C0191D70217100F568EA /* lang-clj.js */; };
+		A808C0391D70217100F568EA /* lang-basic.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C01A1D70217100F568EA /* lang-basic.js */; };
+		A808C03A1D70217100F568EA /* lang-apollo.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C01B1D70217100F568EA /* lang-apollo.js */; };
+		A808C03B1D70217100F568EA /* run_prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C01C1D70217100F568EA /* run_prettify.js */; };
+		A808C03C1D70217100F568EA /* prettify.js in Resources */ = {isa = PBXBuildFile; fileRef = A808C01D1D70217100F568EA /* prettify.js */; };
+		A808C0411D70218C00F568EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A808C03D1D70218C00F568EA /* Assets.xcassets */; };
+		A808C0421D70218C00F568EA /* default.css in Resources */ = {isa = PBXBuildFile; fileRef = A808C03E1D70218C00F568EA /* default.css */; };
+		A808C0431D70218C00F568EA /* markdownHelp.strings in Resources */ = {isa = PBXBuildFile; fileRef = A808C03F1D70218C00F568EA /* markdownHelp.strings */; };
+		A808C0441D70218C00F568EA /* consts.plist in Resources */ = {isa = PBXBuildFile; fileRef = A808C0401D70218C00F568EA /* consts.plist */; };
+		A808C0761D7022FF00F568EA /* DocTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0731D7022FF00F568EA /* DocTree.swift */; };
+		A808C0771D7022FF00F568EA /* DocTreeInfoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0741D7022FF00F568EA /* DocTreeInfoData.swift */; };
+		A808C0781D7022FF00F568EA /* DocTree+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0751D7022FF00F568EA /* DocTree+CoreDataProperties.swift */; };
+		A808C07B1D70230D00F568EA /* DocTreeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0791D70230D00F568EA /* DocTreeViewController.xib */; };
+		A808C07C1D70230D00F568EA /* DocTreeInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C07A1D70230D00F568EA /* DocTreeInfoViewController.xib */; };
+		A808C0841D70231900F568EA /* DocTreeViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C07D1D70231900F568EA /* DocTreeViewController+DataSource.swift */; };
+		A808C0851D70231900F568EA /* DocTreeViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C07E1D70231900F568EA /* DocTreeViewController+Delegate.swift */; };
+		A808C0861D70231900F568EA /* DocTreeInfoViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C07F1D70231900F568EA /* DocTreeInfoViewController+Delegate.swift */; };
+		A808C0871D70231900F568EA /* DocTreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0801D70231900F568EA /* DocTreeViewController.swift */; };
+		A808C0881D70231900F568EA /* DocTreeViewController+MenuIBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0811D70231900F568EA /* DocTreeViewController+MenuIBAction.swift */; };
+		A808C0891D70231900F568EA /* DocTreeInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0821D70231900F568EA /* DocTreeInfoViewController.swift */; };
+		A808C08A1D70231900F568EA /* DocTreeInfoViewController+IBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0831D70231900F568EA /* DocTreeInfoViewController+IBAction.swift */; };
+		A808C08D1D70235F00F568EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C08B1D70235F00F568EA /* AppDelegate.swift */; };
+		A808C08E1D70235F00F568EA /* AppDelegate+IBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C08C1D70235F00F568EA /* AppDelegate+IBAction.swift */; };
+		A808C0931D7023F900F568EA /* DocMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0911D7023F900F568EA /* DocMain.swift */; };
+		A808C0941D7023F900F568EA /* DocMain+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0921D7023F900F568EA /* DocMain+CoreDataProperties.swift */; };
+		A808C0971D70240F00F568EA /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0951D70240F00F568EA /* UserInfo.swift */; };
+		A808C0981D70240F00F568EA /* UserInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0961D70240F00F568EA /* UserInfo+CoreDataProperties.swift */; };
+		A808C09A1D70241900F568EA /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0991D70241900F568EA /* MainWindowController.swift */; };
+		A808C09C1D70243C00F568EA /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C09B1D70243C00F568EA /* MainSplitViewController.swift */; };
+		A808C09E1D70244300F568EA /* MainSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C09D1D70244300F568EA /* MainSplitViewController.xib */; };
+		A808C0A31D70246D00F568EA /* DocMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C09F1D70246D00F568EA /* DocMainViewController.swift */; };
+		A808C0A41D70246D00F568EA /* DocEditViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0A01D70246D00F568EA /* DocEditViewController+Delegate.swift */; };
+		A808C0A51D70246D00F568EA /* DocEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0A11D70246D00F568EA /* DocEditViewController.swift */; };
+		A808C0A61D70246D00F568EA /* DocMainViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0A21D70246D00F568EA /* DocMainViewController+Delegate.swift */; };
+		A808C0A91D70248600F568EA /* DocEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0A71D70248600F568EA /* DocEditViewController.xib */; };
+		A808C0AA1D70248600F568EA /* DocMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0A81D70248600F568EA /* DocMainViewController.xib */; };
+		A808C0B11D7024B600F568EA /* DocumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0AB1D7024B600F568EA /* DocumentViewController.xib */; };
+		A808C0B21D7024B600F568EA /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0AC1D7024B600F568EA /* DocumentViewController.swift */; };
+		A808C0B31D7024B600F568EA /* TreeBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0AD1D7024B600F568EA /* TreeBack.swift */; };
+		A808C0B41D7024B600F568EA /* ScaryBugData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0AE1D7024B600F568EA /* ScaryBugData.swift */; };
+		A808C0B51D7024B600F568EA /* DocumentViewController+IBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0AF1D7024B600F568EA /* DocumentViewController+IBAction.swift */; };
+		A808C0B61D7024B600F568EA /* ScaryBugDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0B01D7024B600F568EA /* ScaryBugDoc.swift */; };
+		A808C0B91D7024C900F568EA /* MBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A808C0B71D7024C900F568EA /* MBase.xcdatamodeld */; };
+		A808C0BF1D70251100F568EA /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = A808C0BB1D70251100F568EA /* EDStarRating.m */; };
+		A808C0C01D70251100F568EA /* NSImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = A808C0BE1D70251100F568EA /* NSImage+Extras.m */; };
+		A808C0C51D70253C00F568EA /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0C11D70253C00F568EA /* MainWindowController.xib */; };
+		A80F86781DF7FD6E00DC4217 /* ConstsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F86771DF7FD6E00DC4217 /* ConstsManager.swift */; };
+		A81CC89A1D754AAF0000401B /* DocEditViewController+MenuIBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81CC8991D754AAF0000401B /* DocEditViewController+MenuIBAction.swift */; };
+		A828C7D51D7991F900AA3043 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C7D41D7991F900AA3043 /* DateUtils.swift */; };
+		A86220B41D406FA000BAC828 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86220B21D406FA000BAC828 /* MainMenu.xib */; };
+		A871B4EB1D8A696E003D598C /* ExportUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4EA1D8A696E003D598C /* ExportUtils.swift */; };
+		A871B4EE1D8AE4E2003D598C /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4ED1D8AE4E2003D598C /* AlertUtils.swift */; };
+		A8D6EB5D1DFE6D8600D73C60 /* DocSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D6EB5C1DFE6D8600D73C60 /* DocSplitViewController.xib */; };
+		A8D82F191DF7FE0C001AC708 /* MBaseMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8D82F181DF7FE0C001AC708 /* MBaseMarkdown.framework */; };
+		A8D82F1A1DF7FE12001AC708 /* MBaseMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A8D82F181DF7FE0C001AC708 /* MBaseMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8FD0C371D97887D00D969B0 /* DocSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD0C351D97887D00D969B0 /* DocSplitViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A80F860C1DF7E8FB00DC4217 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A8D82F1A1DF7FE12001AC708 /* MBaseMarkdown.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A808BFFF1D70217100F568EA /* lang-ml.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-ml.js"; path = "resource/google-code-prettify-small/lang-ml.js"; sourceTree = "<group>"; };
+		A808C0001D70217100F568EA /* prettify.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = prettify.css; path = "resource/google-code-prettify-small/prettify.css"; sourceTree = "<group>"; };
+		A808C0011D70217100F568EA /* lang-yaml.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-yaml.js"; path = "resource/google-code-prettify-small/lang-yaml.js"; sourceTree = "<group>"; };
+		A808C0021D70217100F568EA /* lang-xq.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-xq.js"; path = "resource/google-code-prettify-small/lang-xq.js"; sourceTree = "<group>"; };
+		A808C0031D70217100F568EA /* lang-wiki.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-wiki.js"; path = "resource/google-code-prettify-small/lang-wiki.js"; sourceTree = "<group>"; };
+		A808C0041D70217100F568EA /* lang-vhdl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-vhdl.js"; path = "resource/google-code-prettify-small/lang-vhdl.js"; sourceTree = "<group>"; };
+		A808C0051D70217100F568EA /* lang-vb.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-vb.js"; path = "resource/google-code-prettify-small/lang-vb.js"; sourceTree = "<group>"; };
+		A808C0061D70217100F568EA /* lang-tex.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-tex.js"; path = "resource/google-code-prettify-small/lang-tex.js"; sourceTree = "<group>"; };
+		A808C0071D70217100F568EA /* lang-tcl.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-tcl.js"; path = "resource/google-code-prettify-small/lang-tcl.js"; sourceTree = "<group>"; };
+		A808C0081D70217100F568EA /* lang-sql.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-sql.js"; path = "resource/google-code-prettify-small/lang-sql.js"; sourceTree = "<group>"; };
+		A808C0091D70217100F568EA /* lang-scala.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-scala.js"; path = "resource/google-code-prettify-small/lang-scala.js"; sourceTree = "<group>"; };
+		A808C00A1D70217100F568EA /* lang-rd.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-rd.js"; path = "resource/google-code-prettify-small/lang-rd.js"; sourceTree = "<group>"; };
+		A808C00B1D70217100F568EA /* lang-r.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-r.js"; path = "resource/google-code-prettify-small/lang-r.js"; sourceTree = "<group>"; };
+		A808C00C1D70217100F568EA /* lang-proto.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-proto.js"; path = "resource/google-code-prettify-small/lang-proto.js"; sourceTree = "<group>"; };
+		A808C00D1D70217100F568EA /* lang-pascal.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-pascal.js"; path = "resource/google-code-prettify-small/lang-pascal.js"; sourceTree = "<group>"; };
+		A808C00E1D70217100F568EA /* lang-n.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-n.js"; path = "resource/google-code-prettify-small/lang-n.js"; sourceTree = "<group>"; };
+		A808C00F1D70217100F568EA /* lang-mumps.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-mumps.js"; path = "resource/google-code-prettify-small/lang-mumps.js"; sourceTree = "<group>"; };
+		A808C0101D70217100F568EA /* lang-matlab.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-matlab.js"; path = "resource/google-code-prettify-small/lang-matlab.js"; sourceTree = "<group>"; };
+		A808C0111D70217100F568EA /* lang-lua.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-lua.js"; path = "resource/google-code-prettify-small/lang-lua.js"; sourceTree = "<group>"; };
+		A808C0121D70217100F568EA /* lang-llvm.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-llvm.js"; path = "resource/google-code-prettify-small/lang-llvm.js"; sourceTree = "<group>"; };
+		A808C0131D70217100F568EA /* lang-lisp.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-lisp.js"; path = "resource/google-code-prettify-small/lang-lisp.js"; sourceTree = "<group>"; };
+		A808C0141D70217100F568EA /* lang-hs.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-hs.js"; path = "resource/google-code-prettify-small/lang-hs.js"; sourceTree = "<group>"; };
+		A808C0151D70217100F568EA /* lang-go.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-go.js"; path = "resource/google-code-prettify-small/lang-go.js"; sourceTree = "<group>"; };
+		A808C0161D70217100F568EA /* lang-erlang.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-erlang.js"; path = "resource/google-code-prettify-small/lang-erlang.js"; sourceTree = "<group>"; };
+		A808C0171D70217100F568EA /* lang-dart.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-dart.js"; path = "resource/google-code-prettify-small/lang-dart.js"; sourceTree = "<group>"; };
+		A808C0181D70217100F568EA /* lang-css.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-css.js"; path = "resource/google-code-prettify-small/lang-css.js"; sourceTree = "<group>"; };
+		A808C0191D70217100F568EA /* lang-clj.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-clj.js"; path = "resource/google-code-prettify-small/lang-clj.js"; sourceTree = "<group>"; };
+		A808C01A1D70217100F568EA /* lang-basic.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-basic.js"; path = "resource/google-code-prettify-small/lang-basic.js"; sourceTree = "<group>"; };
+		A808C01B1D70217100F568EA /* lang-apollo.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = "lang-apollo.js"; path = "resource/google-code-prettify-small/lang-apollo.js"; sourceTree = "<group>"; };
+		A808C01C1D70217100F568EA /* run_prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = run_prettify.js; path = "resource/google-code-prettify-small/run_prettify.js"; sourceTree = "<group>"; };
+		A808C01D1D70217100F568EA /* prettify.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; name = prettify.js; path = "resource/google-code-prettify-small/prettify.js"; sourceTree = "<group>"; };
+		A808C03D1D70218C00F568EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = resource/Assets.xcassets; sourceTree = "<group>"; };
+		A808C03E1D70218C00F568EA /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = default.css; path = resource/default.css; sourceTree = "<group>"; };
+		A808C03F1D70218C00F568EA /* markdownHelp.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = markdownHelp.strings; path = resource/markdownHelp.strings; sourceTree = "<group>"; };
+		A808C0401D70218C00F568EA /* consts.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = consts.plist; path = resource/consts.plist; sourceTree = "<group>"; };
+		A808C0731D7022FF00F568EA /* DocTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocTree.swift; path = tree/DocTree.swift; sourceTree = "<group>"; };
+		A808C0741D7022FF00F568EA /* DocTreeInfoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocTreeInfoData.swift; path = tree/DocTreeInfoData.swift; sourceTree = "<group>"; };
+		A808C0751D7022FF00F568EA /* DocTree+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocTree+CoreDataProperties.swift"; path = "tree/DocTree+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A808C0791D70230D00F568EA /* DocTreeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocTreeViewController.xib; path = tree/DocTreeViewController.xib; sourceTree = "<group>"; };
+		A808C07A1D70230D00F568EA /* DocTreeInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocTreeInfoViewController.xib; path = tree/DocTreeInfoViewController.xib; sourceTree = "<group>"; };
+		A808C07D1D70231900F568EA /* DocTreeViewController+DataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocTreeViewController+DataSource.swift"; path = "tree/DocTreeViewController+DataSource.swift"; sourceTree = "<group>"; };
+		A808C07E1D70231900F568EA /* DocTreeViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocTreeViewController+Delegate.swift"; path = "tree/DocTreeViewController+Delegate.swift"; sourceTree = "<group>"; };
+		A808C07F1D70231900F568EA /* DocTreeInfoViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocTreeInfoViewController+Delegate.swift"; path = "tree/DocTreeInfoViewController+Delegate.swift"; sourceTree = "<group>"; };
+		A808C0801D70231900F568EA /* DocTreeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocTreeViewController.swift; path = tree/DocTreeViewController.swift; sourceTree = "<group>"; };
+		A808C0811D70231900F568EA /* DocTreeViewController+MenuIBAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocTreeViewController+MenuIBAction.swift"; path = "tree/DocTreeViewController+MenuIBAction.swift"; sourceTree = "<group>"; };
+		A808C0821D70231900F568EA /* DocTreeInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocTreeInfoViewController.swift; path = tree/DocTreeInfoViewController.swift; sourceTree = "<group>"; };
+		A808C0831D70231900F568EA /* DocTreeInfoViewController+IBAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocTreeInfoViewController+IBAction.swift"; path = "tree/DocTreeInfoViewController+IBAction.swift"; sourceTree = "<group>"; };
+		A808C08B1D70235F00F568EA /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = main/AppDelegate.swift; sourceTree = "<group>"; };
+		A808C08C1D70235F00F568EA /* AppDelegate+IBAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "AppDelegate+IBAction.swift"; path = "main/AppDelegate+IBAction.swift"; sourceTree = "<group>"; };
+		A808C0911D7023F900F568EA /* DocMain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocMain.swift; path = document/DocMain.swift; sourceTree = "<group>"; };
+		A808C0921D7023F900F568EA /* DocMain+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocMain+CoreDataProperties.swift"; path = "document/DocMain+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A808C0951D70240F00F568EA /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserInfo.swift; path = main/UserInfo.swift; sourceTree = "<group>"; };
+		A808C0961D70240F00F568EA /* UserInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UserInfo+CoreDataProperties.swift"; path = "main/UserInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		A808C0991D70241900F568EA /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainWindowController.swift; path = main/MainWindowController.swift; sourceTree = "<group>"; };
+		A808C09B1D70243C00F568EA /* MainSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainSplitViewController.swift; path = split/MainSplitViewController.swift; sourceTree = "<group>"; };
+		A808C09D1D70244300F568EA /* MainSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainSplitViewController.xib; path = split/MainSplitViewController.xib; sourceTree = "<group>"; };
+		A808C09F1D70246D00F568EA /* DocMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocMainViewController.swift; path = document/DocMainViewController.swift; sourceTree = "<group>"; };
+		A808C0A01D70246D00F568EA /* DocEditViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocEditViewController+Delegate.swift"; path = "document/DocEditViewController+Delegate.swift"; sourceTree = "<group>"; };
+		A808C0A11D70246D00F568EA /* DocEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocEditViewController.swift; path = document/DocEditViewController.swift; sourceTree = "<group>"; };
+		A808C0A21D70246D00F568EA /* DocMainViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocMainViewController+Delegate.swift"; path = "document/DocMainViewController+Delegate.swift"; sourceTree = "<group>"; };
+		A808C0A71D70248600F568EA /* DocEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocEditViewController.xib; path = document/DocEditViewController.xib; sourceTree = "<group>"; };
+		A808C0A81D70248600F568EA /* DocMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocMainViewController.xib; path = document/DocMainViewController.xib; sourceTree = "<group>"; };
+		A808C0AB1D7024B600F568EA /* DocumentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocumentViewController.xib; path = demo/DocumentViewController.xib; sourceTree = "<group>"; };
+		A808C0AC1D7024B600F568EA /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentViewController.swift; path = demo/DocumentViewController.swift; sourceTree = "<group>"; };
+		A808C0AD1D7024B600F568EA /* TreeBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TreeBack.swift; path = demo/TreeBack.swift; sourceTree = "<group>"; };
+		A808C0AE1D7024B600F568EA /* ScaryBugData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScaryBugData.swift; path = demo/ScaryBugData.swift; sourceTree = "<group>"; };
+		A808C0AF1D7024B600F568EA /* DocumentViewController+IBAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocumentViewController+IBAction.swift"; path = "demo/DocumentViewController+IBAction.swift"; sourceTree = "<group>"; };
+		A808C0B01D7024B600F568EA /* ScaryBugDoc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScaryBugDoc.swift; path = demo/ScaryBugDoc.swift; sourceTree = "<group>"; };
+		A808C0B81D7024C900F568EA /* MBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MBase.xcdatamodel; sourceTree = "<group>"; };
+		A808C0BA1D70251100F568EA /* MBase-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBase-Bridging-Header.h"; path = "supporting/MBase-Bridging-Header.h"; sourceTree = "<group>"; };
+		A808C0BB1D70251100F568EA /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDStarRating.m; path = supporting/EDStarRating.m; sourceTree = "<group>"; };
+		A808C0BC1D70251100F568EA /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDStarRating.h; path = supporting/EDStarRating.h; sourceTree = "<group>"; };
+		A808C0BD1D70251100F568EA /* NSImage+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+Extras.h"; path = "supporting/NSImage+Extras.h"; sourceTree = "<group>"; };
+		A808C0BE1D70251100F568EA /* NSImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+Extras.m"; path = "supporting/NSImage+Extras.m"; sourceTree = "<group>"; };
+		A808C0C11D70253C00F568EA /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowController.xib; path = main/MainWindowController.xib; sourceTree = "<group>"; };
+		A80F86771DF7FD6E00DC4217 /* ConstsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstsManager.swift; path = system/manager/ConstsManager.swift; sourceTree = "<group>"; };
+		A81CC8991D754AAF0000401B /* DocEditViewController+MenuIBAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocEditViewController+MenuIBAction.swift"; path = "document/DocEditViewController+MenuIBAction.swift"; sourceTree = "<group>"; };
+		A828C7D41D7991F900AA3043 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtils.swift; path = system/manager/DateUtils.swift; sourceTree = "<group>"; };
+		A82AD7641D4453E100F457B6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		A86220AB1D406FA000BAC828 /* MBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A86220B31D406FA000BAC828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A86220B51D406FA000BAC828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A871B4EA1D8A696E003D598C /* ExportUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExportUtils.swift; path = system/manager/ExportUtils.swift; sourceTree = "<group>"; };
+		A871B4ED1D8AE4E2003D598C /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertUtils.swift; path = system/manager/AlertUtils.swift; sourceTree = "<group>"; };
+		A8D6EB5C1DFE6D8600D73C60 /* DocSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocSplitViewController.xib; path = split/DocSplitViewController.xib; sourceTree = "<group>"; };
+		A8D82F181DF7FE0C001AC708 /* MBaseMarkdown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBaseMarkdown.framework; path = "../../../Library/Developer/Xcode/DerivedData/MBaseWorkSpace-grtlzzosmdohtlgjhyfvpmfvkjsw/Build/Products/Debug/MBaseMarkdown.framework"; sourceTree = "<group>"; };
+		A8F60CEC1D52034B009768B6 /* Hoedown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hoedown.framework; path = ../Carthage/Build/Mac/Hoedown.framework; sourceTree = "<group>"; };
+		A8FD0C351D97887D00D969B0 /* DocSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocSplitViewController.swift; path = split/DocSplitViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A86220A81D406FA000BAC828 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8D82F191DF7FE0C001AC708 /* MBaseMarkdown.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A8103D841D582C2F0085ECA2 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0951D70240F00F568EA /* UserInfo.swift */,
+				A808C0961D70240F00F568EA /* UserInfo+CoreDataProperties.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		A82AD7AA1D44833000F457B6 /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0AB1D7024B600F568EA /* DocumentViewController.xib */,
+				A808C0AC1D7024B600F568EA /* DocumentViewController.swift */,
+				A808C0AD1D7024B600F568EA /* TreeBack.swift */,
+				A808C0AE1D7024B600F568EA /* ScaryBugData.swift */,
+				A808C0AF1D7024B600F568EA /* DocumentViewController+IBAction.swift */,
+				A808C0B01D7024B600F568EA /* ScaryBugDoc.swift */,
+			);
+			name = demo;
+			sourceTree = "<group>";
+		};
+		A83630591D5C1FB200323812 /* resource */ = {
+			isa = PBXGroup;
+			children = (
+				A8FAD6791D6182D900D8B45F /* google-code-prettify-small */,
+				A808C03D1D70218C00F568EA /* Assets.xcassets */,
+				A808C03E1D70218C00F568EA /* default.css */,
+				A808C03F1D70218C00F568EA /* markdownHelp.strings */,
+				A808C0401D70218C00F568EA /* consts.plist */,
+				A808C0B71D7024C900F568EA /* MBase.xcdatamodeld */,
+			);
+			name = resource;
+			sourceTree = "<group>";
+		};
+		A83636CF1D543CD100B7E2B7 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0731D7022FF00F568EA /* DocTree.swift */,
+				A808C0741D7022FF00F568EA /* DocTreeInfoData.swift */,
+				A808C0751D7022FF00F568EA /* DocTree+CoreDataProperties.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		A86220A21D406FA000BAC828 = {
+			isa = PBXGroup;
+			children = (
+				A8D82F181DF7FE0C001AC708 /* MBaseMarkdown.framework */,
+				A86220AD1D406FA000BAC828 /* MBase */,
+				A86220AC1D406FA000BAC828 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A86220AC1D406FA000BAC828 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A86220AB1D406FA000BAC828 /* MBase.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A86220AD1D406FA000BAC828 /* MBase */ = {
+			isa = PBXGroup;
+			children = (
+				A83630591D5C1FB200323812 /* resource */,
+				A89099741D59B79B00E25D8E /* system */,
+				A82AD7AA1D44833000F457B6 /* demo */,
+				A8F60CFC1D520912009768B6 /* document */,
+				A8CB64E31D41C06800E69BBE /* split */,
+				A890F6FB1D40D3A3003FF760 /* main */,
+				A86220BB1D40705F00BAC828 /* tree */,
+				A86220B51D406FA000BAC828 /* Info.plist */,
+				A86220C31D4072DE00BAC828 /* Supporting Files */,
+			);
+			path = MBase;
+			sourceTree = "<group>";
+		};
+		A86220BB1D40705F00BAC828 /* tree */ = {
+			isa = PBXGroup;
+			children = (
+				A86220BE1D40708D00BAC828 /* controller */,
+				A86220BD1D40708500BAC828 /* view */,
+				A83636CF1D543CD100B7E2B7 /* model */,
+			);
+			name = tree;
+			sourceTree = "<group>";
+		};
+		A86220BD1D40708500BAC828 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0791D70230D00F568EA /* DocTreeViewController.xib */,
+				A808C07A1D70230D00F568EA /* DocTreeInfoViewController.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		A86220BE1D40708D00BAC828 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0801D70231900F568EA /* DocTreeViewController.swift */,
+				A808C0811D70231900F568EA /* DocTreeViewController+MenuIBAction.swift */,
+				A808C07D1D70231900F568EA /* DocTreeViewController+DataSource.swift */,
+				A808C07E1D70231900F568EA /* DocTreeViewController+Delegate.swift */,
+				A808C0821D70231900F568EA /* DocTreeInfoViewController.swift */,
+				A808C0831D70231900F568EA /* DocTreeInfoViewController+IBAction.swift */,
+				A808C07F1D70231900F568EA /* DocTreeInfoViewController+Delegate.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		A86220C31D4072DE00BAC828 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0BA1D70251100F568EA /* MBase-Bridging-Header.h */,
+				A808C0BB1D70251100F568EA /* EDStarRating.m */,
+				A808C0BC1D70251100F568EA /* EDStarRating.h */,
+				A808C0BD1D70251100F568EA /* NSImage+Extras.h */,
+				A808C0BE1D70251100F568EA /* NSImage+Extras.m */,
+				A8F60CEC1D52034B009768B6 /* Hoedown.framework */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A89099741D59B79B00E25D8E /* system */ = {
+			isa = PBXGroup;
+			children = (
+				A89099751D59B7A300E25D8E /* manager */,
+			);
+			name = system;
+			sourceTree = "<group>";
+		};
+		A89099751D59B7A300E25D8E /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				A80F86771DF7FD6E00DC4217 /* ConstsManager.swift */,
+				A828C7D41D7991F900AA3043 /* DateUtils.swift */,
+				A871B4EA1D8A696E003D598C /* ExportUtils.swift */,
+				A871B4ED1D8AE4E2003D598C /* AlertUtils.swift */,
+			);
+			name = manager;
+			sourceTree = "<group>";
+		};
+		A890F6FB1D40D3A3003FF760 /* main */ = {
+			isa = PBXGroup;
+			children = (
+				A8CB64F51D41F3F300E69BBE /* delegate */,
+				A890F6FC1D40D44B003FF760 /* controller */,
+				A890F6FD1D40D450003FF760 /* view */,
+				A8103D841D582C2F0085ECA2 /* model */,
+			);
+			name = main;
+			sourceTree = "<group>";
+		};
+		A890F6FC1D40D44B003FF760 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0991D70241900F568EA /* MainWindowController.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		A890F6FD1D40D450003FF760 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0C11D70253C00F568EA /* MainWindowController.xib */,
+				A86220B21D406FA000BAC828 /* MainMenu.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		A8CB64E31D41C06800E69BBE /* split */ = {
+			isa = PBXGroup;
+			children = (
+				A8CB64E41D41C06F00E69BBE /* controller */,
+				A8CB64F61D41F5F600E69BBE /* view */,
+			);
+			name = split;
+			sourceTree = "<group>";
+		};
+		A8CB64E41D41C06F00E69BBE /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				A808C09B1D70243C00F568EA /* MainSplitViewController.swift */,
+				A8FD0C351D97887D00D969B0 /* DocSplitViewController.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		A8CB64F51D41F3F300E69BBE /* delegate */ = {
+			isa = PBXGroup;
+			children = (
+				A808C08B1D70235F00F568EA /* AppDelegate.swift */,
+				A808C08C1D70235F00F568EA /* AppDelegate+IBAction.swift */,
+			);
+			name = delegate;
+			sourceTree = "<group>";
+		};
+		A8CB64F61D41F5F600E69BBE /* view */ = {
+			isa = PBXGroup;
+			children = (
+				A8D6EB5C1DFE6D8600D73C60 /* DocSplitViewController.xib */,
+				A808C09D1D70244300F568EA /* MainSplitViewController.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		A8F60CFC1D520912009768B6 /* document */ = {
+			isa = PBXGroup;
+			children = (
+				A8F60CFD1D520A60009768B6 /* controller */,
+				A8F60CFE1D520A66009768B6 /* view */,
+				A8F60CFF1D520A6D009768B6 /* model */,
+			);
+			name = document;
+			sourceTree = "<group>";
+		};
+		A8F60CFD1D520A60009768B6 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0A11D70246D00F568EA /* DocEditViewController.swift */,
+				A808C0A01D70246D00F568EA /* DocEditViewController+Delegate.swift */,
+				A81CC8991D754AAF0000401B /* DocEditViewController+MenuIBAction.swift */,
+				A808C09F1D70246D00F568EA /* DocMainViewController.swift */,
+				A808C0A21D70246D00F568EA /* DocMainViewController+Delegate.swift */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		A8F60CFE1D520A66009768B6 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0A71D70248600F568EA /* DocEditViewController.xib */,
+				A808C0A81D70248600F568EA /* DocMainViewController.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
+		A8F60CFF1D520A6D009768B6 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				A808C0911D7023F900F568EA /* DocMain.swift */,
+				A808C0921D7023F900F568EA /* DocMain+CoreDataProperties.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		A8FAD6791D6182D900D8B45F /* google-code-prettify-small */ = {
+			isa = PBXGroup;
+			children = (
+				A808BFFF1D70217100F568EA /* lang-ml.js */,
+				A808C0001D70217100F568EA /* prettify.css */,
+				A808C0011D70217100F568EA /* lang-yaml.js */,
+				A808C0021D70217100F568EA /* lang-xq.js */,
+				A808C0031D70217100F568EA /* lang-wiki.js */,
+				A808C0041D70217100F568EA /* lang-vhdl.js */,
+				A808C0051D70217100F568EA /* lang-vb.js */,
+				A808C0061D70217100F568EA /* lang-tex.js */,
+				A808C0071D70217100F568EA /* lang-tcl.js */,
+				A808C0081D70217100F568EA /* lang-sql.js */,
+				A808C0091D70217100F568EA /* lang-scala.js */,
+				A808C00A1D70217100F568EA /* lang-rd.js */,
+				A808C00B1D70217100F568EA /* lang-r.js */,
+				A808C00C1D70217100F568EA /* lang-proto.js */,
+				A808C00D1D70217100F568EA /* lang-pascal.js */,
+				A808C00E1D70217100F568EA /* lang-n.js */,
+				A808C00F1D70217100F568EA /* lang-mumps.js */,
+				A808C0101D70217100F568EA /* lang-matlab.js */,
+				A808C0111D70217100F568EA /* lang-lua.js */,
+				A808C0121D70217100F568EA /* lang-llvm.js */,
+				A808C0131D70217100F568EA /* lang-lisp.js */,
+				A808C0141D70217100F568EA /* lang-hs.js */,
+				A808C0151D70217100F568EA /* lang-go.js */,
+				A808C0161D70217100F568EA /* lang-erlang.js */,
+				A808C0171D70217100F568EA /* lang-dart.js */,
+				A808C0181D70217100F568EA /* lang-css.js */,
+				A808C0191D70217100F568EA /* lang-clj.js */,
+				A808C01A1D70217100F568EA /* lang-basic.js */,
+				A808C01B1D70217100F568EA /* lang-apollo.js */,
+				A808C01C1D70217100F568EA /* run_prettify.js */,
+				A808C01D1D70217100F568EA /* prettify.js */,
+			);
+			name = "google-code-prettify-small";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A86220AA1D406FA000BAC828 /* MBase */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A86220B81D406FA000BAC828 /* Build configuration list for PBXNativeTarget "MBase" */;
+			buildPhases = (
+				A86220A71D406FA000BAC828 /* Sources */,
+				A86220A81D406FA000BAC828 /* Frameworks */,
+				A86220A91D406FA000BAC828 /* Resources */,
+				A80F860C1DF7E8FB00DC4217 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MBase;
+			productName = MBase;
+			productReference = A86220AB1D406FA000BAC828 /* MBase.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A86220A31D406FA000BAC828 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = popkidorc;
+				TargetAttributes = {
+					A86220AA1D406FA000BAC828 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = A86220A61D406FA000BAC828 /* Build configuration list for PBXProject "MBase" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A86220A21D406FA000BAC828;
+			productRefGroup = A86220AC1D406FA000BAC828 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A86220AA1D406FA000BAC828 /* MBase */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A86220A91D406FA000BAC828 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A808C0281D70217100F568EA /* lang-scala.js in Resources */,
+				A808C0AA1D70248600F568EA /* DocMainViewController.xib in Resources */,
+				A808C0411D70218C00F568EA /* Assets.xcassets in Resources */,
+				A808C0201D70217100F568EA /* lang-yaml.js in Resources */,
+				A808C07C1D70230D00F568EA /* DocTreeInfoViewController.xib in Resources */,
+				A808C03B1D70217100F568EA /* run_prettify.js in Resources */,
+				A808C0351D70217100F568EA /* lang-erlang.js in Resources */,
+				A808C0381D70217100F568EA /* lang-clj.js in Resources */,
+				A808C02F1D70217100F568EA /* lang-matlab.js in Resources */,
+				A808C0361D70217100F568EA /* lang-dart.js in Resources */,
+				A808C0371D70217100F568EA /* lang-css.js in Resources */,
+				A86220B41D406FA000BAC828 /* MainMenu.xib in Resources */,
+				A8D6EB5D1DFE6D8600D73C60 /* DocSplitViewController.xib in Resources */,
+				A808C09E1D70244300F568EA /* MainSplitViewController.xib in Resources */,
+				A808C02E1D70217100F568EA /* lang-mumps.js in Resources */,
+				A808C0231D70217100F568EA /* lang-vhdl.js in Resources */,
+				A808C0B11D7024B600F568EA /* DocumentViewController.xib in Resources */,
+				A808C02C1D70217100F568EA /* lang-pascal.js in Resources */,
+				A808C07B1D70230D00F568EA /* DocTreeViewController.xib in Resources */,
+				A808C03A1D70217100F568EA /* lang-apollo.js in Resources */,
+				A808C0311D70217100F568EA /* lang-llvm.js in Resources */,
+				A808C0441D70218C00F568EA /* consts.plist in Resources */,
+				A808C02B1D70217100F568EA /* lang-proto.js in Resources */,
+				A808C0321D70217100F568EA /* lang-lisp.js in Resources */,
+				A808C0A91D70248600F568EA /* DocEditViewController.xib in Resources */,
+				A808C0331D70217100F568EA /* lang-hs.js in Resources */,
+				A808C0C51D70253C00F568EA /* MainWindowController.xib in Resources */,
+				A808C03C1D70217100F568EA /* prettify.js in Resources */,
+				A808C0251D70217100F568EA /* lang-tex.js in Resources */,
+				A808C0271D70217100F568EA /* lang-sql.js in Resources */,
+				A808C0431D70218C00F568EA /* markdownHelp.strings in Resources */,
+				A808C01E1D70217100F568EA /* lang-ml.js in Resources */,
+				A808C02D1D70217100F568EA /* lang-n.js in Resources */,
+				A808C01F1D70217100F568EA /* prettify.css in Resources */,
+				A808C0391D70217100F568EA /* lang-basic.js in Resources */,
+				A808C0221D70217100F568EA /* lang-wiki.js in Resources */,
+				A808C0211D70217100F568EA /* lang-xq.js in Resources */,
+				A808C0241D70217100F568EA /* lang-vb.js in Resources */,
+				A808C0261D70217100F568EA /* lang-tcl.js in Resources */,
+				A808C0291D70217100F568EA /* lang-rd.js in Resources */,
+				A808C02A1D70217100F568EA /* lang-r.js in Resources */,
+				A808C0341D70217100F568EA /* lang-go.js in Resources */,
+				A808C0301D70217100F568EA /* lang-lua.js in Resources */,
+				A808C0421D70218C00F568EA /* default.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A86220A71D406FA000BAC828 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A808C0851D70231900F568EA /* DocTreeViewController+Delegate.swift in Sources */,
+				A808C0A51D70246D00F568EA /* DocEditViewController.swift in Sources */,
+				A808C0B61D7024B600F568EA /* ScaryBugDoc.swift in Sources */,
+				A808C0BF1D70251100F568EA /* EDStarRating.m in Sources */,
+				A808C0881D70231900F568EA /* DocTreeViewController+MenuIBAction.swift in Sources */,
+				A808C0A31D70246D00F568EA /* DocMainViewController.swift in Sources */,
+				A808C08E1D70235F00F568EA /* AppDelegate+IBAction.swift in Sources */,
+				A808C09C1D70243C00F568EA /* MainSplitViewController.swift in Sources */,
+				A808C0861D70231900F568EA /* DocTreeInfoViewController+Delegate.swift in Sources */,
+				A808C0B31D7024B600F568EA /* TreeBack.swift in Sources */,
+				A808C0941D7023F900F568EA /* DocMain+CoreDataProperties.swift in Sources */,
+				A80F86781DF7FD6E00DC4217 /* ConstsManager.swift in Sources */,
+				A808C0A41D70246D00F568EA /* DocEditViewController+Delegate.swift in Sources */,
+				A871B4EE1D8AE4E2003D598C /* AlertUtils.swift in Sources */,
+				A808C0981D70240F00F568EA /* UserInfo+CoreDataProperties.swift in Sources */,
+				A808C0781D7022FF00F568EA /* DocTree+CoreDataProperties.swift in Sources */,
+				A808C0871D70231900F568EA /* DocTreeViewController.swift in Sources */,
+				A808C0891D70231900F568EA /* DocTreeInfoViewController.swift in Sources */,
+				A808C08D1D70235F00F568EA /* AppDelegate.swift in Sources */,
+				A81CC89A1D754AAF0000401B /* DocEditViewController+MenuIBAction.swift in Sources */,
+				A808C0931D7023F900F568EA /* DocMain.swift in Sources */,
+				A808C0C01D70251100F568EA /* NSImage+Extras.m in Sources */,
+				A808C0B51D7024B600F568EA /* DocumentViewController+IBAction.swift in Sources */,
+				A808C0841D70231900F568EA /* DocTreeViewController+DataSource.swift in Sources */,
+				A808C0B91D7024C900F568EA /* MBase.xcdatamodeld in Sources */,
+				A808C0761D7022FF00F568EA /* DocTree.swift in Sources */,
+				A808C0B21D7024B600F568EA /* DocumentViewController.swift in Sources */,
+				A808C09A1D70241900F568EA /* MainWindowController.swift in Sources */,
+				A808C08A1D70231900F568EA /* DocTreeInfoViewController+IBAction.swift in Sources */,
+				A808C0B41D7024B600F568EA /* ScaryBugData.swift in Sources */,
+				A808C0A61D70246D00F568EA /* DocMainViewController+Delegate.swift in Sources */,
+				A8FD0C371D97887D00D969B0 /* DocSplitViewController.swift in Sources */,
+				A808C0771D7022FF00F568EA /* DocTreeInfoData.swift in Sources */,
+				A828C7D51D7991F900AA3043 /* DateUtils.swift in Sources */,
+				A871B4EB1D8A696E003D598C /* ExportUtils.swift in Sources */,
+				A808C0971D70240F00F568EA /* UserInfo.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A86220B21D406FA000BAC828 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A86220B31D406FA000BAC828 /* Base */,
+				A82AD7641D4453E100F457B6 /* zh-Hans */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A86220B61D406FA000BAC828 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A86220B71D406FA000BAC828 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A86220B91D406FA000BAC828 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)Markdown/build/Debug",
+				);
+				INFOPLIST_FILE = MBase/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pop.MBase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MBase/supporting/MBase-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A86220BA1D406FA000BAC828 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)Markdown/build/Debug",
+				);
+				INFOPLIST_FILE = MBase/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pop.MBase;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MBase/supporting/MBase-Bridging-Header.h";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A86220A61D406FA000BAC828 /* Build configuration list for PBXProject "MBase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A86220B61D406FA000BAC828 /* Debug */,
+				A86220B71D406FA000BAC828 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A86220B81D406FA000BAC828 /* Build configuration list for PBXNativeTarget "MBase" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A86220B91D406FA000BAC828 /* Debug */,
+				A86220BA1D406FA000BAC828 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A808C0B71D7024C900F568EA /* MBase.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A808C0B81D7024C900F568EA /* MBase.xcdatamodel */,
+			);
+			currentVersion = A808C0B81D7024C900F568EA /* MBase.xcdatamodel */;
+			name = MBase.xcdatamodeld;
+			path = resource/MBase.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = A86220A31D406FA000BAC828 /* Project object */;
+}
