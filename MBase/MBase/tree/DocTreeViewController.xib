@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DocTreeViewController" customModule="MBase" customModuleProvider="target">
+            <connections>
+                <outlet property="docTreeView" destination="RRU-o4-5uk" id="LpZ-dD-KJe"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="361"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgx-77-cWG">
+                    <rect key="frame" x="0.0" y="0.0" width="200" height="361"/>
+                    <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="tnB-uk-7kW">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="361"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="2Zo-Wu-v5s" id="RRU-o4-5uk">
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="3" height="2"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.94509803921568625" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="gridColor" red="0.93333333330000001" green="0.94509803920000002" blue="0.95294117649999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <tableColumns>
+                                    <tableColumn identifier="DocTreeColumn" width="197" minWidth="40" maxWidth="1000" id="2Zo-Wu-v5s">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" drawsBackground="YES" id="sDN-YB-3k1">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <prototypeCellViews>
+                                            <tableCellView id="qHf-xj-QrB">
+                                                <rect key="frame" x="1" y="1" width="197" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M0l-3l-Ckq">
+                                                        <rect key="frame" x="3" y="3" width="17" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="17" id="DWS-tg-HJC"/>
+                                                        </constraints>
+                                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSActionTemplate" id="g5A-1Y-ue1"/>
+                                                    </imageView>
+                                                    <textField autoresizesSubviews="NO" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bCn-KM-La4">
+                                                        <rect key="frame" x="37" y="3" width="105" height="17"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="eMC-G0-Bvc">
+                                                            <font key="font" metaFont="system"/>
+                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                            <allowedInputSourceLocales>
+                                                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                            </allowedInputSourceLocales>
+                                                        </textFieldCell>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="bCn-KM-La4" secondAttribute="trailing" constant="57" id="9gI-Bg-hUf"/>
+                                                    <constraint firstItem="bCn-KM-La4" firstAttribute="leading" secondItem="M0l-3l-Ckq" secondAttribute="trailing" constant="19" id="BuA-36-3hb"/>
+                                                    <constraint firstItem="M0l-3l-Ckq" firstAttribute="top" secondItem="bCn-KM-La4" secondAttribute="top" id="WV9-Or-dwo"/>
+                                                    <constraint firstAttribute="bottom" secondItem="M0l-3l-Ckq" secondAttribute="bottom" constant="3" id="ag6-jv-mw6"/>
+                                                    <constraint firstItem="M0l-3l-Ckq" firstAttribute="leading" secondItem="qHf-xj-QrB" secondAttribute="leading" constant="3" id="d2l-i5-M9g"/>
+                                                    <constraint firstItem="M0l-3l-Ckq" firstAttribute="bottom" secondItem="bCn-KM-La4" secondAttribute="bottom" id="l8D-Tu-cng"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imageView" destination="M0l-3l-Ckq" id="fRp-sc-9SB"/>
+                                                    <outlet property="textField" destination="bCn-KM-La4" id="ZgJ-Dh-lva"/>
+                                                </connections>
+                                            </tableCellView>
+                                        </prototypeCellViews>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <action trigger="doubleAction" selector="doubleAction:" target="-2" id="iS1-B2-jh1"/>
+                                    <outlet property="dataSource" destination="-2" id="anK-55-iWK"/>
+                                    <outlet property="delegate" destination="-2" id="UNw-sA-0aD"/>
+                                    <outlet property="menu" destination="ovA-CX-j5C" id="M7r-Yh-BXP"/>
+                                </connections>
+                            </outlineView>
+                        </subviews>
+                        <color key="backgroundColor" name="controlHighlightColor" catalog="System" colorSpace="catalog"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="JrO-P2-GLt">
+                        <rect key="frame" x="1" y="114" width="231" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="RMg-Uz-w2y">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="hgx-77-cWG" secondAttribute="bottom" id="686-dw-UtK"/>
+                <constraint firstAttribute="bottom" secondItem="hgx-77-cWG" secondAttribute="bottom" id="NFL-po-cfp"/>
+                <constraint firstItem="hgx-77-cWG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="fDP-DN-twM"/>
+                <constraint firstItem="hgx-77-cWG" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="fci-lf-Lz8"/>
+                <constraint firstAttribute="trailing" secondItem="hgx-77-cWG" secondAttribute="trailing" id="quo-3t-xxr"/>
+                <constraint firstItem="hgx-77-cWG" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="u1L-LF-DIt"/>
+                <constraint firstAttribute="trailing" secondItem="hgx-77-cWG" secondAttribute="trailing" id="xY4-ya-0vl"/>
+            </constraints>
+            <point key="canvasLocation" x="184" y="409.5"/>
+        </customView>
+        <viewController id="nu6-ri-jzL" userLabel="Popover View Controller"/>
+        <popover id="Dlr-zZ-96l">
+            <connections>
+                <outlet property="contentViewController" destination="nu6-ri-jzL" id="YT0-wy-fJ2"/>
+                <outlet property="delegate" destination="-2" id="rLb-EF-1sS"/>
+            </connections>
+        </popover>
+        <menu id="ovA-CX-j5C">
+            <items>
+                <menuItem title="添加子类" tag="1" id="wLb-of-Dv0" userLabel="addChildTree">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addChildTree:" target="-2" id="sZI-JY-s4q"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="添加类" tag="2" id="4O4-Vh-Woj" userLabel="addTree">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addTree:" target="-2" id="VPm-t1-6fB"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="自动创建目录" tag="3" id="egu-RD-Fqu" userLabel="createDiary">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="createDiary:" target="-2" id="bUB-6n-ZKS"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" tag="4" id="8cy-bG-J25"/>
+                <menuItem title="放入废纸篓" tag="5" id="LJG-Bh-fna" userLabel="removeTree">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="removeTree:" target="-2" id="gXg-bj-ZjU"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="清倒废纸篓" tag="6" id="kOO-p1-jl2" userLabel="cleanTrash">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="cleanTrash:" target="-2" id="Mnb-ba-0yy"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" tag="7" id="FxN-2j-WBw"/>
+                <menuItem title="导出" tag="8" id="Qvp-oh-fFg" userLabel="export">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="导出" id="oQl-53-5xz" userLabel="export">
+                        <items>
+                            <menuItem title="导出HTML" id="qag-aK-BVy" userLabel="export HTML">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="exportHTML:" target="-2" id="9gy-ra-qk7"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="导出TEXT" id="scX-WQ-VOb" userLabel="export TEXT">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="exportText:" target="-2" id="HL4-yZ-L61"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <connections>
+                <outlet property="delegate" destination="-2" id="8IR-iu-y9N"/>
+            </connections>
+            <point key="canvasLocation" x="70" y="99.5"/>
+        </menu>
+        <textFinder id="d3J-yB-zvk"/>
+    </objects>
+    <resources>
+        <image name="NSActionTemplate" width="14" height="14"/>
+    </resources>
+</document>

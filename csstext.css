@@ -1,0 +1,27 @@
+body {
+  font-family:Arial,Verdana,Sans-serif;
+  line-height: 1.5;
+  background-color: #f7f7f7;
+}
+hr {
+  color: #cccccc;
+  size: 2px;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family:Arial,Verdana,Sans-serif;
+}
+h1 {
+  line-height: 2;
+  border-style: none none dashed none;
+  border-width: 1px;
+  border-color: #e1e1e1;
+}
+h2 {
+  line-height: 1.8;
+}
+h3,h4,h5,h6 {
+  line-height: 1.6;
+}
+img {
+  width: 85%;
+}

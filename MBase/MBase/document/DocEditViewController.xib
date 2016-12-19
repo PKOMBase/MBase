@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DocEditViewController" customModule="MBase" customModuleProvider="target">
+            <connections>
+                <outlet property="docEditScrollView" destination="r6B-gt-F8t" id="kzy-R2-TSM"/>
+                <outlet property="docEditView" destination="ntM-Em-Fgy" id="cbk-o4-CPF"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6B-gt-F8t">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                    <clipView key="contentView" id="Qyg-5O-ddk">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView importsGraphics="NO" selectionGranularity="word" findStyle="panel" allowsUndo="YES" allowsImageEditing="YES" verticallyResizable="YES" id="ntM-Em-Fgy" userLabel="docEditView">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="minSize" width="480" height="272"/>
+                                <size key="maxSize" width="529" height="10000000"/>
+                                <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <size key="minSize" width="480" height="272"/>
+                                <size key="maxSize" width="529" height="10000000"/>
+                                <connections>
+                                    <outlet property="delegate" destination="-2" id="j4Q-Tm-t8P"/>
+                                </connections>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="2CB-4T-4Qb">
+                        <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ZuE-uT-OsD">
+                        <rect key="frame" x="464" y="0.0" width="16" height="272"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="r6B-gt-F8t" secondAttribute="trailing" id="0aZ-fG-Jhc"/>
+                <constraint firstAttribute="bottom" secondItem="r6B-gt-F8t" secondAttribute="bottom" id="TBk-89-rov"/>
+                <constraint firstItem="r6B-gt-F8t" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="lZ7-3R-F9Z"/>
+                <constraint firstItem="r6B-gt-F8t" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="oFA-c2-GCt"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>

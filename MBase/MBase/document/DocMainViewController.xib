@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DocMainViewController" customModule="MBase" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+                <outlet property="webView" destination="8cZ-8N-LXt" id="gmb-7V-hyD"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <webView translatesAutoresizingMaskIntoConstraints="NO" id="8cZ-8N-LXt">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+                    <webPreferences key="preferences" defaultFontSize="14" defaultFixedFontSize="14" minimumFontSize="0" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
+                        <nil key="identifier"/>
+                    </webPreferences>
+                    <connections>
+                        <outlet property="frameLoadDelegate" destination="-2" id="OnB-50-acz"/>
+                        <outlet property="policyDelegate" destination="-2" id="ESR-aS-5Uw"/>
+                    </connections>
+                </webView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="8cZ-8N-LXt" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="8c2-84-U1K"/>
+                <constraint firstItem="8cZ-8N-LXt" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="DyO-ce-fdG"/>
+                <constraint firstAttribute="trailing" secondItem="8cZ-8N-LXt" secondAttribute="trailing" id="eZj-dG-3lL"/>
+                <constraint firstAttribute="bottom" secondItem="8cZ-8N-LXt" secondAttribute="bottom" id="lku-hc-rCA"/>
+            </constraints>
+        </customView>
+    </objects>
+</document>

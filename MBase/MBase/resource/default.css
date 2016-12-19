@@ -1,0 +1,56 @@
+body {
+    font-family: "lucida grande" "lucida sans unicode" lucida helvetica "Hiragino Sans GB" "Microsoft YaHei" "WenQuanYi Micro Hei" sans-serif;
+    line-height: 1.5;
+    background-color: #f7f7f7;
+    color: #333333;
+}
+hr {
+    color: #cccccc;
+    size: 2px;
+}
+h1 {
+    line-height: 2;
+    border-style: none none dashed none;
+    border-width: 1px;
+    border-color: #e1e1e1;
+    
+}
+h2 {
+    line-height: 1.8;
+}
+h3,h4,h5,h6 {
+    line-height: 1.6;
+}
+img {
+    width: 95%;
+    border:5px solid #fdf6e3;
+    border-radius: 4px;
+    box-shadow: 0.5px 0.5px 0.5px #cccccc;
+}
+
+pre.defaultcode {
+    padding: 9.5px;
+    background-color: #fdf6e3;
+    border-radius: 4px;
+    margin: 0 0 10px;
+    border: 1px solid rgba(0,0,1,0.15);
+    box-shadow: 0.5px 0.5px 0.5px #cccccc;
+    overflow: auto;
+}
+
+code {
+    font-family: "lucida grande" "lucida sans unicode" lucida helvetica "Hiragino Sans GB" "Microsoft YaHei" "WenQuanYi Micro Hei" sans-serif;
+    background-color: #fdf6e3
+}
+
+code.defaultcode {
+    font-size: 90%;
+    white-space: pre;
+}
+
+
+blockquote {
+    border-left:6px solid #ccc;
+    margin: 1em 6px;
+    padding: .2em 6px;
+}

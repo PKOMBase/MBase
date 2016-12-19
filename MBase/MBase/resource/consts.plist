@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>font</key>
+	<dict>
+		<key>italicFontColor</key>
+		<dict>
+			<key>red</key>
+			<integer>91</integer>
+			<key>blue</key>
+			<integer>71</integer>
+			<key>green</key>
+			<integer>224</integer>
+		</dict>
+		<key>boldFontColor</key>
+		<dict>
+			<key>red</key>
+			<integer>244</integer>
+			<key>blue</key>
+			<integer>22</integer>
+			<key>green</key>
+			<integer>224</integer>
+		</dict>
+		<key>defaultFontSize</key>
+		<integer>16</integer>
+	</dict>
+	<key>editViewScale</key>
+	<real>0.5</real>
+</dict>
+</plist>
