@@ -8,7 +8,7 @@
 
 import Cocoa
 
-public class MarkdownEditManager: NSObject {
+open class MarkdownEditManager: NSObject {
     
     var textStorage: NSTextStorage;
     
@@ -16,12 +16,12 @@ public class MarkdownEditManager: NSObject {
         self.textStorage = textStorage;
     }
     
-    public func changeTextFont(selectedRange: NSRange, editedRange: NSRange) -> String {
+    open func changeTextFont(_ selectedRange: NSRange, editedRange: NSRange) -> String {
         
         // 全文
         let textString = NSString(string: self.textStorage.string);
         // 选择行
-        let lineRange = NSUnionRange(selectedRange, textString.lineRangeForRange(editedRange));
+        let lineRange = NSUnionRange(selectedRange, textString.lineRange(for: editedRange));
         // 上半段
         let preRange = NSMakeRange(0, lineRange.location);
         // 下半段
@@ -65,7 +65,7 @@ public class MarkdownEditManager: NSObject {
         
     }
     
-    public func handlerInitFont(){
+    open func handlerInitFont(){
         // 全文
         let textString = NSString(string: self.textStorage.string);
         
@@ -117,14 +117,14 @@ public class MarkdownEditManager: NSObject {
     /** 对于下半段:
      配合上半段处理。
      **/
-    func getChangeRange(tagRegex : MarkdownRegexParagraphEnum, string: NSString, lineRange: NSRange, preRange: NSRange,  backRange: NSRange) -> NSRange{
+    func getChangeRange(_ tagRegex : MarkdownRegexParagraphEnum, string: NSString, lineRange: NSRange, preRange: NSRange,  backRange: NSRange) -> NSRange{
         let codeKey = tagRegex.codeKey;
         // 上半段最近的段关键字
-        let preCodeKeyRange = string.rangeOfString(codeKey, options: .BackwardsSearch , range: preRange);
+        let preCodeKeyRange = string.range(of: codeKey, options: .backwards , range: preRange);
         // 下半段最近的段关键字
-        let backCodeKeyRange = string.rangeOfString(codeKey, options: NSStringCompareOptions(rawValue: 0), range: backRange);
+        let backCodeKeyRange = string.range(of: codeKey, options: NSString.CompareOptions(rawValue: 0), range: backRange);
         // 上半段，段关键字出现次数
-        let preCount = string.countOccurencesOfString(codeKey, range: preRange);
+        let preCount = string.countOccurencesOfString(codeKey as NSString, range: preRange);
         // 处理关键字
         var changeRangeTemp: NSRange!;
         if preCount%2 == 0 {
@@ -147,18 +147,18 @@ public class MarkdownEditManager: NSObject {
         return changeRangeTemp;
     }
     
-    func applyStylesToRange4Default(range: NSRange){
-        let normalAttributes = [NSParagraphStyleAttributeName : MarkdownConstsManager.getDefaultParagraphStyle(), NSFontAttributeName : NSFont.systemFontOfSize(MarkdownConstsManager.defaultFontSize), NSForegroundColorAttributeName : MarkdownConstsManager.defaultFontColor];
+    func applyStylesToRange4Default(_ range: NSRange){
+        let normalAttributes = [NSParagraphStyleAttributeName : MarkdownConstsManager.getDefaultParagraphStyle(), NSFontAttributeName : NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize), NSForegroundColorAttributeName : MarkdownConstsManager.defaultFontColor];
         self.textStorage.addAttributes(normalAttributes, range: range);
     }
     
-    func applyStylesToRange4Paragraph(tagRegex : MarkdownRegexParagraphEnum, textString: NSString, ranges: [NSRange]) -> [NSRange]{
+    func applyStylesToRange4Paragraph(_ tagRegex : MarkdownRegexParagraphEnum, textString: NSString, ranges: [NSRange]) -> [NSRange]{
         var regex: NSRegularExpression?;
         do{
-            regex =  try NSRegularExpression(pattern: tagRegex.rawValue, options: [.DotMatchesLineSeparators])
+            regex =  try NSRegularExpression(pattern: tagRegex.rawValue, options: [.dotMatchesLineSeparators])
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         let attrs = MarkdownEditFactory.getMarkdownAttributes(tagRegex);
         if attrs.count <= 0  {
@@ -166,7 +166,7 @@ public class MarkdownEditManager: NSObject {
         }
         var rangeTemps = [NSRange]();
         for range in ranges {
-            for textCheckingResult in regex!.matchesInString(textString.substringWithRange(range), options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
+            for textCheckingResult in regex!.matches(in: textString.substring(with: range), options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
                 let stringRange = NSMakeRange(range.location+textCheckingResult.range.location, textCheckingResult.range.length);
                 self.textStorage.addAttributes(attrs, range: stringRange);
                 rangeTemps.append(stringRange);
@@ -175,78 +175,78 @@ public class MarkdownEditManager: NSObject {
         return rangeTemps;
     }
     
-    func applyStylesToRange4Header(tagRegex : MarkdownRegexHeaderEnum, textString: NSString, ranges: [NSRange]) {
+    func applyStylesToRange4Header(_ tagRegex : MarkdownRegexHeaderEnum, textString: NSString, ranges: [NSRange]) {
         var regex: NSRegularExpression?;
         do{
-            regex = try NSRegularExpression(pattern: tagRegex.rawValue, options: [.AnchorsMatchLines])
+            regex = try NSRegularExpression(pattern: tagRegex.rawValue, options: [.anchorsMatchLines])
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         let attrs = MarkdownEditFactory.getMarkdownAttributes(tagRegex);
         if attrs.count <= 0  {
             return;
         }
         for range in ranges {
-            for textCheckingResult in regex!.matchesInString(textString.substringWithRange(range), options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
+            for textCheckingResult in regex!.matches(in: textString.substring(with: range), options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
                 self.textStorage.addAttributes(attrs, range: NSMakeRange(range.location+textCheckingResult.range.location, textCheckingResult.range.length));
             }
         }
     }
     
-    func applyStylesToRange4Line(tagRegex : MarkdownRegexLineEnum, textString: NSString, ranges: [NSRange]) {
+    func applyStylesToRange4Line(_ tagRegex : MarkdownRegexLineEnum, textString: NSString, ranges: [NSRange]) {
         var regex: NSRegularExpression?;
         do{
-            regex = try NSRegularExpression(pattern: tagRegex.rawValue, options: [.AnchorsMatchLines])
+            regex = try NSRegularExpression(pattern: tagRegex.rawValue, options: [.anchorsMatchLines])
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         let attrs = MarkdownEditFactory.getMarkdownAttributes(tagRegex);
         if attrs.count <= 0  {
             return;
         }
         for range in ranges {
-            for textCheckingResult in regex!.matchesInString(textString.substringWithRange(range), options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
+            for textCheckingResult in regex!.matches(in: textString.substring(with: range), options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
                 self.textStorage.addAttributes(attrs, range: NSMakeRange(range.location+textCheckingResult.range.location, textCheckingResult.range.length));
             }
         }
     }
     
-    func applyStylesToRange4List(tagRegex : MarkdownRegexListEnum, textString: NSString, ranges: [NSRange]){
+    func applyStylesToRange4List(_ tagRegex : MarkdownRegexListEnum, textString: NSString, ranges: [NSRange]){
         var regex: NSRegularExpression?;
         do{
-            regex = try NSRegularExpression(pattern: tagRegex.rawValue, options: [.AnchorsMatchLines])
+            regex = try NSRegularExpression(pattern: tagRegex.rawValue, options: [.anchorsMatchLines])
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         let attrs = MarkdownEditFactory.getMarkdownAttributes(tagRegex);
         if attrs.count <= 0  {
             return;
         }
         for range in ranges {
-            for textCheckingResult in regex!.matchesInString(textString.substringWithRange(range), options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
+            for textCheckingResult in regex!.matches(in: textString.substring(with: range), options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
                 self.textStorage.addAttributes(attrs, range: NSMakeRange(range.location+textCheckingResult.range.location, textCheckingResult.range.length));
             }
         }
     }
     
     
-    func applyStylesToRange4Common(tagRegex : MarkdownRegexCommonEnum, textString: NSString, ranges: [NSRange]) {
+    func applyStylesToRange4Common(_ tagRegex : MarkdownRegexCommonEnum, textString: NSString, ranges: [NSRange]) {
         var regex: NSRegularExpression?;
         do{
-            regex = try NSRegularExpression(pattern: tagRegex.rawValue, options: [.AnchorsMatchLines])
+            regex = try NSRegularExpression(pattern: tagRegex.rawValue, options: [.anchorsMatchLines])
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         let attrs = MarkdownEditFactory.getMarkdownAttributes(tagRegex);
         if attrs.count <= 0  {
             return;
         }
         for range in ranges {
-            for textCheckingResult in regex!.matchesInString(textString.substringWithRange(range), options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
+            for textCheckingResult in regex!.matches(in: textString.substring(with: range), options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
                 self.textStorage.addAttributes(attrs, range: NSMakeRange(range.location+textCheckingResult.range.location, textCheckingResult.range.length));
             }
         }

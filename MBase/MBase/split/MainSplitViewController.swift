@@ -22,8 +22,8 @@ class MainSplitViewController: NSSplitViewController {
         super.viewDidLoad()
         
         // 1 创建viewController
-        let allWidth = self.parentViewController!.view.frame.size.width;
-        let allHeight = self.parentViewController!.view.frame.size.height;
+        let allWidth = self.parent!.view.frame.size.width;
+        let allHeight = self.parent!.view.frame.size.height;
         
         docSplitViewController = DocSplitViewController(nibName: "DocSplitViewController", bundle: nil);
         docSplitViewController.view.frame = NSMakeRect(0, 0, allWidth * ConstsManager.docSplitViewWidthRatio, allHeight);
@@ -41,11 +41,11 @@ class MainSplitViewController: NSSplitViewController {
         //需要先加载docEditViewController
         let treeSplitViewItem = NSSplitViewItem(viewController: docTreeViewController);
 
-        self.insertSplitViewItem(treeSplitViewItem, atIndex: 0);
+        self.insertSplitViewItem(treeSplitViewItem, at: 0);
 
     }
     
-    override func splitViewDidResizeSubviews(notification: NSNotification) {
+    override func splitViewDidResizeSubviews(_ notification: Notification) {
         let width = self.view.frame.width - docTreeViewController.view.frame.width;
         let height = self.view.frame.height;
         

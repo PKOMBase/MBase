@@ -12,13 +12,13 @@ class AlertUtils: NSObject {
     
     typealias buttonEvent = () ->()
 
-    static func alert(title: String, content: String, buttons: [String], buttonEvents: [buttonEvent]) {
+    static func alert(_ title: String, content: String, buttons: [String], buttonEvents: [buttonEvent]) {
         if buttons.count > 3 {
             return;
         }
         let alert = NSAlert();
         for button in buttons {
-            alert.addButtonWithTitle(button);
+            alert.addButton(withTitle: button);
         }
         alert.messageText = title;
         alert.informativeText = content;

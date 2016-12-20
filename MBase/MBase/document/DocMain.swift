@@ -17,19 +17,19 @@ class DocMain: NSManagedObject {
         case NotEdit = "NotEdit"
     }
     
-    func initRootDate(docTree: DocTree!){
+    func initRootDate(_ docTree: DocTree!){
         self.content = "";
         self.summary = "";
         self.mark = "";
         self.verticalScrol = 0;
         self.type = DocMainType.NotEdit.rawValue;
-        let nowDate = NSDate()
-        self.createtime = nowDate;
-        self.modifytime = nowDate;
+        let nowDate = Date()
+        self.createtime = nowDate as NSDate?;
+        self.modifytime = nowDate as NSDate?;
         self.docTree = docTree;
     }
     
-    func initData(content: String!, summary: String?, mark: String?, type: DocMainType?, docTree: DocTree!) {
+    func initData(_ content: String!, summary: String?, mark: String?, type: DocMainType?, docTree: DocTree!) {
         self.content = content;
         self.summary = summary;
         self.mark = mark;
@@ -38,23 +38,23 @@ class DocMain: NSManagedObject {
         } else {
             self.type = type!.rawValue;
         }
-        let nowDate = NSDate()
-        self.createtime = nowDate;
-        self.modifytime = nowDate;
+        let nowDate = Date()
+        self.createtime = nowDate as NSDate?;
+        self.modifytime = nowDate as NSDate?;
         self.docTree = docTree;
     }
     
-    func updateVerticalScrol(verticalScrol: NSNumber){
+    func updateVerticalScrol(_ verticalScrol: NSNumber){
         if self.verticalScrol != verticalScrol {
             self.verticalScrol = verticalScrol;
         }
     }
 
-    func updateContent(content: String){
+    func updateContent(_ content: String){
         if self.content != content{
             self.content = content;
-            let nowDate = NSDate();
-            self.modifytime = nowDate;
+            let nowDate = Date();
+            self.modifytime = nowDate as NSDate?;
         }
     }
     

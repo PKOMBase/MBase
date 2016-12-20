@@ -10,7 +10,7 @@ import Cocoa
 
 extension DocTreeInfoViewController: NSPopoverDelegate {
 
-    func popoverDidClose(notification: NSNotification) {
+    func popoverDidClose(_ notification: Notification) {
 
         self.docTreeInfoData?.name = self.nameField.stringValue;
         self.docTreeInfoData?.content = self.contentField.string;

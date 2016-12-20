@@ -7,37 +7,61 @@
 //
 
 import Cocoa
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 extension DocTreeViewController: NSMenuDelegate {
     
-    func menuWillOpen(menu: NSMenu) {
+    func menuWillOpen(_ menu: NSMenu) {
         let selectedDocTree = self.selectedTree();
         var docTreeType: DocTree.DocTreeType;
-        for menuItem in menu.itemArray {
+        for menuItem in menu.items {
             if selectedDocTree == nil {
-                menuItem.hidden = true;
+                menuItem.isHidden = true;
                 continue;
             }
             docTreeType = DocTree.DocTreeType(rawValue: selectedDocTree!.type!)!;
             
             if docTreeType.menuItemTags().contains(menuItem.tag) {
-                menuItem.hidden = false;
+                menuItem.isHidden = false;
             } else {
-                menuItem.hidden = true;
+                menuItem.isHidden = true;
             }
         }
     }
     
-    @IBAction func addTree(sender: AnyObject) {
+    @IBAction func addTree(_ sender: AnyObject) {
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil {
             return;
         }
-        let parentDocTree = managedObjectContext.objectWithID(selectedDocTree!.parent!.objectID) as! DocTree;
+        let parentDocTree = managedObjectContext.object(with: selectedDocTree!.parent!.objectID) as! DocTree;
         
         // 1. 创建Tree
-        let newDocTree = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as! DocTree;
-        let newDocMain = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+        let newDocTree = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as! DocTree;
+        let newDocMain = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
         newDocMain.initData("", summary: "", mark: "", type: DocMain.DocMainType.Markdown, docTree: newDocTree);
         newDocTree.initData("new",content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.Normal,  parent: parentDocTree, docMain: newDocMain);
         
@@ -48,19 +72,19 @@ extension DocTreeViewController: NSMenuDelegate {
         self.reloadData();
         
         // 4. 选中并滚动到新行
-        let newSelectedRow = self.docTreeView.rowForItem(newDocTree);
-        self.docTreeView.selectRowIndexes(NSIndexSet(index: newSelectedRow), byExtendingSelection:false);
+        let newSelectedRow = self.docTreeView.row(forItem: newDocTree);
+        self.docTreeView.selectRowIndexes(IndexSet(integer: newSelectedRow), byExtendingSelection:false);
         self.docTreeView.scrollRowToVisible(newSelectedRow);
     }
     
-    @IBAction func addChildTree(sender: AnyObject) {
+    @IBAction func addChildTree(_ sender: AnyObject) {
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil {
             return;
         }
         // 1. 创建Tree
-        let newDocTree = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as! DocTree;
-        let newDocMain = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+        let newDocTree = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as! DocTree;
+        let newDocMain = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
         newDocMain.initData("", summary: "", mark: "", type: DocMain.DocMainType.Markdown, docTree: newDocTree);
         newDocTree.initData("new", content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.Normal,  parent: selectedDocTree!, docMain: newDocMain);
         
@@ -74,14 +98,14 @@ extension DocTreeViewController: NSMenuDelegate {
         self.docTreeView.expandItem(selectedDocTree);
         
         // 5. 选中并滚动到新行
-        let newSelectedRow = self.docTreeView.rowForItem(newDocTree);
-        self.docTreeView.selectRowIndexes(NSIndexSet(index: newSelectedRow), byExtendingSelection:false);
+        let newSelectedRow = self.docTreeView.row(forItem: newDocTree);
+        self.docTreeView.selectRowIndexes(IndexSet(integer: newSelectedRow), byExtendingSelection:false);
         self.docTreeView.scrollRowToVisible(newSelectedRow);
         
         self.changeDocImage(selectedDocTree!)
     }
     
-    @IBAction func createDiary(sender: AnyObject) {
+    @IBAction func createDiary(_ sender: AnyObject) {
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil {
             return;
@@ -90,13 +114,13 @@ extension DocTreeViewController: NSMenuDelegate {
         let newSelectedTree = self.createDiaryTree(selectedDocTree!);
         
         // 5. 选中并滚动到新行
-        let newSelectedRow = self.docTreeView.rowForItem(newSelectedTree);
-        self.docTreeView.selectRowIndexes(NSIndexSet(index: newSelectedRow), byExtendingSelection:false);
+        let newSelectedRow = self.docTreeView.row(forItem: newSelectedTree);
+        self.docTreeView.selectRowIndexes(IndexSet(integer: newSelectedRow), byExtendingSelection:false);
         self.docTreeView.scrollRowToVisible(newSelectedRow);
         
     }
     
-    @IBAction func removeTree(sender: AnyObject) {
+    @IBAction func removeTree(_ sender: AnyObject) {
         // 1. 获取选中tree
         let selectedDocTree = self.selectedTree();
         if (selectedDocTree == nil) {
@@ -123,7 +147,7 @@ extension DocTreeViewController: NSMenuDelegate {
         self.docEditViewController.cleanDocEditDatas();
     }
     
-    @IBAction func cleanTrash(sender: AnyObject) {
+    @IBAction func cleanTrash(_ sender: AnyObject) {
         // 1. 获取选中tree
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil || DocTree.DocTreeType.Trash.rawValue != selectedDocTree?.type{
@@ -140,21 +164,21 @@ extension DocTreeViewController: NSMenuDelegate {
         self.reloadData();
     }
     
-    @IBAction func exportHTML(sender: AnyObject) {
+    @IBAction func exportHTML(_ sender: AnyObject) {
         if self.selectedTree() == nil{
             return;
         }
         self.export("html");
     }
     
-    @IBAction func exportText(sender: AnyObject) {
+    @IBAction func exportText(_ sender: AnyObject) {
         if self.selectedTree() == nil{
             return;
         }
         self.export("txt");
     }
     
-    func export(type: String){
+    func export(_ type: String){
         let selectedTree = self.selectedTree()!;
         // 文章还是文件夹
         let panel = NSSavePanel();
@@ -164,26 +188,26 @@ extension DocTreeViewController: NSMenuDelegate {
             panel.nameFieldStringValue = selectedTree.name!;
             panel.allowedFileTypes = [type];
             panel.allowsOtherFileTypes = false;
-            panel.extensionHidden = true;
+            panel.isExtensionHidden = true;
         }
             // 如果是目录
         else {
             panel.nameFieldStringValue = "MBase文件";
             panel.allowsOtherFileTypes = false;
-            panel.extensionHidden = true;
+            panel.isExtensionHidden = true;
         }
         if panel.runModal() == NSFileHandlingPanelOKButton {
-            let manager = NSFileManager.defaultManager();
-            let path = panel.URL!.path!;
+            let manager = FileManager.default;
+            let path = panel.url!.path;
             do {
                 if selectedTree.children!.count > 0{
                     // 先建目录
-                    try manager.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: [:]);
+                    try manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: [:]);
                 }
                 try ExportUtils.exportFiles(manager, docTree: selectedTree, exportPath: path, type: type);
             } catch{
                 let nserror = error as NSError;
-                NSApplication.sharedApplication().presentError(nserror);
+                NSApplication.shared().presentError(nserror);
             }
         }
     }

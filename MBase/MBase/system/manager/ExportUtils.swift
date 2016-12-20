@@ -11,7 +11,7 @@ import MBaseMarkdown
 
 class ExportUtils: NSObject {
         
-    static func exportFiles(manager: NSFileManager, docTree: DocTree, exportPath: String, type: String = "html") throws {
+    static func exportFiles(_ manager: FileManager, docTree: DocTree, exportPath: String, type: String = "html") throws {
         var path = exportPath;
         path += "/" + docTree.name!;
         if docTree.children!.count <= 0 {
@@ -19,23 +19,23 @@ class ExportUtils: NSObject {
             if type == "html"{
                 content = MarkdownManager.generateHTMLForMarkdown(docTree.docMain!.content! , cssType: .Default);
             } else {
-                content = docTree.docMain!.content!;
+                content = docTree.docMain!.content! as NSString;
             }
-            let contentData = content.dataUsingEncoding(NSUnicodeStringEncoding);
-            manager.createFileAtPath(path + "." + type, contents: contentData, attributes: [:]);
+            let contentData = content.data(using: String.Encoding.unicode.rawValue);
+            manager.createFile(atPath: path + "." + type, contents: contentData, attributes: [:]);
         }else {
             // 先建目录
-            try manager.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: [:]);
+            try manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: [:]);
             // 如果内容不为空则创建文章
             if docTree.docMain!.content != "" {
                 var content:NSString = "";
                 if type == "html" {
                     content = MarkdownManager.generateHTMLForMarkdown(docTree.docMain!.content! , cssType: .Default);
                 } else {
-                    content = docTree.docMain!.content!;
+                    content = docTree.docMain!.content! as NSString;
                 }
-                let contentData = content.dataUsingEncoding(NSUnicodeStringEncoding);
-                manager.createFileAtPath(path + "." + type, contents: contentData, attributes: [:]);
+                let contentData = content.data(using: String.Encoding.unicode.rawValue);
+                manager.createFile(atPath: path + "." + type, contents: contentData, attributes: [:]);
             }
             // 子目录
             for child in docTree.children! {

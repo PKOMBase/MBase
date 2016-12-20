@@ -55,7 +55,7 @@ class MarkdownHtmlTag: NSObject {
     func getString() -> String{
         var str = self.string;
         for tag in self.markdownTag {
-            str = str.stringByReplacingOccurrencesOfString(tag, withString: "")
+            str = str.replacingOccurrences(of: tag, with: "")
         }
         return str;
     }
@@ -64,10 +64,10 @@ class MarkdownHtmlTag: NSObject {
         return self.tagName + "id_" + String(self.index);
     }
     
-    func getHtml(index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
+    func getHtml(_ index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
         var str = self.string;
         for tag in self.markdownTag {
-            str = str.stringByReplacingOccurrencesOfString(tag, withString: "")
+            str = str.replacingOccurrences(of: tag, with: "")
         }
         return self.getHtml4Prefix() + self.handlerTransferString(str) + self.getHtml4Suffix()
     }
@@ -86,7 +86,7 @@ class MarkdownHtmlTag: NSObject {
         return self.tagL + self.tagEnd + self.tagName  + self.tagR;
     }
     
-    func handlerTransferString(string: String) -> String{
-        return string.stringByReplacingOccurrencesOfString("<", withString: "&lt;").stringByReplacingOccurrencesOfString(">", withString: "&gt;");
+    func handlerTransferString(_ string: String) -> String{
+        return string.replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;");
     }
 }

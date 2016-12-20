@@ -10,20 +10,20 @@ import Cocoa
 
 class MarkdownHtmlTagParagraph: MarkdownHtmlTag {
 
-    override func getHtml(index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
+    override func getHtml(_ index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
         var str = self.string;
         for tag in self.markdownTag {
-            str = str.stringByReplacingOccurrencesOfString(tag, withString: "")
+            str = str.replacingOccurrences(of: tag, with: "")
         }
-        str = str.stringByReplacingOccurrencesOfString("<p>", withString: "")
-        str = str.stringByReplacingOccurrencesOfString("</p>", withString: "")
-        str = str.stringByReplacingOccurrencesOfString("<br/>", withString: "\n")
-        str = str.stringByReplacingOccurrencesOfString("<li>", withString: "");
-        str = str.stringByReplacingOccurrencesOfString("</li>", withString: "");
-        str = str.stringByReplacingOccurrencesOfString("<ol>", withString: "");
-        str = str.stringByReplacingOccurrencesOfString("</ol>", withString: "");
-        str = str.stringByReplacingOccurrencesOfString("<ul>", withString: "");
-        str = str.stringByReplacingOccurrencesOfString("</ul>", withString: "");
+        str = str.replacingOccurrences(of: "<p>", with: "")
+        str = str.replacingOccurrences(of: "</p>", with: "")
+        str = str.replacingOccurrences(of: "<br/>", with: "\n")
+        str = str.replacingOccurrences(of: "<li>", with: "");
+        str = str.replacingOccurrences(of: "</li>", with: "");
+        str = str.replacingOccurrences(of: "<ol>", with: "");
+        str = str.replacingOccurrences(of: "</ol>", with: "");
+        str = str.replacingOccurrences(of: "<ul>", with: "");
+        str = str.replacingOccurrences(of: "</ul>", with: "");
         return self.getHtml4Prefix() + self.handlerTransferString(str) + self.getHtml4Suffix()
     }
     

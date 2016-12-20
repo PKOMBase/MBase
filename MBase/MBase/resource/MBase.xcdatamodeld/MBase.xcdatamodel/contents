@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="16B2555" minimumToolsVersion="Xcode 7.0">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16B2555" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="DocMain" representedClassName=".DocMain" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="createtime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createtime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="mark" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="modifytime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="modifytime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="summary" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="verticalScrol" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="verticalScrol" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="docTree" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocTree" inverseName="docMain" inverseEntity="DocTree" syncable="YES"/>
     </entity>
     <entity name="DocTree" representedClassName=".DocTree" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="createtime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createtime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="modifytime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="modifytime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
@@ -23,8 +23,8 @@
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocTree" syncable="YES"/>
     </entity>
     <entity name="UserInfo" representedClassName=".UserInfo" syncable="YES">
-        <attribute name="createtime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="modifytime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createtime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="modifytime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="selectDocTree" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocTree" syncable="YES"/>
     </entity>
     <elements>

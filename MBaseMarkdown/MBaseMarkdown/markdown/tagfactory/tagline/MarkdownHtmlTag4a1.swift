@@ -16,22 +16,22 @@ class MarkdownHtmlTag4a1: MarkdownHtmlTagLine {
         super.markdownTag = ["[","]","(",")"];
     }
     
-    override func getHtml(index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
+    override func getHtml(_ index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
         if string == ""{
             return super.getHtml(index, object: object);
         }
         var result = string;
         do{
-            let regex = try NSRegularExpression(pattern: "(\\((.)*\\))", options: [.CaseInsensitive, .AnchorsMatchLines]);
-            let textCheckingResult = regex.firstMatchInString(string, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count));
+            let regex = try NSRegularExpression(pattern: "(\\((.)*\\))", options: [.caseInsensitive, .anchorsMatchLines]);
+            let textCheckingResult = regex.firstMatch(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count));
             if textCheckingResult != nil {
-                let range = string.startIndex.advancedBy(textCheckingResult!.range.location+1)..<string.startIndex.advancedBy(textCheckingResult!.range.location+textCheckingResult!.range.length-1);
-                super.tagValue["href"] = string.substringWithRange(range);
-                result.removeRange(range);
+                let range = string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+1)..<string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+textCheckingResult!.range.length-1);
+                super.tagValue["href"] = string.substring(with: range);
+                result.removeSubrange(range);
             }
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         return super.getHtml(index, object: object);
     }

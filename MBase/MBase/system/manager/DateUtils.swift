@@ -10,29 +10,29 @@ import Cocoa
 
 class DateUtils: NSObject {
 
-    static func getStartOfCurrentMonth() -> NSDate{
-        let date = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Year, .Month], fromDate: date)
-        return calendar.dateFromComponents(components)!
+    static func getStartOfCurrentMonth() -> Date{
+        let date = Date()
+        let calendar = Calendar.current
+        let components = (calendar as NSCalendar).components([.year, .month], from: date)
+        return calendar.date(from: components)!
     }
     
     
-    static func getEndOfCurrentMonth() -> NSDate {
-        let calendar = NSCalendar.currentCalendar()
-        let components = NSDateComponents()
+    static func getEndOfCurrentMonth() -> Date {
+        let calendar = Calendar.current
+        var components = DateComponents()
         components.month = 1
         components.day = -1
-        return calendar.dateByAddingComponents(components, toDate: self.getStartOfCurrentMonth(), options: [])!
+        return (calendar as NSCalendar).date(byAdding: components, to: self.getStartOfCurrentMonth(), options: [])!
 
     }
     
     
-    static func getAddDays(date: NSDate, days: Int) -> NSDate {
-        let calendar = NSCalendar.currentCalendar()
-        let components = NSDateComponents()
+    static func getAddDays(_ date: Date, days: Int) -> Date {
+        let calendar = Calendar.current
+        var components = DateComponents()
         components.day = days
-        return calendar.dateByAddingComponents(components, toDate: date, options: [])!
+        return (calendar as NSCalendar).date(byAdding: components, to: date, options: [])!
     }
 
 }

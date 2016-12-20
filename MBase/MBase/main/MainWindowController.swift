@@ -18,8 +18,8 @@ class MainWindowController: NSWindowController {
     
     func initWindow(){
         self.contentViewController = NSViewController();
-        print("NSScreen.mainScreen()!:"+String(NSScreen.mainScreen()!.frame.width)+", "+String(NSScreen.mainScreen()!.frame.height));
-        self.contentViewController?.view = NSView(frame: NSRect(x: 0, y: 0, width: NSScreen.mainScreen()!.frame.width, height: NSScreen.mainScreen()!.frame.height));
+        print("NSScreen.mainScreen()!:"+String(describing: NSScreen.main()!.frame.width)+", "+String(describing: NSScreen.main()!.frame.height));
+        self.contentViewController?.view = NSView(frame: NSRect(x: 0, y: 0, width: NSScreen.main()!.frame.width, height: NSScreen.main()!.frame.height));
     }
     
     override func windowDidLoad() {
@@ -37,15 +37,15 @@ class MainWindowController: NSWindowController {
         
         // 3. 设置masterViewController.view的布局约束
         mainSplitViewController.view.translatesAutoresizingMaskIntoConstraints = false;
-        let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[subView]|",
                                                                                  options: NSLayoutFormatOptions(rawValue: 0),
                                                                                  metrics: nil,
                                                                                  views: ["subView" : mainSplitViewController.view]);
-        let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
+        let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[subView]|",
                                                                                    options: NSLayoutFormatOptions(rawValue: 0),
                                                                                    metrics: nil,
                                                                                    views: ["subView" : mainSplitViewController.view]);
-        NSLayoutConstraint.activateConstraints(verticalConstraints + horizontalConstraints);
+        NSLayoutConstraint.activate(verticalConstraints + horizontalConstraints);
     }
     
 }

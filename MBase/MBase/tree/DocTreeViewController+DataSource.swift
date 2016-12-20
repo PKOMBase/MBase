@@ -7,10 +7,34 @@
 //
 
 import Cocoa
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
 
 extension DocTreeViewController: NSOutlineViewDataSource {
     
-    func outlineView(outlineView: NSOutlineView, numberOfChildrenOfItem item: AnyObject?) -> Int {
+    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if (item != nil)
         {
             let docTreeData = item as! DocTree;
@@ -24,7 +48,7 @@ extension DocTreeViewController: NSOutlineViewDataSource {
         }
     }
     
-    func outlineView(outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
         let docTreeData = item as! DocTree;
         if docTreeData.children == nil || docTreeData.children?.count <= 0 {
             return false;
@@ -33,7 +57,7 @@ extension DocTreeViewController: NSOutlineViewDataSource {
         }
     }
     
-    func outlineView(outlineView: NSOutlineView, child index: Int, ofItem item: AnyObject?) -> AnyObject {
+    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if (item != nil)
         {
             let docTreeData = item as! DocTree;
@@ -45,20 +69,20 @@ extension DocTreeViewController: NSOutlineViewDataSource {
         return docTreeData.children![index];
     }
     
-    func outlineView(outlineView: NSOutlineView, viewForTableColumn tableColumn: NSTableColumn?, item: AnyObject) -> NSView? {
-        let cellView = outlineView.makeViewWithIdentifier(tableColumn!.identifier, owner: self) as! NSTableCellView;
+    func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
+        let cellView = outlineView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView;
         if tableColumn!.identifier == "DocTreeColumn" {
             let docTreeData = item as! DocTree;
             cellView.objectValue = docTreeData.objectID;
             cellView.textField?.stringValue = docTreeData.name!;
             if docTreeData.image != nil {
-                cellView.imageView?.image = NSImage(data: docTreeData.image!);
+                cellView.imageView?.image = NSImage(data: docTreeData.image! as Data);
             }
         }
         return cellView;
     }
     
-    func outlineView(outlineView: NSOutlineView, pasteboardWriterForItem item: AnyObject) -> NSPasteboardWriting? {
+    func outlineView(_ outlineView: NSOutlineView, pasteboardWriterForItem item: Any) -> NSPasteboardWriting? {
         let pbItem = NSPasteboardItem();
         if let docTree = item as? DocTree {
             if DocTree.DocTreeType.Trash.rawValue == docTree.type {
@@ -70,15 +94,15 @@ extension DocTreeViewController: NSOutlineViewDataSource {
         return nil
     }
     
-    func outlineView(outlineView: NSOutlineView, validateDrop info: NSDraggingInfo, proposedItem item: AnyObject?, proposedChildIndex index: Int) -> NSDragOperation {
+    func outlineView(_ outlineView: NSOutlineView, validateDrop info: NSDraggingInfo, proposedItem item: Any?, proposedChildIndex index: Int) -> NSDragOperation {
         if index >= 0 {
-            return NSDragOperation.Move;
+            return NSDragOperation.move;
         }else{
-            return NSDragOperation.None;
+            return NSDragOperation();
         }
     }
     
-    func outlineView(outlineView: NSOutlineView, acceptDrop info: NSDraggingInfo, item: AnyObject?, childIndex index: Int) -> Bool {
+    func outlineView(_ outlineView: NSOutlineView, acceptDrop info: NSDraggingInfo, item: Any?, childIndex index: Int) -> Bool {
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil {
             return false;

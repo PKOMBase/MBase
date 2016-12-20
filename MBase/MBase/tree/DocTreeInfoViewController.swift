@@ -30,7 +30,7 @@ class DocTreeInfoViewController: NSViewController {
         self.initView();
     }
     
-    func initData(docTreeData: DocTree?) {
+    func initData(_ docTreeData: DocTree?) {
         self.docTreeData = docTreeData;
         self.docTreeInfoData = DocTreeInfoData();
         if docTreeData != nil {
@@ -38,7 +38,7 @@ class DocTreeInfoViewController: NSViewController {
             self.docTreeInfoData!.name = docTreeData!.name;
             self.docTreeInfoData!.content = docTreeData!.content;
             if docTreeData!.image != nil {
-                self.docTreeInfoData!.image = NSImage(data: docTreeData!.image!);
+                self.docTreeInfoData!.image = NSImage(data: docTreeData!.image! as Data);
             }
         }
     }
@@ -52,12 +52,12 @@ class DocTreeInfoViewController: NSViewController {
         self.imageView.image = self.docTreeInfoData!.image;
     }
     
-    func showPopover(ofView: NSView!,docTreeViewController: DocTreeViewController!){
+    func showPopover(_ ofView: NSView!,docTreeViewController: DocTreeViewController!){
         self.docTreeInfoPopover = NSPopover();
         self.docTreeInfoPopover!.contentViewController = self;
         self.docTreeInfoPopover!.delegate = self;
-        self.docTreeInfoPopover!.behavior = NSPopoverBehavior.Transient;
-        self.docTreeInfoPopover!.showRelativeToRect(ofView!.bounds, ofView: ofView!, preferredEdge: NSRectEdge.MaxY);
+        self.docTreeInfoPopover!.behavior = NSPopoverBehavior.transient;
+        self.docTreeInfoPopover!.show(relativeTo: ofView!.bounds, of: ofView!, preferredEdge: NSRectEdge.maxY);
         self.docTreeViewController = docTreeViewController;
     }
     

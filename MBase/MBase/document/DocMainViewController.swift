@@ -23,14 +23,14 @@ class DocMainViewController: NSViewController {
     }
     
     func refreshContent(){
-        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(reloadHTML), object: nil);
-        self.performSelector(#selector(reloadHTML), withObject: nil, afterDelay: 0.2);
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(reloadHTML), object: nil);
+        self.perform(#selector(reloadHTML), with: nil, afterDelay: 0.2);
     }
     
     func reloadHTML(){
         let start = CFAbsoluteTimeGetCurrent()
         let html = MarkdownManager.generateHTMLForMarkdown(self.markdown!, cssType: .Default);
-        webView.mainFrame.loadHTMLString(html as String, baseURL: NSURL.fileURLWithPath(NSBundle.mainBundle().resourcePath!, isDirectory: true));
+        webView.mainFrame.loadHTMLString(html as! String, baseURL: URL(fileURLWithPath: Bundle.main.resourcePath!, isDirectory: true));
         print("refreshContent===="+String(CFAbsoluteTimeGetCurrent()-start)+" seconds")
     }
     
@@ -43,7 +43,7 @@ class DocMainViewController: NSViewController {
         var frame = webScrollView.frame;
         if webHtmlView.frame.size.height > frame.size.height {
             frame.origin.y = (webHtmlView.frame.size.height - frame.size.height) * CGFloat(docEditVerticalScroller!.floatValue);
-            webScrollView.contentView.scrollRectToVisible(frame);
+            webScrollView.contentView.scrollToVisible(frame);
         }
     }
 }

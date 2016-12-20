@@ -26,17 +26,17 @@ class ScaryBugData : NSObject {
     
     required convenience init(coder decoder: NSCoder) {
         self.init()
-        self.title = decoder.decodeObjectForKey("title") as! String
-        self.rating = decoder.decodeObjectForKey("rating") as! Double
+        self.title = decoder.decodeObject(forKey: "title") as! String
+        self.rating = decoder.decodeObject(forKey: "rating") as! Double
     }
 }
 
 // MARK: - NSCoding
 extension ScaryBugData : NSCoding {
     
-    func encodeWithCoder(coder: NSCoder) {
-        coder.encodeObject(self.title, forKey: "title");
-        coder.encodeObject(Double(self.rating), forKey: "rating");
+    func encode(with coder: NSCoder) {
+        coder.encode(self.title, forKey: "title");
+        coder.encode(Double(self.rating), forKey: "rating");
     }
     
 }

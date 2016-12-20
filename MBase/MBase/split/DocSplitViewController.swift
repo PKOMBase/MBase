@@ -21,7 +21,7 @@ class DocSplitViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.layer?.backgroundColor = NSColor.blueColor().CGColor;
+        self.view.layer?.backgroundColor = NSColor.blue.cgColor;
         self.view.needsDisplay = true;
         
         docMainViewController = DocMainViewController(nibName: "DocMainViewController", bundle: nil);
@@ -39,7 +39,7 @@ class DocSplitViewController: NSViewController {
         
     }
     
-    func changeRect(rect: NSRect){
+    func changeRect(_ rect: NSRect){
         self.view.frame = rect;
         let width = rect.width;
         let height = rect.height;

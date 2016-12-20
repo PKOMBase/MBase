@@ -16,18 +16,18 @@ extension AppDelegate: NSMenuDelegate {
         print("====")
     }
     
-    func menu(menu: NSMenu, updateItem item: NSMenuItem, atIndex index: Int, shouldCancel: Bool) -> Bool{
+    func menu(_ menu: NSMenu, update item: NSMenuItem, at index: Int, shouldCancel: Bool) -> Bool{
         print("====1===="+menu.title)
         return true
     }
     
-    @IBAction func fileNew(sender: AnyObject) {
-        if (!mainWindowController.window!.visible) {
+    @IBAction func fileNew(_ sender: AnyObject) {
+        if (!mainWindowController.window!.isVisible) {
             mainWindowController.showWindow(mainWindowController?.window);
         }
     }
     
-    @IBAction func editAndMainView(sender: AnyObject) {
+    @IBAction func editAndMainView(_ sender: AnyObject) {
 //        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocEditSplitView();
 //        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocMainSplitView();
 //        editAndMainVIewMenu.state = 1;
@@ -35,7 +35,7 @@ extension AppDelegate: NSMenuDelegate {
 //        editVIewMenu.state = 0;
     }
     
-    @IBAction func mainView(sender: AnyObject) {
+    @IBAction func mainView(_ sender: AnyObject) {
 //        self.mainWindowController.mainSplitViewController.docSplitViewController.hideDocEditSplitView();
 //        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocMainSplitView();
 //        editAndMainVIewMenu.state = 0;
@@ -43,7 +43,7 @@ extension AppDelegate: NSMenuDelegate {
 //        editVIewMenu.state = 0;
     }
     
-    @IBAction func editView(sender: AnyObject) {
+    @IBAction func editView(_ sender: AnyObject) {
 //        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocEditSplitView();
 //        self.mainWindowController.mainSplitViewController.docSplitViewController.hideDocMainSplitView();
 //        editAndMainVIewMenu.state = 0;
@@ -51,7 +51,7 @@ extension AppDelegate: NSMenuDelegate {
 //        editVIewMenu.state = 1;
     }
     
-    @IBAction func exportHtml(sender: AnyObject) {
+    @IBAction func exportHtml(_ sender: AnyObject) {
         if self.mainWindowController.mainSplitViewController.docTreeViewController.selectedTree() == nil{
             AlertUtils.alert("无法操作", content: "请选择需要导出的文件或文件夹", buttons: ["确定"], buttonEvents: [{}])
             return;
@@ -59,7 +59,7 @@ extension AppDelegate: NSMenuDelegate {
         self.export("html");
     }
     
-    @IBAction func exportText(sender: AnyObject) {
+    @IBAction func exportText(_ sender: AnyObject) {
         if self.mainWindowController.mainSplitViewController.docTreeViewController.selectedTree() == nil{
             AlertUtils.alert("无法操作", content: "请选择需要导出的文件或文件夹", buttons: ["确定"], buttonEvents: [{}])
             return;
@@ -67,7 +67,7 @@ extension AppDelegate: NSMenuDelegate {
         self.export("text");
     }
     
-    func export(type: String){
+    func export(_ type: String){
         let selectedTree = self.mainWindowController.mainSplitViewController.docTreeViewController.selectedTree()!;
         // 文章还是文件夹
         let panel = NSSavePanel();
@@ -77,26 +77,26 @@ extension AppDelegate: NSMenuDelegate {
             panel.nameFieldStringValue = selectedTree.name!;
             panel.allowedFileTypes = [type];
             panel.allowsOtherFileTypes = false;
-            panel.extensionHidden = true;
+            panel.isExtensionHidden = true;
         }
             // 如果是目录
         else {
             panel.nameFieldStringValue = "MBase文件";
             panel.allowsOtherFileTypes = false;
-            panel.extensionHidden = true;
+            panel.isExtensionHidden = true;
         }
         if panel.runModal() == NSFileHandlingPanelOKButton {
-            let manager = NSFileManager.defaultManager();
-            let path = panel.URL!.path!;
+            let manager = FileManager.default;
+            let path = panel.url!.path;
             do {
                 if selectedTree.children!.count > 0{
                     // 先建目录
-                    try manager.createDirectoryAtPath(path, withIntermediateDirectories: true, attributes: [:]);
+                    try manager.createDirectory(atPath: path, withIntermediateDirectories: true, attributes: [:]);
                 }
                 try ExportUtils.exportFiles(manager, docTree: selectedTree, exportPath: path, type: type);
             } catch{
                 let nserror = error as NSError;
-                NSApplication.sharedApplication().presentError(nserror);
+                NSApplication.shared().presentError(nserror);
             }
         }
     }

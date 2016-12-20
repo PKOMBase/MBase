@@ -9,6 +9,41 @@
 import Cocoa
 import CoreData
 import MBaseMarkdown
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func <= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l <= r
+  default:
+    return !(rhs < lhs)
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func >= <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l >= r
+  default:
+    return !(lhs < rhs)
+  }
+}
+
 
 class DocTreeViewController: NSViewController, NSDraggingDestination {
 
@@ -27,8 +62,8 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
     
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.docTreeView.registerForDraggedTypes([NSPasteboardTypeString]);
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeDocImageAll), name: "changeDocImageAll", object: nil);
+        self.docTreeView.register(forDraggedTypes: [NSPasteboardTypeString]);
+        NotificationCenter.default.addObserver(self, selector: #selector(changeDocImageAll), name: NSNotification.Name(rawValue: "changeDocImageAll"), object: nil);
         // 自动展开并记录的节点
         if let selectedDocTree = self.userInfo.selectDocTree {
             // 展开节点
@@ -38,13 +73,13 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
                     self.docTreeView.expandItem(parents[parents.count-i]);
                 }
             }
-            let newSelectedRow = self.docTreeView.rowForItem(selectedDocTree);
-            self.docTreeView.selectRowIndexes(NSIndexSet(index: newSelectedRow), byExtendingSelection:false);
+            let newSelectedRow = self.docTreeView.row(forItem: selectedDocTree);
+            self.docTreeView.selectRowIndexes(IndexSet(integer: newSelectedRow), byExtendingSelection:false);
             self.docTreeView.scrollRowToVisible(newSelectedRow);
         }
     }
     
-    @IBAction func doubleAction(sender: AnyObject) {
+    @IBAction func doubleAction(_ sender: AnyObject) {
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil {
             return;
@@ -56,7 +91,7 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         }
     }
     
-    override func keyDown(theEvent: NSEvent) {
+    override func keyDown(with theEvent: NSEvent) {
         print("theEvent:"+String(theEvent.keyCode))
         //回车
         if 36 == theEvent.keyCode{
@@ -76,20 +111,20 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         let docTreeInfoViewController = DocTreeInfoViewController(nibName: "DocTreeInfoViewController", bundle: nil);
         docTreeInfoViewController!.initData(selectedDocTree);
         
-        let newSelectedRow = self.docTreeView.rowForItem(selectedDocTree);
-        let rowView = self.docTreeView.rowViewAtRow(newSelectedRow, makeIfNecessary: false);
+        let newSelectedRow = self.docTreeView.row(forItem: selectedDocTree);
+        let rowView = self.docTreeView.rowView(atRow: newSelectedRow, makeIfNecessary: false);
         
         docTreeInfoViewController!.showPopover(rowView, docTreeViewController: self);
     }
     
     func initDocTreeDatas() {
         // 1. 加载数据，查询coredata
-        let fetchRequest:NSFetchRequest = NSFetchRequest()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>();
         //        fetchRequest.fetchLimit = 10 //限定查询结果的数量
         //        fetchRequest.fetchOffset = 0 //查询的偏移量
         //设置数据请求的实体结构
-        fetchRequest.entity = NSEntityDescription.entityForName("DocTree",
-                                                                inManagedObjectContext: self.managedObjectContext);
+        fetchRequest.entity = NSEntityDescription.entity(forEntityName: "DocTree",
+                                                                in: self.managedObjectContext);
         //设置查询条件
         let predicate = NSPredicate(format: "1=1 ", "")
         fetchRequest.predicate = predicate
@@ -97,10 +132,10 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         //查询操作
         var trees = [DocTree]();
         do{
-            trees = try managedObjectContext.executeFetchRequest(fetchRequest) as! [DocTree];
+            trees = try managedObjectContext.fetch(fetchRequest) as! [DocTree];
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         
         // 遍历查询的结果
@@ -113,7 +148,7 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         }
     }
     
-    func initDataByCoreData(trees: [DocTree]){
+    func initDataByCoreData(_ trees: [DocTree]){
         for tree in trees {
             if DocTree.DocTreeType.Root.rawValue == tree.type {
                 docTreeData = tree;
@@ -123,28 +158,28 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
     
     // 初始化默认值
     func initDataByDefaultData(){
-        self.docTreeData = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as! DocTree;
-        let mainRoot = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+        self.docTreeData = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as! DocTree;
+        let mainRoot = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
         mainRoot.initRootDate(self.docTreeData);
         docTreeData.initData4Root(mainRoot);
         
-        let tree1 = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as! DocTree;
-        let main1 = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+        let tree1 = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as! DocTree;
+        let main1 = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
         main1.initData("", summary: "", mark: "", type: DocMain.DocMainType.NotEdit, docTree: tree1);
         tree1.initData("废纸篓", content: "废纸篓", image: NSImage(named: "TrashIcon"), type: DocTree.DocTreeType.Trash, parent: docTreeData, docMain: main1);
         
-        let tree11 = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as! DocTree;
-        let main11 = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+        let tree11 = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as! DocTree;
+        let main11 = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
         main11.initData("", summary: "", mark: "", type: DocMain.DocMainType.NotEdit, docTree: tree11);
         tree11.initData("日记", content: "日记", image: NSImage(named: "DiaryIcon"), type: DocTree.DocTreeType.Diary, parent: docTreeData, docMain: main11);
         
-        let tree12 = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as! DocTree;
-        let main12 = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+        let tree12 = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as! DocTree;
+        let main12 = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
         main12.initData("", summary: "", mark: "", type: DocMain.DocMainType.Markdown, docTree: tree12);
         tree12.initData("便签", content: "便签", image: NSImage(named: "NoteIcon"), type: DocTree.DocTreeType.Note, parent: docTreeData, docMain: main12);
         
-        let tree2 = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as! DocTree;
-        let main2 = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+        let tree2 = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as! DocTree;
+        let main2 = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
         main2.initData(MarkdownConstsManager.getMarkdownHelp(), summary: "markdown使用帮助", mark: "markdown", type: DocMain.DocMainType.Markdown, docTree: tree2);
         tree2.initData("我的文档", content: "我的文档", image: NSImage(named: "HomeFolderIcon"), type: DocTree.DocTreeType.Normal, parent: docTreeData, docMain: main2);
         
@@ -157,12 +192,12 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
     func selectedTree() -> DocTree? {
         let selectedRow = self.docTreeView.selectedRow;
         if selectedRow >= 0 {
-            return docTreeView.itemAtRow(selectedRow) as? DocTree;
+            return docTreeView.item(atRow: selectedRow) as? DocTree;
         }
         return nil
     }
     
-    func changeSelectedData(docTreeInfoData : DocTreeInfoData!, selectedDocTree: DocTree!){
+    func changeSelectedData(_ docTreeInfoData : DocTreeInfoData!, selectedDocTree: DocTree!){
         // 1. 更新Tree
         var docTreeType = DocTree.DocTreeType.Normal;
         if DocTree.DocTreeType.Normal.rawValue == selectedDocTree.type && docTreeInfoData.isChangeImage! {
@@ -174,7 +209,7 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         self.reloadData(selectedDocTree);
     }
     
-    func moveNode(sourceDocTree: DocTree, targetParentDocTree: DocTree, targetIndex: Int?){
+    func moveNode(_ sourceDocTree: DocTree, targetParentDocTree: DocTree, targetIndex: Int?){
         if sourceDocTree.parent == nil{
             return;
         }
@@ -196,8 +231,8 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         self.reloadData();
         
         // 3. 选中并滚动到新行
-        let newSelectedRow = self.docTreeView.rowForItem(sourceDocTree);
-        self.docTreeView.selectRowIndexes(NSIndexSet(index: newSelectedRow), byExtendingSelection:false);
+        let newSelectedRow = self.docTreeView.row(forItem: sourceDocTree);
+        self.docTreeView.selectRowIndexes(IndexSet(integer: newSelectedRow), byExtendingSelection:false);
         self.docTreeView.scrollRowToVisible(newSelectedRow);
     }
     
@@ -208,14 +243,14 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         self.docTreeView.reloadData();
     }
     
-    func reloadData(selectedDocTree: DocTree){
+    func reloadData(_ selectedDocTree: DocTree){
         // 1. 改变图标
         self.changeSysImage();
         // 2. 重载数据
-        let selectedRow = self.docTreeView.rowForItem(selectedDocTree);
-        let indexSet = NSIndexSet(index: selectedRow);
-        let columnSet = NSIndexSet(index: 0);
-        self.docTreeView.reloadDataForRowIndexes(indexSet, columnIndexes:columnSet);
+        let selectedRow = self.docTreeView.row(forItem: selectedDocTree);
+        let indexSet = IndexSet(integer: selectedRow);
+        let columnSet = IndexSet(integer: 0);
+        self.docTreeView.reloadData(forRowIndexes: indexSet, columnIndexes:columnSet);
     }
     
     func changeSysImage(){
@@ -226,9 +261,9 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
             let docTree = child as! DocTree;
             if DocTree.DocTreeType.Trash.rawValue == docTree.type {
                 if docTree.children!.count > 0 {
-                    docTree.image = NSImage(named: "FullTrashIcon")?.TIFFRepresentation;
+                    docTree.image = NSImage(named: "FullTrashIcon")?.tiffRepresentation;
                 } else {
-                    docTree.image = NSImage(named: "TrashIcon")?.TIFFRepresentation;
+                    docTree.image = NSImage(named: "TrashIcon")?.tiffRepresentation;
                 }
             }
         }
@@ -243,7 +278,7 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         self.changeDocImage(selectedDocTree!);
     }
     
-    func changeDocImage(docTree: DocTree){
+    func changeDocImage(_ docTree: DocTree){
         if DocTree.DocTreeType.Custom.rawValue == docTree.type {
             return;
         }
@@ -265,13 +300,13 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
                 newImage = NSImage(named: "DocumentsFolderIcon")!;
             }
         }
-        if newImage != nil && docTree.image != newImage!.TIFFRepresentation{
-            docTree.image = newImage!.TIFFRepresentation;
+        if newImage != nil && docTree.image != newImage!.tiffRepresentation{
+            docTree.image = newImage!.tiffRepresentation;
             self.reloadData(docTree);
         }
     }
     
-    func expandParent(docTree : DocTree){
+    func expandParent(_ docTree : DocTree){
         if DocTree.DocTreeType.Root.rawValue == docTree.type!{
             
             
@@ -283,23 +318,23 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         }
     }
     
-    func createDiaryTree(selectedDocTree: DocTree) -> DocTree{
+    func createDiaryTree(_ selectedDocTree: DocTree) -> DocTree{
         // 组装日期
         let startDate = DateUtils.getStartOfCurrentMonth()
         let endDate = DateUtils.getEndOfCurrentMonth();
         
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         //年
         formatter.dateFormat = "yyyy"
-        let year = formatter.stringFromDate(endDate)
+        let year = formatter.string(from: endDate as Date)
         
         //月
         formatter.dateFormat = "MM"
-        let month = formatter.stringFromDate(endDate)
+        let month = formatter.string(from: endDate as Date)
         
         //日
         formatter.dateFormat = "dd"
-        let endDay = formatter.stringFromDate(endDate);
+        let endDay = formatter.string(from: endDate as Date);
         let day1 = "01-10"
         let day2 = "11-20"
         let day3 = "21-"+endDay
@@ -307,14 +342,14 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         // 1. 年Tree
         var yearTree: DocTree?;
         for child in (selectedDocTree.children)!{
-            if child.name == year{
+            if (child as AnyObject).name == year{
                 yearTree = child as? DocTree;
                 break;
             }
         }
         if yearTree == nil {
-            yearTree = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as? DocTree;
-            let yearMain = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+            yearTree = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as? DocTree;
+            let yearMain = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
             yearMain.initData("", summary: "", mark: "", type: DocMain.DocMainType.NotEdit, docTree: yearTree);
             yearTree!.initData(year, content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.DiaryChild,  parent: selectedDocTree, docMain: yearMain);
             
@@ -324,14 +359,14 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         // 2. 月Tree
         var monthTree: DocTree?;
         for child in (yearTree!.children)!{
-            if child.name == month{
+            if (child as AnyObject).name == month{
                 monthTree = child as? DocTree;
                 break;
             }
         }
         if monthTree == nil {
-            monthTree = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as? DocTree;
-            let monthMain = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+            monthTree = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as? DocTree;
+            let monthMain = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
             monthMain.initData("", summary: "", mark: "", type: DocMain.DocMainType.NotEdit, docTree: monthTree);
             monthTree!.initData(month, content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.DiaryChild,  parent: yearTree!, docMain: monthMain);
             
@@ -343,27 +378,27 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         var day2Tree: DocTree?;
         var day3Tree: DocTree?;
         for child in (monthTree!.children)!{
-            if child.name == day1{
+            if (child as AnyObject).name == day1{
                 day1Tree = child as? DocTree;
                 continue;
             } else
-                if child.name == day2{
+                if (child as AnyObject).name == day2{
                     day2Tree = child as? DocTree;
                     continue;
                 } else
-                    if child.name == day3{
+                    if (child as AnyObject).name == day3{
                         day3Tree = child as? DocTree;
                         continue;
             }
         }
         var content: String;
         if day1Tree == nil {
-            day1Tree = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as? DocTree;
-            let day1Main = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+            day1Tree = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as? DocTree;
+            let day1Main = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
             content = "";
             formatter.dateFormat = ConstsManager.docTreeDiaryDateformatter;
             for i in 0...9 {
-                content += "# "+formatter.stringFromDate(DateUtils.getAddDays(startDate, days: i)) + "\n\n\n\n";
+                content += "# "+formatter.string(from: DateUtils.getAddDays(startDate, days: i)) + "\n\n\n\n";
             }
             day1Main.initData(content, summary: "", mark: "", type: DocMain.DocMainType.Markdown, docTree: day1Tree);
             day1Tree!.initData(day1, content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.DiaryChild,  parent: monthTree!, docMain: day1Main);
@@ -371,12 +406,12 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
             monthTree!.addChildTree(day1Tree);
         }
         if day2Tree == nil {
-            day2Tree = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as? DocTree;
-            let day2Main = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+            day2Tree = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as? DocTree;
+            let day2Main = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
             content = "";
             formatter.dateFormat = ConstsManager.docTreeDiaryDateformatter;
             for i in 10...19 {
-                content += "# "+formatter.stringFromDate(DateUtils.getAddDays(startDate, days: i)) + "\n\n\n\n";
+                content += "# "+formatter.string(from: DateUtils.getAddDays(startDate, days: i)) + "\n\n\n\n";
             }
             day2Main.initData(content, summary: "", mark: "", type: DocMain.DocMainType.Markdown, docTree: day2Tree);
             day2Tree!.initData(day2, content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.DiaryChild,  parent: monthTree!, docMain: day2Main);
@@ -384,12 +419,12 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
             monthTree!.addChildTree(day2Tree);
         }
         if day3Tree == nil {
-            day3Tree = NSEntityDescription.insertNewObjectForEntityForName("DocTree", inManagedObjectContext: self.managedObjectContext) as? DocTree;
-            let day3Main = NSEntityDescription.insertNewObjectForEntityForName("DocMain", inManagedObjectContext: self.managedObjectContext) as! DocMain;
+            day3Tree = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as? DocTree;
+            let day3Main = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
             content = "";
             formatter.dateFormat = ConstsManager.docTreeDiaryDateformatter;
             for i in 20...Int(endDay)!-1 {
-                content += "# "+formatter.stringFromDate(DateUtils.getAddDays(startDate, days: i)) + "\n\n\n\n";
+                content += "# "+formatter.string(from: DateUtils.getAddDays(startDate, days: i)) + "\n\n\n\n";
             }
             day3Main.initData(content, summary: "", mark: "", type: DocMain.DocMainType.Markdown, docTree: day3Tree);
             day3Tree!.initData(day3, content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.DiaryChild,  parent: monthTree!, docMain: day3Main);
@@ -408,7 +443,7 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
         // 5. 选中节点
         var newSelectedTree: DocTree;
         formatter.dateFormat = "dd"
-        let nowDay = Int(formatter.stringFromDate(NSDate()));
+        let nowDay = Int(formatter.string(from: Date()));
         if nowDay<=10 {
             newSelectedTree = day1Tree!;
         } else if nowDay>=21 {

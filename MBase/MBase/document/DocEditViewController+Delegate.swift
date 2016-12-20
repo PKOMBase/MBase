@@ -11,15 +11,15 @@ import MBaseMarkdown
 
 extension DocEditViewController: NSTextStorageDelegate {
 
-    func textStorage(textStorage: NSTextStorage, didProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int){
-        if editedMask != .EditedAttributes {
+    func textStorage(_ textStorage: NSTextStorage, didProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int){
+        if editedMask != .editedAttributes {
             self.editedRange = editedRange;
         }
     }
     
-    func textDidChange(notification: NSNotification) {
-        NSObject.cancelPreviousPerformRequestsWithTarget(self, selector: #selector(changeTextFont), object: nil);
-        self.performSelector(#selector(changeTextFont), withObject: nil, afterDelay: 0.3);
+    func textDidChange(_ notification: Notification) {
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(changeTextFont), object: nil);
+        self.perform(#selector(changeTextFont), with: nil, afterDelay: 0.3);
     }
 
     func changeTextFont(){
@@ -34,7 +34,7 @@ extension DocEditViewController: NSTextStorageDelegate {
         
         self.docMainViewController.refreshContent();
 
-        NSNotificationCenter.defaultCenter().postNotificationName("changeDocImageAll", object: nil);
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "changeDocImageAll"), object: nil);
     }
     
     func handlerInitFont(){

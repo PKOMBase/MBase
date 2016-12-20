@@ -30,14 +30,14 @@ class DocEditViewController: NSViewController {
         initDocEidtView();
     }
     
-    func initDocEditDatas(docMainData: DocMain!){
+    func initDocEditDatas(_ docMainData: DocMain!){
         self.docMainData = docMainData;
         
         if DocMain.DocMainType.NotEdit.rawValue == docMainData.type {
-            self.docEditView.editable = false;
+            self.docEditView.isEditable = false;
             self.docEditView.backgroundColor = MarkdownConstsManager.docEditDisableBgColor;
         }else{
-            self.docEditView.editable = true;
+            self.docEditView.isEditable = true;
             self.docEditView.backgroundColor = MarkdownConstsManager.docEditEnableBgColor;
         }
         self.docEditView.string = docMainData.content!
@@ -48,11 +48,11 @@ class DocEditViewController: NSViewController {
 
         self.docMainViewController.reloadHTML();
         
-        NSNotificationCenter.defaultCenter().postNotificationName("setScroll", object: nil);
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "setScroll"), object: nil);
     }
 
     func cleanDocEditDatas(){
-        self.docEditView.editable = false;
+        self.docEditView.isEditable = false;
         self.docEditView.backgroundColor = MarkdownConstsManager.docEditDisableBgColor;
         self.docEditView.string = ""
         
@@ -70,37 +70,38 @@ class DocEditViewController: NSViewController {
         self.docEditView.textContainer!.widthTracksTextView = true;
 
         // 3.2. 剪切版
-        self.docEditView.registerForDraggedTypes([NSPasteboardTypeString, NSPasteboardTypePNG]);
+        self.docEditView.register(forDraggedTypes: [NSPasteboardTypeString, NSPasteboardTypePNG]);
         // 3.3. 状态＋颜色
         self.docEditView.backgroundColor = MarkdownConstsManager.docEditDisableBgColor;
-        self.docEditView.font = NSFont.systemFontOfSize(MarkdownConstsManager.defaultFontSize);
+        self.docEditView.font = NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize);
         self.docEditView.defaultParagraphStyle = MarkdownConstsManager.getDefaultParagraphStyle();
         self.docEditView.textColor = MarkdownConstsManager.defaultFontColor;
         self.docEditView.textStorage?.delegate = self;
         
-        self.docEditView.automaticQuoteSubstitutionEnabled = false;
-        self.docEditView.automaticLinkDetectionEnabled = false;
-        self.docEditView.automaticDashSubstitutionEnabled = false;
-        self.docEditView.automaticTextReplacementEnabled = false;
-        self.docEditView.automaticDataDetectionEnabled = false;
-        self.docEditView.automaticSpellingCorrectionEnabled = false;
+        self.docEditView.isAutomaticQuoteSubstitutionEnabled = false;
+        self.docEditView.isAutomaticLinkDetectionEnabled = false;
+        self.docEditView.isAutomaticDashSubstitutionEnabled = false;
+        self.docEditView.isAutomaticTextReplacementEnabled = false;
+        self.docEditView.isAutomaticDataDetectionEnabled = false;
+        self.docEditView.isAutomaticSpellingCorrectionEnabled = false;
         self.docEditView.smartInsertDeleteEnabled = true;
         self.docEditView.allowsUndo = true;
 
         //给滚动条添加通知        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(changeScroll), name: NSViewBoundsDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeScroll), name: NSNotification.Name.NSViewBoundsDidChange, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(setScroll), name: "setScroll", object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(setScroll), name: NSNotification.Name(rawValue: "setScroll"), object: nil);
     }
     
     func changeScroll(){
         if !docEditScrollView.hasVerticalScroller {
             return;
         }
-        if self.docMainData.verticalScrol == self.docEditView.enclosingScrollView!.contentView.bounds.origin.y {
+        let originY = self.docEditView.enclosingScrollView!.contentView.bounds.origin.y as NSNumber;
+        if self.docMainData.verticalScrol == originY{
             return;
         }
-        self.docMainData.updateVerticalScrol(self.docEditView.enclosingScrollView!.contentView.bounds.origin.y);
+        self.docMainData.updateVerticalScrol(originY);
         self.docMainViewController.docEditVerticalScroller = self.docEditScrollView.verticalScroller!;
         self.docMainViewController.syncScroll();
     }
@@ -109,9 +110,9 @@ class DocEditViewController: NSViewController {
 //        print("+++++++"+String(scrollLocation)+"==="+String(docMainData.verticalScrol!));
         let scrollLocation = self.docEditView.enclosingScrollView?.contentView.bounds.origin.y;
         
-        print("+++++++"+String(scrollLocation)+"==="+String(docMainData.verticalScrol!)+"==="+String(self.docEditView.enclosingScrollView?.documentView?.frame.height));
+        print("+++++++"+String(describing: scrollLocation)+"==="+String(describing: docMainData.verticalScrol!)+"==="+String(describing: self.docEditView.enclosingScrollView?.documentView?.frame.height));
         
-        self.docEditScrollView.contentView.scrollPoint(NSMakePoint(0, CGFloat(1000)));
+        self.docEditScrollView.contentView.scroll(NSMakePoint(0, CGFloat(1000)));
         
         self.docEditScrollView.reflectScrolledClipView(self.docEditScrollView.contentView);
         

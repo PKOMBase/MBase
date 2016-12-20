@@ -56,7 +56,7 @@ class DocumentViewController: NSViewController {
         return nil
     }
     
-    func updateDetailInfo(doc: ScaryBugDoc?) {
+    func updateDetailInfo(_ doc: ScaryBugDoc?) {
         var title = ""
         var image: NSImage?
         var rating = 0.0
@@ -71,15 +71,15 @@ class DocumentViewController: NSViewController {
     }
     
     func reloadSelectedBugRow() {
-        let indexSet = NSIndexSet(index: self.bugsTableView.selectedRow);
-        let columnSet = NSIndexSet(index: 0);
-        self.bugsTableView.reloadDataForRowIndexes(indexSet, columnIndexes:columnSet);
+        let indexSet = IndexSet(integer: self.bugsTableView.selectedRow);
+        let columnSet = IndexSet(integer: 0);
+        self.bugsTableView.reloadData(forRowIndexes: indexSet, columnIndexes:columnSet);
     }
     
     func saveBugs() {
-        let data = NSKeyedArchiver.archivedDataWithRootObject(self.bugs);
-        NSUserDefaults.standardUserDefaults().setObject(data, forKey: "bugs");
-        NSUserDefaults.standardUserDefaults().synchronize();
+        let data = NSKeyedArchiver.archivedData(withRootObject: self.bugs);
+        UserDefaults.standard.set(data, forKey: "bugs");
+        UserDefaults.standard.synchronize();
     }
     
     override func loadView() {
@@ -95,7 +95,7 @@ class DocumentViewController: NSViewController {
     }
     
     func doCoreData(){
-        let tree = NSEntityDescription.insertNewObjectForEntityForName("Tree", inManagedObjectContext: self.managedObjectContext) as! DocTree;
+        let tree = NSEntityDescription.insertNewObject(forEntityName: "Tree", into: self.managedObjectContext) as! DocTree;
         tree.name = "1231231231321";
         tree.content = "123123123123131312";
         
@@ -103,36 +103,36 @@ class DocumentViewController: NSViewController {
             try managedObjectContext.save();
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         
         
-        let fetchRequest:NSFetchRequest = NSFetchRequest()
-        fetchRequest.fetchLimit = 10 //限定查询结果的数量
-        fetchRequest.fetchOffset = 0 //查询的偏移量
+//        let fetchRequest:NSFetchRequest = NSFetchRequest()
+//        fetchRequest.fetchLimit = 10 //限定查询结果的数量
+//        fetchRequest.fetchOffset = 0 //查询的偏移量
         
         //声明一个实体结构
-        let entity:NSEntityDescription? = NSEntityDescription.entityForName("Tree",
-                                                                            inManagedObjectContext: self.managedObjectContext)
+//        let entity:NSEntityDescription? = NSEntityDescription.entity(forEntityName: "Tree",
+//                                                                            in: self.managedObjectContext)
         //设置数据请求的实体结构
-        fetchRequest.entity = entity
+//        fetchRequest.entity = entity
         
         //设置查询条件
-        let predicate = NSPredicate(format: "1=1 ", "")
-        fetchRequest.predicate = predicate
+//        let predicate = NSPredicate(format: "1=1 ", "")
+//        fetchRequest.predicate = predicate
         
         //查询操作
-        do{
-            let fetchedObjects = try managedObjectContext.executeFetchRequest(fetchRequest)
-            //遍历查询的结果
-            for tree in fetchedObjects as! [DocTree]{
-                print("username=\(tree.name)")
-                print("password=\(tree.content)")
-            }
-        }catch{
-            let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
-        }
+//        do{
+//            let fetchedObjects = try managedObjectContext.fetch(fetchRequest)
+//            //遍历查询的结果
+//            for tree in fetchedObjects as! [DocTree]{
+//                print("username=\(tree.name)")
+//                print("password=\(tree.content)")
+//            }
+//        }catch{
+//            let nserror = error as NSError
+//            NSApplication.shared().presentError(nserror)
+//        }
 
     }
     
@@ -141,13 +141,13 @@ class DocumentViewController: NSViewController {
 // MARK: - NSTableViewDataSource
 extension DocumentViewController: NSTableViewDataSource {
     
-    func numberOfRowsInTableView(aTableView: NSTableView) -> Int {
+    func numberOfRows(in aTableView: NSTableView) -> Int {
         return self.bugs.count;
     }
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         // 1
-        let cellView: NSTableCellView = tableView.makeViewWithIdentifier(tableColumn!.identifier, owner: self) as! NSTableCellView;
+        let cellView: NSTableCellView = tableView.make(withIdentifier: tableColumn!.identifier, owner: self) as! NSTableCellView;
         // 2
         if tableColumn!.identifier == "BugColumn" {
             // 3
@@ -162,21 +162,21 @@ extension DocumentViewController: NSTableViewDataSource {
 // MARK: - NSTableViewDelegate
 extension DocumentViewController: NSTableViewDelegate {
     
-    func tableViewSelectionDidChange(notification: NSNotification) {
+    func tableViewSelectionDidChange(_ notification: Notification) {
         let selectedDoc = selectedBugDoc();
         updateDetailInfo(selectedDoc);
         let enabled = (selectedDoc != nil);
-        deleteButton.enabled = enabled;
-        changePicButton.enabled = enabled;
+        deleteButton.isEnabled = enabled;
+        changePicButton.isEnabled = enabled;
         bugRating.editable = enabled;
-        bugTitleView.enabled = enabled;
+        bugTitleView.isEnabled = enabled;
         let hidden = (selectedDoc == nil);
-        nameLabel.hidden = hidden;
-        bugTitleView.hidden = hidden;
-        ratingLabel.hidden = hidden;
-        bugRating.hidden = hidden;
-        bugImageView.hidden = hidden;
-        changePicButton.hidden = hidden;
+        nameLabel.isHidden = hidden;
+        bugTitleView.isHidden = hidden;
+        ratingLabel.isHidden = hidden;
+        bugRating.isHidden = hidden;
+        bugImageView.isHidden = hidden;
+        changePicButton.isHidden = hidden;
     }
     
 }
@@ -184,7 +184,7 @@ extension DocumentViewController: NSTableViewDelegate {
 // MARK: -EDStarRatingProtocol
 extension DocumentViewController: EDStarRatingProtocol {
     
-    func starsSelectionChanged(control: EDStarRating!, rating: Float) {
+    func starsSelectionChanged(_ control: EDStarRating!, rating: Float) {
         if let selectedDoc = selectedBugDoc() {
             selectedDoc.data.rating = Double(control.rating)
         }

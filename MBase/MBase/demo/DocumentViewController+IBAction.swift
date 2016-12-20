@@ -12,38 +12,38 @@ import Quartz
 // MARK: - IBActions
 extension DocumentViewController {
     
-    @IBAction func bugTitleDidEndEdit(sender: AnyObject) {
+    @IBAction func bugTitleDidEndEdit(_ sender: AnyObject) {
         if let selectedDoc = selectedBugDoc() {
             selectedDoc.data.title = self.bugTitleView.stringValue;
             reloadSelectedBugRow();
         }
     }
     
-    @IBAction func changePicture(sender: AnyObject) {
+    @IBAction func changePicture(_ sender: AnyObject) {
         if (selectedBugDoc() != nil) {
-            IKPictureTaker().beginPictureTakerSheetForWindow(self.view.window, withDelegate: self, didEndSelector: #selector(DocumentViewController.pictureTakerDidEnd(_:returnCode:contextInfo:)), contextInfo: nil);
+            IKPictureTaker().beginSheet(for: self.view.window, withDelegate: self, didEnd: #selector(DocumentViewController.pictureTakerDidEnd(_:returnCode:contextInfo:)), contextInfo: nil);
         }
     }
     
-    func pictureTakerDidEnd(picker: IKPictureTaker, returnCode: NSInteger, contextInfo: UnsafePointer<Void>) {
+    func pictureTakerDidEnd(_ picker: IKPictureTaker, returnCode: NSInteger, contextInfo: UnsafeRawPointer) {
         let image = picker.outputImage()
         if image != nil && returnCode == NSModalResponseOK {
             self.bugImageView.image = image;
             if let selectedDoc = selectedBugDoc() {
                 selectedDoc.fullImage = image;
-                selectedDoc.thumbImage = image.imageByScalingAndCroppingForSize(CGSize(width: 44, height: 44));
+                selectedDoc.thumbImage = image?.scalingAndCropping(for: CGSize(width: 44, height: 44));
                 reloadSelectedBugRow();
             }
         }
     }
     
-    @IBAction func resetData(sender: AnyObject) {
+    @IBAction func resetData(_ sender: AnyObject) {
         setupSampleBugs();
         updateDetailInfo(nil);
         bugsTableView.reloadData();
     }
     
-    @IBAction func addBug(sender: AnyObject) {
+    @IBAction func addBug(_ sender: AnyObject) {
         // 1. 使用默认值创建一个新的ScaryBugDoc实例
         let newDoc = ScaryBugDoc(title: "New Bug", rating: 0.0, thumbImage: nil, fullImage: nil);
         
@@ -53,25 +53,25 @@ extension DocumentViewController {
         let newRowIndex = self.bugs.count - 1;
         
         // 3.向table view插入新行
-        self.bugsTableView.insertRowsAtIndexes(NSIndexSet(index: newRowIndex), withAnimation: NSTableViewAnimationOptions.EffectGap);
+        self.bugsTableView.insertRows(at: IndexSet(integer: newRowIndex), withAnimation: NSTableViewAnimationOptions.effectGap);
         
         // 4. 选中并滚动到新行
-        self.bugsTableView.selectRowIndexes(NSIndexSet(index: newRowIndex), byExtendingSelection:false);
+        self.bugsTableView.selectRowIndexes(IndexSet(integer: newRowIndex), byExtendingSelection:false);
         self.bugsTableView.scrollRowToVisible(newRowIndex);
     }
     
     
-    @IBAction func deleteBug(sender: AnyObject) {
+    @IBAction func deleteBug(_ sender: AnyObject) {
         
         // 1. Get selected doc
         if (selectedBugDoc() != nil) {
             
             // 2. Remove the bug from the model
             let nowRow = self.bugsTableView.selectedRow;
-            self.bugs.removeAtIndex(nowRow)
+            self.bugs.remove(at: nowRow)
             
             // 3. Remove the selected row from the table view
-            self.bugsTableView.removeRowsAtIndexes(NSIndexSet(index:self.bugsTableView.selectedRow),withAnimation: NSTableViewAnimationOptions.SlideRight);
+            self.bugsTableView.removeRows(at: IndexSet(integer:self.bugsTableView.selectedRow),withAnimation: NSTableViewAnimationOptions.slideRight);
             
             
             // 4. 清理model
@@ -82,7 +82,7 @@ extension DocumentViewController {
             if(self.bugsTableView.numberOfRows <= nowRow){
                 newSelectedRow = self.bugsTableView.numberOfRows - 1;
             }
-            self.bugsTableView.selectRowIndexes(NSIndexSet(index: newSelectedRow), byExtendingSelection:false);
+            self.bugsTableView.selectRowIndexes(IndexSet(integer: newSelectedRow), byExtendingSelection:false);
             self.bugsTableView.scrollRowToVisible(newSelectedRow);
             
         }

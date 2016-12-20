@@ -8,11 +8,11 @@
 
 import Cocoa
 
-public class ConstsManager {
+class ConstsManager {
     
     
-    public static let docTreeDiaryDateformatter = "yyyy-MM-dd";
+    static let docTreeDiaryDateformatter = "yyyy-MM-dd";
     
-    public static let docSplitViewWidthRatio: CGFloat = 0.8;
+    static let docSplitViewWidthRatio: CGFloat = 0.8;
   
 }

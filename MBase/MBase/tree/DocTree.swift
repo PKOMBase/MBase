@@ -48,7 +48,7 @@ class DocTree: NSManagedObject {
         case Deleted = "Deleted"
     }
     
-    func initData4Root(docMain: DocMain!) {
+    func initData4Root(_ docMain: DocMain!) {
         self.name = "root";
         self.image = nil;
         self.parent = nil;
@@ -57,17 +57,17 @@ class DocTree: NSManagedObject {
         self.type = DocTreeType.Root.rawValue;
         self.status = DocTreeStatus.Enabled.rawValue;
         self.docMain = docMain;
-        let nowDate = NSDate()
+        let nowDate = Date()
         self.createtime = nowDate;
         self.modifytime = nowDate;
     }
     
-    func initData(name: String!, content: String?, image: NSImage?, type: DocTreeType?, parent: DocTree!, docMain: DocMain!){
+    func initData(_ name: String!, content: String?, image: NSImage?, type: DocTreeType?, parent: DocTree!, docMain: DocMain!){
         self.name = name;
         if image == nil{
             self.image = nil;
         } else {
-            self.image = image?.TIFFRepresentation;
+            self.image = image?.tiffRepresentation;
         }
         self.content = content;
         self.children = NSMutableOrderedSet();
@@ -78,7 +78,7 @@ class DocTree: NSManagedObject {
             self.type = type!.rawValue;
         }
         self.docMain = docMain;
-        let nowDate = NSDate();
+        let nowDate = Date();
         self.createtime = nowDate;
         self.modifytime = nowDate;
     }
@@ -87,51 +87,51 @@ class DocTree: NSManagedObject {
         var parents = [DocTree]();
         if DocTree.DocTreeType.Root.rawValue != self.parent!.type!{
             parents.append(self.parent!);
-            parents.appendContentsOf(self.parent!.getParents());
+            parents.append(contentsOf: self.parent!.getParents());
         }
         return parents;
     }
     
-    func updateData(name: String!,content: String?, image: NSImage?, type: DocTreeType?){
+    func updateData(_ name: String!,content: String?, image: NSImage?, type: DocTreeType?){
         self.name = name;
-        self.image = image?.TIFFRepresentation;
+        self.image = image?.tiffRepresentation;
         self.content = content;
         if type == nil || DocTreeType.Root == type {
             self.type = DocTreeType.Normal.rawValue;
         }else{
             self.type = type!.rawValue;
         }
-        let nowDate = NSDate();
+        let nowDate = Date();
         self.modifytime = nowDate;
     }
     
-    func addChildTree(child: DocTree!){
-        self.children!.addObject(child!);
-        let nowDate = NSDate();
+    func addChildTree(_ child: DocTree!){
+        self.children!.add(child!);
+        let nowDate = Date();
         self.modifytime = nowDate;//一定要赋值，只修改children的话managedObjectContext.hasChanges会认为没有改动
     }
     
-    func insertChildTree(child: DocTree!,index: Int){
+    func insertChildTree(_ child: DocTree!,index: Int){
         if child.parent != nil && self == child.parent {
-            let oldIndex = self.children!.indexOfObject(child);
+            let oldIndex = self.children!.index(of: child);
             var newIndex = 0;
             if index > oldIndex {
                 newIndex = index-1;
             }else{
                 newIndex = index;
             }
-            self.children!.removeObject(child);
-            self.children!.insertObject(child, atIndex: newIndex);
+            self.children!.remove(child);
+            self.children!.insert(child, at: newIndex);
         }else{
-            self.children!.insertObject(child, atIndex: index);
+            self.children!.insert(child, at: index);
         }
-        let nowDate = NSDate();
+        let nowDate = Date();
         self.modifytime = nowDate;//一定要赋值，只修改children的话managedObjectContext.hasChanges会认为没有改动
     }
     
-    func updateParentTree(parent: DocTree!){
+    func updateParentTree(_ parent: DocTree!){
         self.parent = parent;
-        let nowDate = NSDate();
+        let nowDate = Date();
         self.modifytime = nowDate;//一定要赋值，只修改children的话managedObjectContext.hasChanges会认为没有改动
     }
     
@@ -139,7 +139,7 @@ class DocTree: NSManagedObject {
         if self.parent == nil {
             return nil;
         }
-        return self.parent!.children?.indexOfObject(self);
+        return self.parent!.children?.index(of: self);
     }
     
     func move2Trash(){
@@ -147,20 +147,20 @@ class DocTree: NSManagedObject {
     }
     
     func remove(){
-        self.parent?.children?.removeObject(self);
-        let nowDate = NSDate();
+        self.parent?.children?.remove(self);
+        let nowDate = Date();
         self.parent?.modifytime = nowDate;//一定要赋值，只修改children的话managedObjectContext.hasChanges会认为没有改动
     }
     
     func removeAllChild(){
         self.children = NSMutableOrderedSet();
-        let nowDate = NSDate();
+        let nowDate = Date();
         self.modifytime = nowDate;//一定要赋值，只修改children的话managedObjectContext.hasChanges会认为没有改动
     }
     
-    func removeChild(child: DocTree){
-        self.children?.removeObject(child);
-        let nowDate = NSDate();
+    func removeChild(_ child: DocTree){
+        self.children?.remove(child);
+        let nowDate = Date();
         self.modifytime = nowDate;//一定要赋值，只修改children的话managedObjectContext.hasChanges会认为没有改动
     }
 }

@@ -11,13 +11,13 @@ import Quartz
 
 extension DocTreeInfoViewController {
     
-    @IBAction func changPicture(sender: AnyObject) {
+    @IBAction func changPicture(_ sender: AnyObject) {
         if docTreeInfoData != nil {
-            IKPictureTaker().beginPictureTakerSheetForWindow(self.view.window!.parentWindow!, withDelegate: self, didEndSelector: #selector(DocTreeInfoViewController.pictureTakerDidEnd(_:returnCode:contextInfo:)), contextInfo: nil);
+            IKPictureTaker().beginSheet(for: self.view.window!.parent!, withDelegate: self, didEnd: #selector(DocTreeInfoViewController.pictureTakerDidEnd(_:returnCode:contextInfo:)), contextInfo: nil);
         }
     }
     
-    func pictureTakerDidEnd(picker: IKPictureTaker, returnCode: NSInteger, contextInfo: UnsafePointer<Void>) {
+    func pictureTakerDidEnd(_ picker: IKPictureTaker, returnCode: NSInteger, contextInfo: UnsafeRawPointer) {
         let image = picker.outputImage()
         if image != nil && returnCode == NSModalResponseOK {
             self.docTreeInfoData?.image = image;

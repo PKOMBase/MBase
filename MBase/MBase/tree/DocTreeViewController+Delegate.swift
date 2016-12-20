@@ -10,7 +10,7 @@ import Cocoa
 
 extension DocTreeViewController: NSOutlineViewDelegate {
     
-    func outlineViewSelectionDidChange(notification: NSNotification) {
+    func outlineViewSelectionDidChange(_ notification: Notification) {
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil {
             return;
@@ -22,7 +22,7 @@ extension DocTreeViewController: NSOutlineViewDelegate {
         // 记录用户操作
         self.userInfo.updateSelectedDocTree(selectedDocTree!);
         
-        NSNotificationCenter.defaultCenter().postNotificationName("changeDocImageAll", object: nil);
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "changeDocImageAll"), object: nil);
 
     }
     

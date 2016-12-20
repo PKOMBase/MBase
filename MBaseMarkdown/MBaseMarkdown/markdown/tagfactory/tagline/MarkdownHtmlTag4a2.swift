@@ -16,7 +16,7 @@ class MarkdownHtmlTag4a2: MarkdownHtmlTagLine {
         super.markdownTag = ["[","]"];
     }
     
-    override func getHtml(index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
+    override func getHtml(_ index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
         if string == ""{
             return super.getHtml(index, object: object);
         }
@@ -24,16 +24,16 @@ class MarkdownHtmlTag4a2: MarkdownHtmlTagLine {
         do{
             let urlParams = object[MarkdownRegexCommonEnum.URL]
             
-            let regex = try NSRegularExpression(pattern: "(\\[\\d{1,2}\\]$)", options: [.CaseInsensitive, .AnchorsMatchLines]);
-            let textCheckingResult = regex.firstMatchInString(string, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count));
+            let regex = try NSRegularExpression(pattern: "(\\[\\d{1,2}\\]$)", options: [.caseInsensitive, .anchorsMatchLines]);
+            let textCheckingResult = regex.firstMatch(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count));
             if textCheckingResult != nil {
-                let range = string.startIndex.advancedBy(textCheckingResult!.range.location+1)..<string.startIndex.advancedBy(textCheckingResult!.range.location+textCheckingResult!.range.length-1);
-                let numString = string.substringWithRange(range);
+                let range = string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+1)..<string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+textCheckingResult!.range.length-1);
+                let numString = string.substring(with: range);
                 if urlParams != nil{
                     for urlParam in urlParams! {
                         if let href = urlParam[numString] {
                             super.tagValue["href"] = href as? String;
-                            result.removeRange(range);
+                            result.removeSubrange(range);
                             break;
                         }
                     }
@@ -41,7 +41,7 @@ class MarkdownHtmlTag4a2: MarkdownHtmlTagLine {
             }
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         return super.getHtml(index, object: object);
     }

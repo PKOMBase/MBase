@@ -15,10 +15,10 @@ import CoreData
 extension DocTree {
 
     @NSManaged var content: String?
-    @NSManaged var image: NSData?
+    @NSManaged var image: Data?
     @NSManaged var name: String?
-    @NSManaged var modifytime: NSDate?
-    @NSManaged var createtime: NSDate?
+    @NSManaged var modifytime: Date?
+    @NSManaged var createtime: Date?
     @NSManaged var type: String?
     @NSManaged var status: String?
     @NSManaged var children: NSMutableOrderedSet?

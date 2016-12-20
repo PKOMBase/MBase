@@ -10,7 +10,7 @@ import Cocoa
 
 class MarkdownHtmlTagFactory: NSObject {
     
-    static func getMarkdownHtmlTag(tagRegex: MarkdownRegexCommonEnum, range: NSRange, string: String) -> MarkdownHtmlTagCommon{
+    static func getMarkdownHtmlTag(_ tagRegex: MarkdownRegexCommonEnum, range: NSRange, string: String) -> MarkdownHtmlTagCommon{
         switch tagRegex {
         case .URL:
             return MarkdownHtmlTag4url(range: range, string: string);
@@ -19,7 +19,7 @@ class MarkdownHtmlTagFactory: NSObject {
         }
     }
     
-    static func getMarkdownHtmlTag(tagRegex: MarkdownRegexHeaderEnum, range: NSRange, string: String, index: Int) -> MarkdownHtmlTagHeader{
+    static func getMarkdownHtmlTag(_ tagRegex: MarkdownRegexHeaderEnum, range: NSRange, string: String, index: Int) -> MarkdownHtmlTagHeader{
         switch tagRegex {
         case .H1:
             return MarkdownHtmlTag4h1(range: range, string: string, index: index);
@@ -36,7 +36,7 @@ class MarkdownHtmlTagFactory: NSObject {
         }
     }
 
-    static func getMarkdownHtmlTag(tagRegex: MarkdownRegexLineEnum, range: NSRange, string: String) -> MarkdownHtmlTagLine{
+    static func getMarkdownHtmlTag(_ tagRegex: MarkdownRegexLineEnum, range: NSRange, string: String) -> MarkdownHtmlTagLine{
         
         switch tagRegex {
             
@@ -61,7 +61,7 @@ class MarkdownHtmlTagFactory: NSObject {
         }
     }
     
-    static func getMarkdownHtmlTag(tagRegex: MarkdownRegexParagraphEnum, range: NSRange, string: String) -> MarkdownHtmlTagParagraph{
+    static func getMarkdownHtmlTag(_ tagRegex: MarkdownRegexParagraphEnum, range: NSRange, string: String) -> MarkdownHtmlTagParagraph{
         
         switch tagRegex {
         case .CODE1:

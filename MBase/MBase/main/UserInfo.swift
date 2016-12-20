@@ -13,14 +13,14 @@ import CoreData
 class UserInfo: NSManagedObject {
 
     func initData(){
-        let nowDate = NSDate()
+        let nowDate = Date()
         self.createtime = nowDate;
         self.modifytime = nowDate;
     }
     
-    func updateSelectedDocTree(selectedDocTree : DocTree){
+    func updateSelectedDocTree(_ selectedDocTree : DocTree){
         self.selectDocTree = selectedDocTree;
-        let nowDate = NSDate()
+        let nowDate = Date()
         self.modifytime = nowDate;
     }
 }

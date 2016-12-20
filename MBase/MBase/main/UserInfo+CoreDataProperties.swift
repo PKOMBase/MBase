@@ -14,8 +14,8 @@ import CoreData
 
 extension UserInfo {
 
-    @NSManaged var modifytime: NSDate?
-    @NSManaged var createtime: NSDate?
+    @NSManaged var modifytime: Date?
+    @NSManaged var createtime: Date?
     @NSManaged var selectDocTree: DocTree?
 
 }

@@ -16,7 +16,7 @@ class MarkdownHtmlTag4toc: MarkdownHtmlTagLine {
         super.markdownTag = ["[TOC]"];
     }
     
-    override func getHtml(index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
+    override func getHtml(_ index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
         if string == ""{
             return super.getHtml(index, object: object);
         }
@@ -46,19 +46,19 @@ class MarkdownHtmlTag4toc: MarkdownHtmlTagLine {
             
         }catch{
             let nserror = error as NSError
-            NSApplication.sharedApplication().presentError(nserror)
+            NSApplication.shared().presentError(nserror)
         }
         return super.getHtml(index, object: object);
     }
     
     
-    func getUL(id: String, name: String) -> String{
+    func getUL(_ id: String, name: String) -> String{
         
         return "<ul>";
     }
     
     
-    func getLI(id: String, name: String) -> String{
+    func getLI(_ id: String, name: String) -> String{
         return "<li><a href=\"#"+id+"\">"+name+"</a></li>";
     }
     

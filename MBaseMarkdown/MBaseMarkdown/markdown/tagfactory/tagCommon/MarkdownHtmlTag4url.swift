@@ -16,14 +16,14 @@ class MarkdownHtmlTag4url: MarkdownHtmlTagCommon {
         super.markdownTag = [""];
     }
     
-    override func getHtml(index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
+    override func getHtml(_ index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
         return "";
     }
     
     override func getParamObejct() -> Dictionary<String, AnyObject>{
-        let stringArr = string.componentsSeparatedByString("]:");
-        let numString = stringArr[0].stringByReplacingOccurrencesOfString("[", withString: "");
+        let stringArr = string.components(separatedBy: "]:");
+        let numString = stringArr[0].replacingOccurrences(of: "[", with: "");
         let hrefString = stringArr[1];
-        return [numString: hrefString];
+        return [numString: hrefString as AnyObject];
     }
 }
