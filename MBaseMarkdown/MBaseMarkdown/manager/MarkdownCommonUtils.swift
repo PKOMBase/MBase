@@ -17,7 +17,6 @@ class MarkdownCommonUtils: NSObject {
         return NSMakeRange(location, length);
     }
     
-    
     static func isContainInCodeKey(_ string: NSString, codeKey: String, range: NSRange) -> Bool {
         // 上半段
         let preRange = NSMakeRange(0, range.location);

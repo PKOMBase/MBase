@@ -20,26 +20,27 @@ class MarkdownHtmlTagFactory: NSObject {
     }
     
     static func getMarkdownHtmlTag(_ tagRegex: MarkdownRegexHeaderEnum, range: NSRange, string: String, index: Int) -> MarkdownHtmlTagHeader{
-        switch tagRegex {
-        case .H1:
+        let level = (string as! NSString).range(of: "(\\#{1,6})", options: .regularExpression, range: NSMakeRange(0, (string as! NSString).length), locale: nil).length;
+        switch level {
+        case 1:
             return MarkdownHtmlTag4h1(range: range, string: string, index: index);
-        case .H2:
+        case 2:
             return MarkdownHtmlTag4h2(range: range, string: string, index: index);
-        case .H3:
+        case 3:
             return MarkdownHtmlTag4h3(range: range, string: string, index: index);
-        case .H4:
+        case 4:
             return MarkdownHtmlTag4h4(range: range, string: string, index: index);
-        case .H5:
+        case 5:
             return MarkdownHtmlTag4h5(range: range, string: string, index: index);
-        case .H6:
+        case 6:
+            return MarkdownHtmlTag4h6(range: range, string: string, index: index);
+        default:
             return MarkdownHtmlTag4h6(range: range, string: string, index: index);
         }
     }
 
     static func getMarkdownHtmlTag(_ tagRegex: MarkdownRegexLineEnum, range: NSRange, string: String) -> MarkdownHtmlTagLine{
-        
         switch tagRegex {
-            
         case .A1:
             return MarkdownHtmlTag4a1(range: range, string: string);
         case .A2:

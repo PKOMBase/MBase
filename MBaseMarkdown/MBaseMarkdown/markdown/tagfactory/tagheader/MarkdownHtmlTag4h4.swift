@@ -14,6 +14,7 @@ class MarkdownHtmlTag4h4: MarkdownHtmlTagHeader {
         super.init(range: range, string: string, index: index);
         super.tagName = "h4";
         super.markdownTag = ["#### "];
+        super.level = 4;
     }
 
 }

@@ -30,7 +30,9 @@ class DocMainViewController: NSViewController {
     func reloadHTML(){
         let start = CFAbsoluteTimeGetCurrent()
         let html = MarkdownManager.generateHTMLForMarkdown(self.markdown!, cssType: .Default);
+
         webView.mainFrame.loadHTMLString(html as! String, baseURL: URL(fileURLWithPath: Bundle.main.resourcePath!, isDirectory: true));
+        
         print("refreshContent===="+String(CFAbsoluteTimeGetCurrent()-start)+" seconds")
     }
     

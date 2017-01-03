@@ -35,7 +35,8 @@ class MarkdownEditFactory: MarkdownHtmlTag {
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.headerFontColor, NSParagraphStyleAttributeName: MarkdownConstsManager.getHeaderParagraphStyle("##### ")];
         case .H6:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.headerFontColor, NSParagraphStyleAttributeName: MarkdownConstsManager.getHeaderParagraphStyle("###### ")];
-
+        case .H:
+            return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.headerFontColor, NSParagraphStyleAttributeName: MarkdownConstsManager.getHeaderParagraphStyle("###### ")];
         }
     }
     

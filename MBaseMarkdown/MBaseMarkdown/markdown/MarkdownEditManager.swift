@@ -52,7 +52,7 @@ open class MarkdownEditManager: NSObject {
         }
         
         // 头
-        for tagRegex in MarkdownRegexHeaderEnum.values {
+        for tagRegex in MarkdownRegexHeaderEnum.values4Edit {
             self.applyStylesToRange4Header(tagRegex, textString: textString, ranges: ranges);
         }
 
@@ -90,7 +90,7 @@ open class MarkdownEditManager: NSObject {
         }
         
         // 头
-        for tagRegex in MarkdownRegexHeaderEnum.values {
+        for tagRegex in MarkdownRegexHeaderEnum.values4Edit {
             self.applyStylesToRange4Header(tagRegex, textString: textString, ranges: ranges);
         }
         

@@ -60,15 +60,12 @@ class MarkdownHtmlTag: NSObject {
         return str;
     }
     
-    func getId() -> String{
+    func getId() -> String{        
         return self.tagName + "id_" + String(self.index);
     }
     
     func getHtml(_ index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
-        var str = self.string;
-        for tag in self.markdownTag {
-            str = str.replacingOccurrences(of: tag, with: "")
-        }
+        var str = self.getString();
         return self.getHtml4Prefix() + self.handlerTransferString(str) + self.getHtml4Suffix()
     }
     

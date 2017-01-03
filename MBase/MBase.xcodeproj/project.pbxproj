@@ -86,7 +86,8 @@
 		A871B4EB1D8A696E003D598C /* ExportUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4EA1D8A696E003D598C /* ExportUtils.swift */; };
 		A871B4EE1D8AE4E2003D598C /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4ED1D8AE4E2003D598C /* AlertUtils.swift */; };
 		A8D6EB5D1DFE6D8600D73C60 /* DocSplitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D6EB5C1DFE6D8600D73C60 /* DocSplitViewController.xib */; };
-		A8DB35451E08CCEC0049B7A4 /* MBaseMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DB35441E08CCEC0049B7A4 /* MBaseMarkdown.framework */; };
+		A8DB354B1E08D3820049B7A4 /* MBaseMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DB354A1E08D3820049B7A4 /* MBaseMarkdown.framework */; };
+		A8DB354C1E08D38C0049B7A4 /* MBaseMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A8DB354A1E08D3820049B7A4 /* MBaseMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8FD0C371D97887D00D969B0 /* DocSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FD0C351D97887D00D969B0 /* DocSplitViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +98,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				A8DB354C1E08D38C0049B7A4 /* MBaseMarkdown.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +190,7 @@
 		A871B4EA1D8A696E003D598C /* ExportUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExportUtils.swift; path = system/manager/ExportUtils.swift; sourceTree = "<group>"; };
 		A871B4ED1D8AE4E2003D598C /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertUtils.swift; path = system/manager/AlertUtils.swift; sourceTree = "<group>"; };
 		A8D6EB5C1DFE6D8600D73C60 /* DocSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocSplitViewController.xib; path = split/DocSplitViewController.xib; sourceTree = "<group>"; };
-		A8DB35441E08CCEC0049B7A4 /* MBaseMarkdown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBaseMarkdown.framework; path = "../../../Library/Developer/Xcode/DerivedData/MBaseWorkSpace-caynkmstwhqnspdfkdwytilftsax/Build/Products/Debug/MBaseMarkdown.framework"; sourceTree = "<group>"; };
+		A8DB354A1E08D3820049B7A4 /* MBaseMarkdown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBaseMarkdown.framework; path = "../../../Library/Developer/Xcode/DerivedData/MBaseWorkSpace-caynkmstwhqnspdfkdwytilftsax/Build/Products/Debug/MBaseMarkdown.framework"; sourceTree = "<group>"; };
 		A8F60CEC1D52034B009768B6 /* Hoedown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hoedown.framework; path = ../Carthage/Build/Mac/Hoedown.framework; sourceTree = "<group>"; };
 		A8FD0C351D97887D00D969B0 /* DocSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocSplitViewController.swift; path = split/DocSplitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -198,7 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8DB35451E08CCEC0049B7A4 /* MBaseMarkdown.framework in Frameworks */,
+				A8DB354B1E08D3820049B7A4 /* MBaseMarkdown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +417,7 @@
 		A8DB35431E08CCEB0049B7A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A8DB35441E08CCEC0049B7A4 /* MBaseMarkdown.framework */,
+				A8DB354A1E08D3820049B7A4 /* MBaseMarkdown.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
