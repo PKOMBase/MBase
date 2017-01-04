@@ -21,7 +21,7 @@
             <subviews>
                 <webView maintainsBackForwardList="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cZ-8N-LXt">
                     <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
-                    <webPreferences key="preferences" defaultFontSize="14" defaultFixedFontSize="14" minimumFontSize="0" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO" loadsImagesAutomatically="NO" allowsAnimatedImages="NO" allowsAnimatedImageLooping="NO">
+                    <webPreferences key="preferences" defaultFontSize="14" defaultFixedFontSize="14" minimumFontSize="0" plugInsEnabled="NO" javaEnabled="NO" javaScriptEnabled="NO" javaScriptCanOpenWindowsAutomatically="NO">
                         <nil key="identifier"/>
                     </webPreferences>
                     <connections>

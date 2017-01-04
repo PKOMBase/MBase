@@ -24,7 +24,7 @@ class MarkdownHtmlTag4img2: MarkdownHtmlTagLine {
         do{
             let urlParams = object[.URL]
             
-            let regex = try NSRegularExpression(pattern: "(\\[\\d{1,2}\\]$)", options: [.caseInsensitive, .anchorsMatchLines]);
+            let regex = try NSRegularExpression(pattern: "(\\[\\d{1,2}\\])", options: [.caseInsensitive, .anchorsMatchLines]);
             let textCheckingResult = regex.firstMatch(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count));
             if textCheckingResult != nil {
                 let range = string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+1)..<string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+textCheckingResult!.range.length-1);
@@ -39,7 +39,7 @@ class MarkdownHtmlTag4img2: MarkdownHtmlTagLine {
                     }
                 }
             }
-            let regexAlt = try NSRegularExpression(pattern: "(^\\!\\[(.)*\\]\\[\\]$)", options: [.caseInsensitive, .anchorsMatchLines]);
+            let regexAlt = try NSRegularExpression(pattern: "(\\!\\[(.)*\\]\\[\\])", options: [.caseInsensitive, .anchorsMatchLines]);
             let textCheckingResultAlt = regexAlt.firstMatch(in: result, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, result.characters.count));
             if textCheckingResultAlt != nil {
                 let range = result.characters.index(result.startIndex, offsetBy: textCheckingResultAlt!.range.location+2)..<result.characters.index(result.startIndex, offsetBy: textCheckingResultAlt!.range.location+textCheckingResultAlt!.range.length-3);

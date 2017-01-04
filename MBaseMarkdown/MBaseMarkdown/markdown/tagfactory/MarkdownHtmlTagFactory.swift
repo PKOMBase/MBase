@@ -45,6 +45,10 @@ class MarkdownHtmlTagFactory: NSObject {
             return MarkdownHtmlTag4a1(range: range, string: string);
         case .A2:
             return MarkdownHtmlTag4a2(range: range, string: string);
+        case .A3:
+            return MarkdownHtmlTag4a3(range: range, string: string);
+        case .A4:
+            return MarkdownHtmlTag4a4(range: range, string: string);
         case .IMG1:
             return MarkdownHtmlTag4img1(range: range, string: string);
         case .IMG2:

@@ -24,7 +24,7 @@ class MarkdownHtmlTag4a2: MarkdownHtmlTagLine {
         do{
             let urlParams = object[MarkdownRegexCommonEnum.URL]
             
-            let regex = try NSRegularExpression(pattern: "(\\[\\d{1,2}\\]$)", options: [.caseInsensitive, .anchorsMatchLines]);
+            let regex = try NSRegularExpression(pattern: "(\\[\\d{1,2}\\])", options: [.caseInsensitive, .anchorsMatchLines]);
             let textCheckingResult = regex.firstMatch(in: string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, string.characters.count));
             if textCheckingResult != nil {
                 let range = string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+1)..<string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+textCheckingResult!.range.length-1);

@@ -27,7 +27,7 @@ class MarkdownHtmlTag4a1: MarkdownHtmlTagLine {
             if textCheckingResult != nil {
                 let range = string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+1)..<string.characters.index(string.startIndex, offsetBy: textCheckingResult!.range.location+textCheckingResult!.range.length-1);
                 super.tagValue["href"] = string.substring(with: range);
-                result.removeSubrange(range);
+                string.removeSubrange(range);
             }
         }catch{
             let nserror = error as NSError
