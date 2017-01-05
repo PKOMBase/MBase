@@ -107,7 +107,7 @@ extension DocTreeViewController: NSMenuDelegate {
     
     @IBAction func createDiary(_ sender: Any) {
         let selectedDocTree = self.selectedTree();
-        if selectedDocTree == nil {
+        if selectedDocTree == nil || DocTree.DocTreeType.Diary.rawValue != selectedDocTree!.type{
             return;
         }
         
