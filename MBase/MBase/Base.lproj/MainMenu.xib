@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -292,6 +292,50 @@
                                         </menuItem>
                                     </items>
                                 </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Navigation" id="NcQ-OW-nXB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Navigation" id="ucp-BQ-sca">
+                        <items>
+                            <menuItem title="Add Child" keyEquivalent="i" id="oht-0B-Nru">
+                                <connections>
+                                    <action selector="addChild:" target="Voe-Tx-rLC" id="OxN-aP-kgF"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Add Brother" id="3DG-fa-oae">
+                                <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                <connections>
+                                    <action selector="addBrother:" target="Voe-Tx-rLC" id="akH-dp-ABP"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Ave-jZ-96J"/>
+                            <menuItem title="Auto Create TOC" keyEquivalent="t" id="i4q-9U-Rkm">
+                                <connections>
+                                    <action selector="autoCreateTOC:" target="Voe-Tx-rLC" id="6EP-Kt-JYi"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Qcb-dt-rnn"/>
+                            <menuItem title="Remove" id="EFZ-ah-Bzd">
+                                <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                <connections>
+                                    <action selector="remove:" target="Voe-Tx-rLC" id="vrI-B5-w2P"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Clean Trash" id="md9-Gk-pO6">
+                                <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                                <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
+                                <connections>
+                                    <action selector="cleanTrash:" target="Voe-Tx-rLC" id="4Ae-IS-T1t"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>

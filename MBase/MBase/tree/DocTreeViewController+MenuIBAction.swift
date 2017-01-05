@@ -52,7 +52,7 @@ extension DocTreeViewController: NSMenuDelegate {
         }
     }
     
-    @IBAction func addTree(_ sender: AnyObject) {
+    @IBAction func addTree(_ sender: Any) {
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil {
             return;
@@ -63,7 +63,7 @@ extension DocTreeViewController: NSMenuDelegate {
         let newDocTree = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as! DocTree;
         let newDocMain = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
         newDocMain.initData("", summary: "", mark: "", type: DocMain.DocMainType.Markdown, docTree: newDocTree);
-        newDocTree.initData("new",content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.Normal,  parent: parentDocTree, docMain: newDocMain);
+        newDocTree.initData("未命名",content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.Normal,  parent: parentDocTree, docMain: newDocMain);
         
         // 2. 将该实例添加到父级Tree
         parentDocTree.addChildTree(newDocTree);
@@ -77,7 +77,7 @@ extension DocTreeViewController: NSMenuDelegate {
         self.docTreeView.scrollRowToVisible(newSelectedRow);
     }
     
-    @IBAction func addChildTree(_ sender: AnyObject) {
+    @IBAction func addChildTree(_ sender: Any) {
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil {
             return;
@@ -86,7 +86,7 @@ extension DocTreeViewController: NSMenuDelegate {
         let newDocTree = NSEntityDescription.insertNewObject(forEntityName: "DocTree", into: self.managedObjectContext) as! DocTree;
         let newDocMain = NSEntityDescription.insertNewObject(forEntityName: "DocMain", into: self.managedObjectContext) as! DocMain;
         newDocMain.initData("", summary: "", mark: "", type: DocMain.DocMainType.Markdown, docTree: newDocTree);
-        newDocTree.initData("new", content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.Normal,  parent: selectedDocTree!, docMain: newDocMain);
+        newDocTree.initData("未命名", content: "", image: NSImage(named: "GenericFolderIcon"), type: DocTree.DocTreeType.Normal,  parent: selectedDocTree!, docMain: newDocMain);
         
         // 2. 将该实例添加到选中Tree
         selectedDocTree!.addChildTree(newDocTree);
@@ -105,7 +105,7 @@ extension DocTreeViewController: NSMenuDelegate {
         self.changeDocImage(selectedDocTree!)
     }
     
-    @IBAction func createDiary(_ sender: AnyObject) {
+    @IBAction func createDiary(_ sender: Any) {
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil {
             return;
@@ -120,7 +120,7 @@ extension DocTreeViewController: NSMenuDelegate {
         
     }
     
-    @IBAction func removeTree(_ sender: AnyObject) {
+    @IBAction func removeTree(_ sender: Any) {
         // 1. 获取选中tree
         let selectedDocTree = self.selectedTree();
         if (selectedDocTree == nil) {
@@ -147,7 +147,7 @@ extension DocTreeViewController: NSMenuDelegate {
         self.docEditViewController.cleanDocEditDatas();
     }
     
-    @IBAction func cleanTrash(_ sender: AnyObject) {
+    @IBAction func cleanTrash(_ sender: Any) {
         // 1. 获取选中tree
         let selectedDocTree = self.selectedTree();
         if selectedDocTree == nil || DocTree.DocTreeType.Trash.rawValue != selectedDocTree?.type{
@@ -164,14 +164,14 @@ extension DocTreeViewController: NSMenuDelegate {
         self.reloadData();
     }
     
-    @IBAction func exportHTML(_ sender: AnyObject) {
+    @IBAction func exportHTML(_ sender: Any) {
         if self.selectedTree() == nil{
             return;
         }
         self.export("html");
     }
     
-    @IBAction func exportText(_ sender: AnyObject) {
+    @IBAction func exportText(_ sender: Any) {
         if self.selectedTree() == nil{
             return;
         }

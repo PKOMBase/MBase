@@ -240,3 +240,21 @@
 
 /* Class = "NSMenuItem"; title = "Edit&Main View"; ObjectID = "swI-uH-JfC"; */
 "swI-uH-JfC.title" = "编辑/预览视图";
+
+/* Class = "NSMenu"; title = "Navigation"; ObjectID = "ucp-BQ-sca"; */
+"ucp-BQ-sca.title" = "导航";
+
+/* Class = "NSMenuItem"; title = "Add Child"; ObjectID = "oht-0B-Nru"; */
+"oht-0B-Nru.title" = "添加子类";
+
+/* Class = "NSMenuItem"; title = "Add Brother"; ObjectID = "3DG-fa-oae"; */
+"3DG-fa-oae.title" = "添加类";
+
+/* Class = "NSMenuItem"; title = "Auto Create TOC"; ObjectID = "i4q-9U-Rkm"; */
+"i4q-9U-Rkm.title" = "自动创建目录";
+
+/* Class = "NSMenuItem"; title = "Remove"; ObjectID = "EFZ-ah-Bzd"; */
+"EFZ-ah-Bzd.title" = "放入废纸篓";
+
+/* Class = "NSMenuItem"; title = "Clean Trash"; ObjectID = "md9-Gk-pO6"; */
+"md9-Gk-pO6.title" = "清倒废纸篓";

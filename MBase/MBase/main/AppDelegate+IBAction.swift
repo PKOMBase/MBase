@@ -27,28 +27,45 @@ extension AppDelegate: NSMenuDelegate {
         }
     }
     
-    @IBAction func editAndMainView(_ sender: AnyObject) {
-//        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocEditSplitView();
-//        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocMainSplitView();
-//        editAndMainVIewMenu.state = 1;
-//        mainVIewMenu.state = 0;
-//        editVIewMenu.state = 0;
+    @IBAction func addChild(_ sender: Any) {
+        self.mainWindowController.mainSplitViewController.docTreeViewController.addChildTree(sender);
     }
     
-    @IBAction func mainView(_ sender: AnyObject) {
-//        self.mainWindowController.mainSplitViewController.docSplitViewController.hideDocEditSplitView();
-//        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocMainSplitView();
-//        editAndMainVIewMenu.state = 0;
-//        mainVIewMenu.state = 1;
-//        editVIewMenu.state = 0;
+    @IBAction func addBrother(_ sender: Any) {
+        self.mainWindowController.mainSplitViewController.docTreeViewController.addTree(sender);
     }
     
-    @IBAction func editView(_ sender: AnyObject) {
-//        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocEditSplitView();
-//        self.mainWindowController.mainSplitViewController.docSplitViewController.hideDocMainSplitView();
-//        editAndMainVIewMenu.state = 0;
-//        mainVIewMenu.state = 0;
-//        editVIewMenu.state = 1;
+    @IBAction func remove(_ sender: Any) {
+        self.mainWindowController.mainSplitViewController.docTreeViewController.removeTree(sender);
+    }
+    
+    @IBAction func cleanTrash(_ sender: Any) {
+        self.mainWindowController.mainSplitViewController.docTreeViewController.cleanTrash(sender);
+    }
+    
+    @IBAction func autoCreateTOC(_ sender: Any) {
+        self.mainWindowController.mainSplitViewController.docTreeViewController.createDiary(sender);
+    }
+    
+    @IBAction func editAndMainView(_ sender: Any) {
+        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocEditAndMainSplitView();
+        editAndMainVIewMenu.state = 1;
+        mainVIewMenu.state = 0;
+        editVIewMenu.state = 0;
+    }
+    
+    @IBAction func mainView(_ sender: Any) {
+        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocMainSplitView();
+        editAndMainVIewMenu.state = 0;
+        mainVIewMenu.state = 1;
+        editVIewMenu.state = 0;
+    }
+    
+    @IBAction func editView(_ sender: Any) {
+        self.mainWindowController.mainSplitViewController.docSplitViewController.showDocEditSplitView();
+        editAndMainVIewMenu.state = 0;
+        mainVIewMenu.state = 0;
+        editVIewMenu.state = 1;
     }
     
     @IBAction func exportHtml(_ sender: AnyObject) {

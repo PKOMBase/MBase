@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var mainVIewMenu: NSMenuItem!
     
     @IBOutlet weak var editVIewMenu: NSMenuItem!
-    
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         //app开始启动时调用        
         

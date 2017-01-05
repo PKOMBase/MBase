@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DocTreeViewController" customModule="MBase" customModuleProvider="target">
@@ -24,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowHeight="20" rowSizeStyle="automatic" viewBased="YES" indentationPerLevel="16" outlineTableColumn="2Zo-Wu-v5s" id="RRU-o4-5uk">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="361"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.94509803921568625" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
@@ -122,33 +123,38 @@
         </popover>
         <menu id="ovA-CX-j5C">
             <items>
-                <menuItem title="添加子类" tag="1" id="wLb-of-Dv0" userLabel="addChildTree">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="添加子类" tag="1" keyEquivalent="i" id="wLb-of-Dv0" userLabel="addChildTree">
                     <connections>
                         <action selector="addChildTree:" target="-2" id="sZI-JY-s4q"/>
                     </connections>
                 </menuItem>
                 <menuItem title="添加类" tag="2" id="4O4-Vh-Woj" userLabel="addTree">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
                     <connections>
                         <action selector="addTree:" target="-2" id="VPm-t1-6fB"/>
                     </connections>
                 </menuItem>
-                <menuItem title="自动创建目录" tag="3" id="egu-RD-Fqu" userLabel="createDiary">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                <menuItem title="自动创建目录" tag="3" keyEquivalent="t" id="egu-RD-Fqu" userLabel="createDiary">
                     <connections>
                         <action selector="createDiary:" target="-2" id="bUB-6n-ZKS"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" tag="4" id="8cy-bG-J25"/>
                 <menuItem title="放入废纸篓" tag="5" id="LJG-Bh-fna" userLabel="removeTree">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
                     <connections>
                         <action selector="removeTree:" target="-2" id="gXg-bj-ZjU"/>
                     </connections>
                 </menuItem>
                 <menuItem title="清倒废纸篓" tag="6" id="kOO-p1-jl2" userLabel="cleanTrash">
-                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
+                    <modifierMask key="keyEquivalentModifierMask" control="YES" command="YES"/>
                     <connections>
                         <action selector="cleanTrash:" target="-2" id="Mnb-ba-0yy"/>
                     </connections>
@@ -158,8 +164,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="导出" id="oQl-53-5xz" userLabel="export">
                         <items>
-                            <menuItem title="导出HTML" id="qag-aK-BVy" userLabel="export HTML">
-                                <modifierMask key="keyEquivalentModifierMask"/>
+                            <menuItem title="导出HTML" keyEquivalent="e" id="qag-aK-BVy" userLabel="export HTML">
                                 <connections>
                                     <action selector="exportHTML:" target="-2" id="9gy-ra-qk7"/>
                                 </connections>
