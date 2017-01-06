@@ -10,13 +10,14 @@ import Cocoa
 
 enum MarkdownRegexLineEnum: String {
     
-    static let values = [STRONG,EM,U,IMG1,IMG2,A1,A2,A3,A4,HR,TOC];
+    static let values = [STRONG,EM,U,DEL,IMG1,IMG2,A1,A2,A3,A4,HR,TOC];
     
-    case HR = "(- - -)"
+    case HR = "((- - -)|(\\*\\*\\*\\*\\*)|(\\*\\*\\*))"
     
     case EM = "(\\*\\w+(\\S\\w+)*\\*)"
     case STRONG = "(\\*\\*\\w+(\\S\\w+)*\\*\\*)"
     case U = "(_\\w+(\\S\\w+)*_)"
+    case DEL = "(~~\\w+(\\S\\w+)*~~)"
         
     case A1 = "(\\[(.)*\\]\\((.)*\\))"
     case A2 = "(\\[(.)*\\]\\[\\d{1,2}\\])"

@@ -123,7 +123,7 @@
         </popover>
         <menu id="ovA-CX-j5C">
             <items>
-                <menuItem title="添加子类" tag="1" keyEquivalent="i" id="wLb-of-Dv0" userLabel="addChildTree">
+                <menuItem title="添加子类" tag="1" keyEquivalent="=" id="wLb-of-Dv0" userLabel="addChildTree">
                     <connections>
                         <action selector="addChildTree:" target="-2" id="sZI-JY-s4q"/>
                     </connections>

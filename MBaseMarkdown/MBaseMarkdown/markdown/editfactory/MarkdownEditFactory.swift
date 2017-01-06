@@ -63,6 +63,8 @@ class MarkdownEditFactory: MarkdownHtmlTag {
             return [NSFontAttributeName : NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize), NSForegroundColorAttributeName : MarkdownConstsManager.boldFontColor];
         case .U:
             return [NSFontAttributeName : NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize), NSForegroundColorAttributeName : MarkdownConstsManager.boldFontColor];
+        case .DEL:
+            return [NSFontAttributeName : NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize), NSForegroundColorAttributeName : MarkdownConstsManager.boldFontColor];
         case .TOC:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.linkFontColor];
         }

@@ -300,7 +300,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Navigation" id="ucp-BQ-sca">
                         <items>
-                            <menuItem title="Add Child" keyEquivalent="i" id="oht-0B-Nru">
+                            <menuItem title="Add Child" keyEquivalent="=" id="oht-0B-Nru">
                                 <connections>
                                     <action selector="addChild:" target="Voe-Tx-rLC" id="OxN-aP-kgF"/>
                                 </connections>

@@ -34,6 +34,7 @@
 		A80F866A1DF7EE2100DC4217 /* MarkdownCommonUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F86691DF7EE2100DC4217 /* MarkdownCommonUtils.swift */; };
 		A80F866D1DF7EE6300DC4217 /* NSString+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F866C1DF7EE6300DC4217 /* NSString+Utils.swift */; };
 		A80F866F1DF7F14500DC4217 /* MarkdownEditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F866E1DF7F14500DC4217 /* MarkdownEditManager.swift */; };
+		A859183A1E1FF222001B7FF9 /* MarkdownHtmlTag4del.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85918391E1FF222001B7FF9 /* MarkdownHtmlTag4del.swift */; };
 		A87671411E1CB66A006C396E /* MarkdownHtmlTag4a4.swift in Sources */ = {isa = PBXBuildFile; fileRef = A876713F1E1CB66A006C396E /* MarkdownHtmlTag4a4.swift */; };
 		A87671421E1CB66A006C396E /* MarkdownHtmlTag4a3.swift in Sources */ = {isa = PBXBuildFile; fileRef = A87671401E1CB66A006C396E /* MarkdownHtmlTag4a3.swift */; };
 		A8D82F1C1DF80AC5001AC708 /* MarkdownHtmlTagParagraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D82F1B1DF80AC5001AC708 /* MarkdownHtmlTagParagraph.swift */; };
@@ -78,6 +79,7 @@
 		A80F86691DF7EE2100DC4217 /* MarkdownCommonUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkdownCommonUtils.swift; path = manager/MarkdownCommonUtils.swift; sourceTree = "<group>"; };
 		A80F866C1DF7EE6300DC4217 /* NSString+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSString+Utils.swift"; path = "extension/NSString+Utils.swift"; sourceTree = "<group>"; };
 		A80F866E1DF7F14500DC4217 /* MarkdownEditManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkdownEditManager.swift; path = markdown/MarkdownEditManager.swift; sourceTree = "<group>"; };
+		A85918391E1FF222001B7FF9 /* MarkdownHtmlTag4del.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkdownHtmlTag4del.swift; path = markdown/tagfactory/tagline/MarkdownHtmlTag4del.swift; sourceTree = "<group>"; };
 		A876713F1E1CB66A006C396E /* MarkdownHtmlTag4a4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkdownHtmlTag4a4.swift; path = markdown/tagfactory/tagline/MarkdownHtmlTag4a4.swift; sourceTree = "<group>"; };
 		A87671401E1CB66A006C396E /* MarkdownHtmlTag4a3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkdownHtmlTag4a3.swift; path = markdown/tagfactory/tagline/MarkdownHtmlTag4a3.swift; sourceTree = "<group>"; };
 		A8D82F1B1DF80AC5001AC708 /* MarkdownHtmlTagParagraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MarkdownHtmlTagParagraph.swift; path = markdown/tagfactory/tagparagraph/MarkdownHtmlTagParagraph.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				A80F863C1DF7EBBC00DC4217 /* MarkdownHtmlTagLine.swift */,
 				A80F863D1DF7EBBC00DC4217 /* MarkdownHtmlTag4u.swift */,
+				A85918391E1FF222001B7FF9 /* MarkdownHtmlTag4del.swift */,
 				A80F863E1DF7EBBC00DC4217 /* MarkdownHtmlTag4strong.swift */,
 				A80F863F1DF7EBBC00DC4217 /* MarkdownHtmlTag4img2.swift */,
 				A80F86401DF7EBBC00DC4217 /* MarkdownHtmlTag4img1.swift */,
@@ -354,6 +357,7 @@
 				A80F86581DF7EBBC00DC4217 /* MarkdownHtmlTag4a2.swift in Sources */,
 				A80F862F1DF7EB7600DC4217 /* MarkdownEditFactory.swift in Sources */,
 				A8ED52431E053696006BCB15 /* MarkdownHtmlTag4h2.swift in Sources */,
+				A859183A1E1FF222001B7FF9 /* MarkdownHtmlTag4del.swift in Sources */,
 				A80F861C1DF7EB2E00DC4217 /* MarkdownManager.swift in Sources */,
 				A80F865C1DF7EBC600DC4217 /* MarkdownHtmlTagCommon.swift in Sources */,
 				A87671421E1CB66A006C396E /* MarkdownHtmlTag4a3.swift in Sources */,

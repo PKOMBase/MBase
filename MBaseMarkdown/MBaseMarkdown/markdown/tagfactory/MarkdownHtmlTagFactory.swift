@@ -61,6 +61,8 @@ class MarkdownHtmlTagFactory: NSObject {
             return MarkdownHtmlTag4em(range: range, string: string);
         case .U:
             return MarkdownHtmlTag4u(range: range, string: string);
+        case .DEL:
+            return MarkdownHtmlTag4del(range: range, string: string);
         case .TOC:
             return MarkdownHtmlTag4toc(range: range, string: string);
         }
