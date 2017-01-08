@@ -5,23 +5,27 @@ body {
     background-color: #f7f7f7;
     color: #333333;
 }
+
 hr {
     color: #cccccc;
     size: 2px;
 }
+
 h1 {
     line-height: 2;
     border-style: none none dashed none;
     border-width: 1px;
     border-color: #e1e1e1;
-    
 }
+
 h2 {
     line-height: 1.8;
 }
+
 h3,h4,h5,h6 {
     line-height: 1.6;
 }
+
 img {
     width: 80%;
     border:5px solid #fdf6e3;
@@ -49,9 +53,13 @@ code.defaultcode {
     white-space: pre;
 }
 
-
 blockquote {
     border-left:6px solid #ccc;
     margin: 1em 6px;
     padding: .2em 6px;
+}
+
+div.foot {
+    color: #a9a9a9;
+    line-height: 2;
 }

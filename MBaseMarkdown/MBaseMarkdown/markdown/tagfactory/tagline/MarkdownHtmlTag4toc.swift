@@ -114,11 +114,10 @@ class Tree{
             string += "<ul>";
             string += String(self.getLI());
         }
-        if nil == self.children {
-            return string;
-        }
-        for child in self.children!{
-            string += child.toString();
+        if nil != self.children {
+            for child in self.children!{
+                string += child.toString();
+            }
         }
         if level > 0 {
             string += "</ul>";
