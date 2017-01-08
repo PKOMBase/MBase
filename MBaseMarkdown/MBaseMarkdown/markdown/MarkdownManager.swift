@@ -208,7 +208,7 @@ open class MarkdownManager: NSObject {
      }
      
      static func getStructure(_ string: String) -> NSString{
-          var theString = NSString(string: string);
+          var sourceString = NSString(string: string);
           
           
           var rangeTemps: [NSRange];
@@ -216,7 +216,7 @@ open class MarkdownManager: NSObject {
           
           var ranges = [NSRange]();
           if ranges.count == 0 {
-               ranges.append(NSMakeRange(0, theString.length));
+               ranges.append(NSMakeRange(0, sourceString.length));
           }
           
           var resultMap = Dictionary<Int, String>();
@@ -224,7 +224,7 @@ open class MarkdownManager: NSObject {
           
           var regex: NSRegularExpression?;
           
-          // header
+          // 标题
           do{
                regex = try NSRegularExpression(pattern: "(^(<p>\\#{1,6} )((.)*</p>))", options: [.anchorsMatchLines])
           }catch{
@@ -232,9 +232,9 @@ open class MarkdownManager: NSObject {
                NSApplication.shared().presentError(nserror)
           }
           for range in ranges {
-               for textCheckingResult in regex!.matches(in: theString as String, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, theString.length)) {
+               for textCheckingResult in regex!.matches(in: sourceString as String, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, sourceString.length)) {
                     let stringRange = textCheckingResult.range;
-                    var stringTemp = theString.substring(with: stringRange);
+                    var stringTemp = sourceString.substring(with: stringRange);
                     //确定header类型
                     let keyNum = NSString(string: stringTemp).range(of: "(\\#{1,6} )", options: [.regularExpression], range: NSMakeRange(0,  stringTemp.characters.count)).length - 1;
                     var keyString = "";
@@ -256,72 +256,36 @@ open class MarkdownManager: NSObject {
                }
           }
           
-          // 普通序列
-          do{
-               regex = try NSRegularExpression(pattern: "((<p>\\* )(.)*</p>)", options: [.anchorsMatchLines])
-          }catch{
-               let nserror = error as NSError
-               NSApplication.shared().presentError(nserror)
-          }
-          for range in ranges {
-               for textCheckingResult in regex!.matches(in: theString as String, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, theString.length)){
-                    var stringRange = textCheckingResult.range;
-                    var stringTemp = theString.substring(with: stringRange);
-                    stringTemp = NSString(string: stringTemp).replacingOccurrences(of: "<p>\\* ", with: "<ul><li>", options: [.regularExpression], range: NSMakeRange(0,  stringTemp.characters.count));
-                    stringTemp = NSString(string: stringTemp).replacingOccurrences(of: "<br/>\\* ", with: "</li><li>", options: [.regularExpression],range: NSMakeRange(0,  stringTemp.characters.count));
-                    stringTemp = NSString(string: stringTemp).replacingOccurrences(of: "</p>", with: "</li></ul>", options: [.regularExpression],range: NSMakeRange(0,  stringTemp.characters.count));
-                    resultMap[stringRange.location] = stringTemp;
-                    rangeTemps.append(stringRange);
-                    // 腐蚀ranges
-                    ranges = MarkdownCommonUtils.corrodeString(ranges, corrodeRanges: rangeTemps);
+          //序列
+          for tagRegex in MarkdownRegexListEnum.values4Html {
+               if ranges.count == 0 {
+                    ranges.append(NSMakeRange(0, sourceString.length));
                }
-          }
-          
-          // 有序号序列
-          do{
-               regex = try NSRegularExpression(pattern: "((<p>\\d{1,2}. )(.)*</p>)", options: [.anchorsMatchLines])
-          }catch{
-               let nserror = error as NSError
-               NSApplication.shared().presentError(nserror)
-          }
-          for range in ranges {
-               for textCheckingResult in regex!.matches(in: theString as String, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, theString.length)){
-                    var stringRange = textCheckingResult.range;
-                    var stringTemp = theString.substring(with: stringRange);
-                    stringTemp = NSString(string: stringTemp).replacingOccurrences(of: "<p>\\d{1,2}. ", with: "<ol><li>", options: [.regularExpression], range: NSMakeRange(0,  stringTemp.characters.count));
-                    stringTemp = NSString(string: stringTemp).replacingOccurrences(of: "<br/>\\d{1,2}. ", with: "</li><li>", options: [.regularExpression],range: NSMakeRange(0,  stringTemp.characters.count));
-                    stringTemp = NSString(string: stringTemp).replacingOccurrences(of: "</p>", with: "</li></ol>", options: [.regularExpression],range: NSMakeRange(0,  stringTemp.characters.count));
-                    resultMap[stringRange.location] = stringTemp;
-                    rangeTemps.append(stringRange);
-                    // 腐蚀ranges
-                    ranges = MarkdownCommonUtils.corrodeString(ranges, corrodeRanges: rangeTemps);
+               var regex: NSRegularExpression?;
+               do{
+                    regex =  try NSRegularExpression(pattern: tagRegex.rawValue, options: [.anchorsMatchLines])
+               }catch{
+                    let nserror = error as NSError
+                    NSApplication.shared().presentError(nserror)
                }
-          }
-          
-          // 引用
-          do{
-               regex = try NSRegularExpression(pattern: "((<p>> )(.)*</p>)", options: [.anchorsMatchLines])
-          }catch{
-               let nserror = error as NSError
-               NSApplication.shared().presentError(nserror)
-          }
-          for range in ranges {
-               for textCheckingResult in regex!.matches(in: theString as String, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, theString.length)){
-                    var stringRange = textCheckingResult.range;
-                    var stringTemp = theString.substring(with: stringRange);
-                    stringTemp = NSString(string: stringTemp).replacingOccurrences(of: "<p>> ", with: "<blockquote>", options: [.regularExpression], range: NSMakeRange(0,  stringTemp.characters.count));
-                    stringTemp = NSString(string: stringTemp).replacingOccurrences(of: "<br/>> ", with: "<br/>", options: [.regularExpression],range: NSMakeRange(0,  stringTemp.characters.count));
-                    stringTemp = NSString(string: stringTemp).replacingOccurrences(of: "</p>", with: "</blockquote>", options: [.regularExpression],range: NSMakeRange(0,  stringTemp.characters.count));
-                    resultMap[stringRange.location] = stringTemp;
-                    rangeTemps.append(stringRange);
-                    // 腐蚀ranges
-                    ranges = MarkdownCommonUtils.corrodeString(ranges, corrodeRanges: rangeTemps);
+               rangeTemps = [NSRange]();
+               var i = 1;
+               for range in ranges {
+                    for textCheckingResult in regex!.matches(in: sourceString.substring(with: range), options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
+                         let stringRange = NSMakeRange(range.location+textCheckingResult.range.location, textCheckingResult.range.length);
+                         let markdownHtmlTag = MarkdownHtmlTagFactory.getMarkdownHtmlTag(tagRegex, range: stringRange, string: sourceString.substring(with: stringRange));
+                         resultMap[stringRange.location] = markdownHtmlTag.getHtml(i, object: [:])
+                         rangeTemps.append(stringRange);
+                         i += 1;
+                    }
                }
+               // 腐蚀ranges
+               ranges = MarkdownCommonUtils.corrodeString(ranges, corrodeRanges: rangeTemps);
           }
           
           // 剩余的，正常文本
           for range in ranges {
-               resultMap[range.location] = theString.substring(with: range);
+               resultMap[range.location] = sourceString.substring(with: range);
           }
           // 组合
           var result = "";

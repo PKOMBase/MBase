@@ -56,7 +56,9 @@ class MarkdownHtmlTag: NSObject {
         var str = self.string;
         for tag in self.markdownTag {
             str = str.replacingOccurrences(of: tag, with: "")
+//            str = (str as NSString).replacingOccurrences(of: tag, with: "", options: .regularExpression, range: NSMakeRange(0, (str as! NSString).length));
         }
+        
         return str;
     }
     

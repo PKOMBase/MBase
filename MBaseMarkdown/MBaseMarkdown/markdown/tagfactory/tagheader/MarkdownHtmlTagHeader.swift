@@ -11,7 +11,7 @@ import Cocoa
 class MarkdownHtmlTagHeader: MarkdownHtmlTag {
     
     var level = 0;
-
+    
     override func getParamObejct(index: Int) -> Dictionary<String, AnyObject>{
         return [self.getId() : self];
     }
@@ -25,7 +25,7 @@ class MarkdownHtmlTagHeader: MarkdownHtmlTag {
     }
     
     override func getHtml(_ index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{
-        super.tagValue["id"] = self.tagName + "id_" + String(index);
+        super.tagValue["id"] = self.tagName + "_" + String(index);
         return super.getHtml(index, object: object);
     }
     

@@ -85,7 +85,7 @@ class Tree{
 
     
     func getLI() -> String{
-        return "<li><a href=\"#h"+String(self.level)+"id_"+String(self.id)+"\">"+self.name.replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;")+"</a></li>";
+        return "<li><a href=\"#h"+String(self.level)+"_"+String(self.id)+"\">"+self.name.replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;")+"</a></li>";
     }
     
 //    func printTree(){

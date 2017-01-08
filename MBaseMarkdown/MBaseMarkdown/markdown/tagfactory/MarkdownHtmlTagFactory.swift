@@ -21,6 +21,19 @@ class MarkdownHtmlTagFactory: NSObject {
         }
     }
     
+    static func getMarkdownHtmlTag(_ tagRegex: MarkdownRegexListEnum, range: NSRange, string: String) -> MarkdownHtmlTagList{
+        switch tagRegex {
+        case .NORMAL:
+            return MarkdownHtmlTag4normal(range: range, string: string);
+        case .ORDER:
+            return MarkdownHtmlTag4order(range: range, string: string);
+        case .QUOTE:
+            return MarkdownHtmlTag4quote(range: range, string: string);
+        case .NORMAL4EDIT, .ORDER4EDIT, .QUOTE4EDIT:
+            return MarkdownHtmlTagList(range: range, string: string);
+        }
+    }
+    
     static func getMarkdownHtmlTag(_ tagRegex: MarkdownRegexHeaderEnum, range: NSRange, string: String, index: Int) -> MarkdownHtmlTagHeader{
         let level = (string as! NSString).range(of: "(\\#{1,6})", options: .regularExpression, range: NSMakeRange(0, (string as! NSString).length), locale: nil).length;
         switch level {

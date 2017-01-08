@@ -85,12 +85,14 @@ class MarkdownEditFactory: MarkdownHtmlTag {
     
     static func getMarkdownAttributes(_ tagRegex: MarkdownRegexListEnum) -> [String : AnyObject]{
         switch tagRegex {
-        case .NORMAL:
+        case .NORMAL4EDIT:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.codeFontColor];
-        case .ORDER:
+        case .ORDER4EDIT:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.codeFontColor];
-        case .QUOTE:
+        case .QUOTE4EDIT:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.codeFontColor];
+        case .NORMAL, .ORDER, .QUOTE:
+            return [:];
         }
     }
     

@@ -10,23 +10,20 @@ import Cocoa
 
 enum MarkdownRegexListEnum: String {
     
-    static let values = [NORMAL, ORDER, QUOTE];
+    static let values4Html = [NORMAL, ORDER, QUOTE];
     
-    case NORMAL = "(^\\* )"
+    static let values4Edit = [NORMAL4EDIT, ORDER4EDIT, QUOTE4EDIT];
     
-    case ORDER = "(^\\d{1,2}. )"
+    case NORMAL = "(^(<p>\\* )(.)*</p>)"
     
-    case QUOTE = "(^> )"
+    case ORDER = "(^(<p>\\d{1,2}. )(.)*</p>)"
     
-    var codeKey: String {
-        switch self {
-        case .NORMAL:
-            return "*"
-        case .ORDER:
-            return ""
-        case .QUOTE:
-            return ">"
-        }
-    }
+    case QUOTE = "(^(<p>> )(.)*</p>)"
+    
+    case NORMAL4EDIT = "(^\\* )"
+    
+    case ORDER4EDIT = "(^\\d{1,2}. )"
+    
+    case QUOTE4EDIT = "(^> )"
     
 }

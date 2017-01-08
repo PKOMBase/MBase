@@ -47,7 +47,7 @@ open class MarkdownEditManager: NSObject {
         }
         
         // 列表
-        for tagRegex in MarkdownRegexListEnum.values {
+        for tagRegex in MarkdownRegexListEnum.values4Edit {
             self.applyStylesToRange4List(tagRegex, textString: textString, ranges: ranges);
         }
         
@@ -85,7 +85,7 @@ open class MarkdownEditManager: NSObject {
         }
         
         // 列表
-        for tagRegex in MarkdownRegexListEnum.values {
+        for tagRegex in MarkdownRegexListEnum.values4Edit {
             self.applyStylesToRange4List(tagRegex, textString: textString, ranges: ranges);
         }
         

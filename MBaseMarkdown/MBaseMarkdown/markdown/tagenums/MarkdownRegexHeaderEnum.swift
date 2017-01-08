@@ -10,10 +10,9 @@ import Cocoa
 
 enum MarkdownRegexHeaderEnum: String {
     
-    static let values4Edit = [H1,H2,H3,H4,H5,H6];
-
-//    static let values = [H6,H5,H4,H3,H2,H1];
     static let values4Html = [H];
+    
+    static let values4Edit = [H1,H2,H3,H4,H5,H6];
     
     case H = "(^(\\#{1,6} )((.)*))"
     
