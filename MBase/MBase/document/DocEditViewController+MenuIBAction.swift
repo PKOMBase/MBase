@@ -12,7 +12,6 @@ import MBaseMarkdown
 extension DocEditViewController: NSTextViewDelegate {
 
     func textView(_ view: NSTextView, menu: NSMenu, for event: NSEvent, at charIndex: Int) -> NSMenu? {
-        print("menu:"+menu.title)
         for menuItem in menu.items {
             if "字体" == menuItem.title{
                 menuItem.isHidden = true;

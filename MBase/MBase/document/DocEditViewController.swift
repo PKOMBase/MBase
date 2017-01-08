@@ -107,10 +107,7 @@ class DocEditViewController: NSViewController {
     }
     
     func setScroll() {
-//        print("+++++++"+String(scrollLocation)+"==="+String(docMainData.verticalScrol!));
         let scrollLocation = self.docEditView.enclosingScrollView?.contentView.bounds.origin.y;
-        
-        print("+++++++"+String(describing: scrollLocation)+"==="+String(describing: docMainData.verticalScrol!)+"==="+String(describing: self.docEditView.enclosingScrollView?.documentView?.frame.height));
         
         self.docEditScrollView.contentView.scroll(NSMakePoint(0, CGFloat(1000)));
         

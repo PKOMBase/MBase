@@ -10,10 +10,15 @@ import Cocoa
 
 enum MarkdownRegexCommonEnum: String {
 
-    static let values = [URL];
+    static let values = [URL,FOOT];
     
     case URL = "(^\\[\\d{1,2}\\]:(.)*$)"
     
+    case FOOT = "(\\[\\^(.)*\\]:(.)*)"
+    
     //虚拟，不加入values
-    case HEADER = ""
+    
+    case HEADER = "HEADER"
+    
+  
 }

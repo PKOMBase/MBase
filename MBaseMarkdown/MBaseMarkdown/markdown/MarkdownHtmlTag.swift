@@ -48,7 +48,7 @@ class MarkdownHtmlTag: NSObject {
         self.index = index;
     }
     
-    func getParamObejct() -> Dictionary<String, AnyObject>{
+    func getParamObejct(index: Int) -> Dictionary<String, AnyObject>{
         return [:];
     }
     
@@ -61,7 +61,7 @@ class MarkdownHtmlTag: NSObject {
     }
     
     func getId() -> String{        
-        return self.tagName + "id_" + String(self.index);
+        return self.tagName + "_" + String(self.index);
     }
     
     func getHtml(_ index: Int, object: Dictionary<MarkdownRegexCommonEnum,[Dictionary<String, AnyObject>]>) -> String!{

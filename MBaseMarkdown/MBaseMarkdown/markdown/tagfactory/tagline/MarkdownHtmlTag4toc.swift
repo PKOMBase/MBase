@@ -10,8 +10,6 @@ import Cocoa
 
 class MarkdownHtmlTag4toc: MarkdownHtmlTagLine {
     
-    
-    
     override init(range: NSRange, string: String){
         super.init(range: range, string: string);
         super.tagName = "ul";
@@ -90,25 +88,25 @@ class Tree{
         return "<li><a href=\"#h"+String(self.level)+"id_"+String(self.id)+"\">"+self.name.replacingOccurrences(of: "<", with: "&lt;").replacingOccurrences(of: ">", with: "&gt;")+"</a></li>";
     }
     
-    func printTree(){
-        var header = "";
-        for i in 0...level {
-            header = header+" ";
-        }
-        if level > 0 {
-            print("<ul>");
-            print(header+String(self.getLI()));
-        }
-        if nil == self.children {
-            return;
-        }
-        for child in self.children!{
-            child.printTree();
-        }
-        if level > 0 {
-            print("</ul>");
-        }
-    }
+//    func printTree(){
+//        var header = "";
+//        for i in 0...level {
+//            header = header+" ";
+//        }
+//        if level > 0 {
+//            print("<ul>");
+//            print(header+String(self.getLI()));
+//        }
+//        if nil == self.children {
+//            return;
+//        }
+//        for child in self.children!{
+//            child.printTree();
+//        }
+//        if level > 0 {
+//            print("</ul>");
+//        }
+//    }
     
     func toString() -> String{
         var string = "";

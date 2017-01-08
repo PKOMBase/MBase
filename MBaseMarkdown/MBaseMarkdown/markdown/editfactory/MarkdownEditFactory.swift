@@ -15,6 +15,8 @@ class MarkdownEditFactory: MarkdownHtmlTag {
         switch tagRegex {
         case .URL:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.linkFontColor];
+        case .FOOT:
+            return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.linkFontColor];
         case .HEADER:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.linkFontColor];
         }
@@ -54,6 +56,8 @@ class MarkdownEditFactory: MarkdownHtmlTag {
         case .IMG1:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.linkFontColor];
         case .IMG2:
+            return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.linkFontColor];
+        case .FOOTREL:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.linkFontColor];
         case .HR:
             return [NSFontAttributeName : NSFont.boldSystemFont(ofSize: MarkdownConstsManager.defaultFontSize),NSForegroundColorAttributeName : MarkdownConstsManager.codeFontColor];

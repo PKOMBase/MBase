@@ -10,7 +10,7 @@ import Cocoa
 
 enum MarkdownRegexLineEnum: String {
     
-    static let values = [STRONG,EM,U,DEL,IMG1,IMG2,A1,A2,A3,A4,HR,TOC];
+    static let values = [STRONG,EM,U,DEL,IMG1,IMG2,A1,A2,A3,A4,FOOTREL,HR,TOC];
     
     case HR = "((- - -)|(\\*\\*\\*\\*\\*)|(\\*\\*\\*))"
     
@@ -26,6 +26,8 @@ enum MarkdownRegexLineEnum: String {
     
     case IMG1 = "(\\!\\[(.)*\\]\\((.)*\\))"
     case IMG2 = "(\\!\\[(.)*\\]\\[\\d{1,2}\\])"
+    
+    case FOOTREL = "(\\[\\^(.)*\\])"
     
     case TOC = "(\\[TOC\\])"
     

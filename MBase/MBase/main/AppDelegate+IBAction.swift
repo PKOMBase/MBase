@@ -13,11 +13,11 @@ extension AppDelegate: NSMenuDelegate {
 
     
     func menuWillOpen(){
-        print("====")
+        print("==menu==")
     }
     
     func menu(_ menu: NSMenu, update item: NSMenuItem, at index: Int, shouldCancel: Bool) -> Bool{
-        print("====1===="+menu.title)
+        print("====menu===="+menu.title)
         return true
     }
     

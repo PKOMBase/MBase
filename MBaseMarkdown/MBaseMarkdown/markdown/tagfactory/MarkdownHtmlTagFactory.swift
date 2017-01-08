@@ -14,6 +14,8 @@ class MarkdownHtmlTagFactory: NSObject {
         switch tagRegex {
         case .URL:
             return MarkdownHtmlTag4url(range: range, string: string);
+        case .FOOT:
+            return MarkdownHtmlTag4foot(range: range, string: string);
         case .HEADER:
             return MarkdownHtmlTagCommon(range: range, string: string);
         }
@@ -53,6 +55,8 @@ class MarkdownHtmlTagFactory: NSObject {
             return MarkdownHtmlTag4img1(range: range, string: string);
         case .IMG2:
             return MarkdownHtmlTag4img2(range: range, string: string);
+        case .FOOTREL:
+            return MarkdownHtmlTag4footrel(range: range, string: string);
         case .HR:
             return MarkdownHtmlTag4hr(range: range, string: string);
         case .STRONG:

@@ -20,7 +20,7 @@ class MarkdownHtmlTag4url: MarkdownHtmlTagCommon {
         return "";
     }
     
-    override func getParamObejct() -> Dictionary<String, AnyObject>{
+    override func getParamObejct(index: Int) -> Dictionary<String, AnyObject>{
         let stringArr = string.components(separatedBy: "]:");
         let numString = stringArr[0].replacingOccurrences(of: "[", with: "");
         let hrefString = stringArr[1];

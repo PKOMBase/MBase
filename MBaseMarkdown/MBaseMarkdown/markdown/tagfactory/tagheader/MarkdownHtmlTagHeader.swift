@@ -12,7 +12,7 @@ class MarkdownHtmlTagHeader: MarkdownHtmlTag {
     
     var level = 0;
 
-    override func getParamObejct() -> Dictionary<String, AnyObject>{
+    override func getParamObejct(index: Int) -> Dictionary<String, AnyObject>{
         return [self.getId() : self];
     }
     
