@@ -35,17 +35,17 @@ class MarkdownHtmlTag4footrel: MarkdownHtmlTagLine {
             return super.getHtml(index, object: object);
         }
         self.idString = string.replacingOccurrences(of: "[^", with: "").replacingOccurrences(of: "]", with: "");
-        var myIndex = index;
+        // 根据index变更objectDic中foot排序
         if object[MarkdownRegexCommonEnum.FOOT] != nil{
             for footNote in object[MarkdownRegexCommonEnum.FOOT]! {
                 for idString in footNote.keys{
                     if idString == self.getId(){
-                        myIndex = (footNote[idString] as! MarkdownHtmlTagCommon).index;
+                        (footNote[idString] as! MarkdownHtmlTagCommon).index = index;
                     }
                 }
             }
         }
-        super.string = String(myIndex);
+        super.string = String(index);
         super.tagValue["id"] = self.getId()+"_rel";
         return super.getHtml(index, object: object);
     }

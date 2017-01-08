@@ -175,6 +175,12 @@ open class MarkdownManager: NSObject {
           
           // 注脚
           if objectDic[MarkdownRegexCommonEnum.FOOT] != nil{
+               //现根据index排序
+               objectDic[MarkdownRegexCommonEnum.FOOT]!.sort(by: { (dic1: Dictionary<String, AnyObject>, dic2: Dictionary<String, AnyObject>) -> Bool in
+                    let tag1 = (dic1[dic1.keys.first!] as! MarkdownHtmlTagCommon);
+                    let tag2 = (dic2[dic2.keys.first!] as! MarkdownHtmlTagCommon);
+                    return tag1.index < tag2.index;
+               })
                var foot = "<div class=\"foot\"><hr/><ol>";
                for footNote in objectDic[MarkdownRegexCommonEnum.FOOT]! {
                     for idString in footNote.keys{
