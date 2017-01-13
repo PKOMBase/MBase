@@ -13,7 +13,7 @@ class MarkdownHtmlTag4strong: MarkdownHtmlTagLine {
     override init(range: NSRange, string: String){
         super.init(range: range, string: string);
         super.tagName = "strong";
-        super.markdownTag = ["**"];
+        super.markdownTag = ["**","__"];
     }
     
 }

@@ -107,10 +107,9 @@ class DocEditViewController: NSViewController {
     }
     
     func setScroll() {
-        let scrollLocation = self.docEditView.enclosingScrollView?.contentView.bounds.origin.y;
         
         self.docEditScrollView.contentView.scroll(NSMakePoint(0, CGFloat(1000)));
-        
+
         self.docEditScrollView.reflectScrolledClipView(self.docEditScrollView.contentView);
         
     }

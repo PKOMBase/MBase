@@ -292,6 +292,12 @@ open class MarkdownManager: NSObject {
           for key in resultMap.keys.sorted(by: <) {
                result += resultMap[key]!;
           }
+          
+          // 连接序列
+          result = NSString(string: result).replacingOccurrences(of: "</ol>\n<ol>", with: "\n");
+          result = NSString(string: result).replacingOccurrences(of: "</ul>\n<ul>", with: "\n");
+          result = NSString(string: result).replacingOccurrences(of: "</blockquote>\n<blockquote>", with: "\n");
+          
           return result as NSString;
      }
      

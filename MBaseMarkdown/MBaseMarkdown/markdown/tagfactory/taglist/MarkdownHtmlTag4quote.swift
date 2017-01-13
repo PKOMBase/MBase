@@ -15,9 +15,9 @@ class MarkdownHtmlTag4quote: MarkdownHtmlTagList {
             return super.getHtml(index, object: object);
         }
         var result = self.string;
-        result = NSString(string: result).replacingOccurrences(of: "<p>> ", with: "<blockquote>", options: [.regularExpression], range: NSMakeRange(0,  result.characters.count));
-        result = NSString(string: result).replacingOccurrences(of: "<br/>> ", with: "<br/>", options: [.regularExpression],range: NSMakeRange(0,  result.characters.count));
-        result = NSString(string: result).replacingOccurrences(of: "</p>", with: "</blockquote>", options: [.regularExpression],range: NSMakeRange(0,  result.characters.count));
+        result = NSString(string: result).replacingOccurrences(of: "<p>> ", with: "<blockquote><p>", options: [.regularExpression], range: NSMakeRange(0,  result.characters.count));
+        result = NSString(string: result).replacingOccurrences(of: "</p>", with: "</p></blockquote>", options: [.regularExpression],range: NSMakeRange(0,  result.characters.count));
+        result = NSString(string: result).replacingOccurrences(of: "<br/>> ", with: "<p></p>", options: [.regularExpression],range: NSMakeRange(0,  result.characters.count));
         return result;
     }
     
