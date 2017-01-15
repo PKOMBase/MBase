@@ -160,7 +160,7 @@
                             </menuItem>
                             <menuItem title="Paste" keyEquivalent="v" id="WeT-3V-zwk">
                                 <connections>
-                                    <action selector="pasteAsPlainText:" target="-1" id="cEh-KX-wJQ"/>
+                                    <action selector="paste:" target="-1" id="X5b-iu-qch"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Delete" id="pa3-QI-u2k">

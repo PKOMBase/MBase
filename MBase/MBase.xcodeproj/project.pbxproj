@@ -69,12 +69,6 @@
 		A808C0A61D70246D00F568EA /* DocMainViewController+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0A21D70246D00F568EA /* DocMainViewController+Delegate.swift */; };
 		A808C0A91D70248600F568EA /* DocEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0A71D70248600F568EA /* DocEditViewController.xib */; };
 		A808C0AA1D70248600F568EA /* DocMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0A81D70248600F568EA /* DocMainViewController.xib */; };
-		A808C0B11D7024B600F568EA /* DocumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0AB1D7024B600F568EA /* DocumentViewController.xib */; };
-		A808C0B21D7024B600F568EA /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0AC1D7024B600F568EA /* DocumentViewController.swift */; };
-		A808C0B31D7024B600F568EA /* TreeBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0AD1D7024B600F568EA /* TreeBack.swift */; };
-		A808C0B41D7024B600F568EA /* ScaryBugData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0AE1D7024B600F568EA /* ScaryBugData.swift */; };
-		A808C0B51D7024B600F568EA /* DocumentViewController+IBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0AF1D7024B600F568EA /* DocumentViewController+IBAction.swift */; };
-		A808C0B61D7024B600F568EA /* ScaryBugDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = A808C0B01D7024B600F568EA /* ScaryBugDoc.swift */; };
 		A808C0B91D7024C900F568EA /* MBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A808C0B71D7024C900F568EA /* MBase.xcdatamodeld */; };
 		A808C0BF1D70251100F568EA /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = A808C0BB1D70251100F568EA /* EDStarRating.m */; };
 		A808C0C01D70251100F568EA /* NSImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = A808C0BE1D70251100F568EA /* NSImage+Extras.m */; };
@@ -84,6 +78,7 @@
 		A827E83C1E1DF4FD00919A27 /* MBaseMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */; };
 		A827E83D1E1DF50500919A27 /* MBaseMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A828C7D51D7991F900AA3043 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C7D41D7991F900AA3043 /* DateUtils.swift */; };
+		A8478EC01E2B371800790DF2 /* DocEditTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8478EBF1E2B371800790DF2 /* DocEditTextView.swift */; };
 		A86220B41D406FA000BAC828 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86220B21D406FA000BAC828 /* MainMenu.xib */; };
 		A871B4EB1D8A696E003D598C /* ExportUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4EA1D8A696E003D598C /* ExportUtils.swift */; };
 		A871B4EE1D8AE4E2003D598C /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4ED1D8AE4E2003D598C /* AlertUtils.swift */; };
@@ -167,12 +162,6 @@
 		A808C0A21D70246D00F568EA /* DocMainViewController+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocMainViewController+Delegate.swift"; path = "document/DocMainViewController+Delegate.swift"; sourceTree = "<group>"; };
 		A808C0A71D70248600F568EA /* DocEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocEditViewController.xib; path = document/DocEditViewController.xib; sourceTree = "<group>"; };
 		A808C0A81D70248600F568EA /* DocMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocMainViewController.xib; path = document/DocMainViewController.xib; sourceTree = "<group>"; };
-		A808C0AB1D7024B600F568EA /* DocumentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocumentViewController.xib; path = demo/DocumentViewController.xib; sourceTree = "<group>"; };
-		A808C0AC1D7024B600F568EA /* DocumentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentViewController.swift; path = demo/DocumentViewController.swift; sourceTree = "<group>"; };
-		A808C0AD1D7024B600F568EA /* TreeBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TreeBack.swift; path = demo/TreeBack.swift; sourceTree = "<group>"; };
-		A808C0AE1D7024B600F568EA /* ScaryBugData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScaryBugData.swift; path = demo/ScaryBugData.swift; sourceTree = "<group>"; };
-		A808C0AF1D7024B600F568EA /* DocumentViewController+IBAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocumentViewController+IBAction.swift"; path = "demo/DocumentViewController+IBAction.swift"; sourceTree = "<group>"; };
-		A808C0B01D7024B600F568EA /* ScaryBugDoc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScaryBugDoc.swift; path = demo/ScaryBugDoc.swift; sourceTree = "<group>"; };
 		A808C0B81D7024C900F568EA /* MBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MBase.xcdatamodel; sourceTree = "<group>"; };
 		A808C0BA1D70251100F568EA /* MBase-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBase-Bridging-Header.h"; path = "supporting/MBase-Bridging-Header.h"; sourceTree = "<group>"; };
 		A808C0BB1D70251100F568EA /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDStarRating.m; path = supporting/EDStarRating.m; sourceTree = "<group>"; };
@@ -185,6 +174,7 @@
 		A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBaseMarkdown.framework; path = "../../../Library/Developer/Xcode/DerivedData/MBaseWorkSpace-caynkmstwhqnspdfkdwytilftsax/Build/Products/Debug/MBaseMarkdown.framework"; sourceTree = "<group>"; };
 		A828C7D41D7991F900AA3043 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtils.swift; path = system/manager/DateUtils.swift; sourceTree = "<group>"; };
 		A82AD7641D4453E100F457B6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		A8478EBF1E2B371800790DF2 /* DocEditTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocEditTextView.swift; sourceTree = "<group>"; };
 		A86220AB1D406FA000BAC828 /* MBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86220B31D406FA000BAC828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A86220B51D406FA000BAC828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -214,19 +204,6 @@
 				A808C0961D70240F00F568EA /* UserInfo+CoreDataProperties.swift */,
 			);
 			name = model;
-			sourceTree = "<group>";
-		};
-		A82AD7AA1D44833000F457B6 /* demo */ = {
-			isa = PBXGroup;
-			children = (
-				A808C0AB1D7024B600F568EA /* DocumentViewController.xib */,
-				A808C0AC1D7024B600F568EA /* DocumentViewController.swift */,
-				A808C0AD1D7024B600F568EA /* TreeBack.swift */,
-				A808C0AE1D7024B600F568EA /* ScaryBugData.swift */,
-				A808C0AF1D7024B600F568EA /* DocumentViewController+IBAction.swift */,
-				A808C0B01D7024B600F568EA /* ScaryBugDoc.swift */,
-			);
-			name = demo;
 			sourceTree = "<group>";
 		};
 		A83630591D5C1FB200323812 /* resource */ = {
@@ -274,7 +251,6 @@
 			children = (
 				A83630591D5C1FB200323812 /* resource */,
 				A89099741D59B79B00E25D8E /* system */,
-				A82AD7AA1D44833000F457B6 /* demo */,
 				A8F60CFC1D520912009768B6 /* document */,
 				A8CB64E31D41C06800E69BBE /* split */,
 				A890F6FB1D40D3A3003FF760 /* main */,
@@ -447,6 +423,7 @@
 		A8F60CFE1D520A66009768B6 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				A8478EBF1E2B371800790DF2 /* DocEditTextView.swift */,
 				A808C0A71D70248600F568EA /* DocEditViewController.xib */,
 				A808C0A81D70248600F568EA /* DocMainViewController.xib */,
 			);
@@ -576,7 +553,6 @@
 				A808C09E1D70244300F568EA /* MainSplitViewController.xib in Resources */,
 				A808C02E1D70217100F568EA /* lang-mumps.js in Resources */,
 				A808C0231D70217100F568EA /* lang-vhdl.js in Resources */,
-				A808C0B11D7024B600F568EA /* DocumentViewController.xib in Resources */,
 				A808C02C1D70217100F568EA /* lang-pascal.js in Resources */,
 				A808C07B1D70230D00F568EA /* DocTreeViewController.xib in Resources */,
 				A808C03A1D70217100F568EA /* lang-apollo.js in Resources */,
@@ -616,18 +592,17 @@
 			files = (
 				A808C0851D70231900F568EA /* DocTreeViewController+Delegate.swift in Sources */,
 				A808C0A51D70246D00F568EA /* DocEditViewController.swift in Sources */,
-				A808C0B61D7024B600F568EA /* ScaryBugDoc.swift in Sources */,
 				A808C0BF1D70251100F568EA /* EDStarRating.m in Sources */,
 				A808C0881D70231900F568EA /* DocTreeViewController+MenuIBAction.swift in Sources */,
 				A808C0A31D70246D00F568EA /* DocMainViewController.swift in Sources */,
 				A808C08E1D70235F00F568EA /* AppDelegate+IBAction.swift in Sources */,
 				A808C09C1D70243C00F568EA /* MainSplitViewController.swift in Sources */,
 				A808C0861D70231900F568EA /* DocTreeInfoViewController+Delegate.swift in Sources */,
-				A808C0B31D7024B600F568EA /* TreeBack.swift in Sources */,
 				A808C0941D7023F900F568EA /* DocMain+CoreDataProperties.swift in Sources */,
 				A80F86781DF7FD6E00DC4217 /* ConstsManager.swift in Sources */,
 				A808C0A41D70246D00F568EA /* DocEditViewController+Delegate.swift in Sources */,
 				A871B4EE1D8AE4E2003D598C /* AlertUtils.swift in Sources */,
+				A8478EC01E2B371800790DF2 /* DocEditTextView.swift in Sources */,
 				A808C0981D70240F00F568EA /* UserInfo+CoreDataProperties.swift in Sources */,
 				A808C0781D7022FF00F568EA /* DocTree+CoreDataProperties.swift in Sources */,
 				A808C0871D70231900F568EA /* DocTreeViewController.swift in Sources */,
@@ -636,14 +611,11 @@
 				A81CC89A1D754AAF0000401B /* DocEditViewController+MenuIBAction.swift in Sources */,
 				A808C0931D7023F900F568EA /* DocMain.swift in Sources */,
 				A808C0C01D70251100F568EA /* NSImage+Extras.m in Sources */,
-				A808C0B51D7024B600F568EA /* DocumentViewController+IBAction.swift in Sources */,
 				A808C0841D70231900F568EA /* DocTreeViewController+DataSource.swift in Sources */,
 				A808C0B91D7024C900F568EA /* MBase.xcdatamodeld in Sources */,
 				A808C0761D7022FF00F568EA /* DocTree.swift in Sources */,
-				A808C0B21D7024B600F568EA /* DocumentViewController.swift in Sources */,
 				A808C09A1D70241900F568EA /* MainWindowController.swift in Sources */,
 				A808C08A1D70231900F568EA /* DocTreeInfoViewController+IBAction.swift in Sources */,
-				A808C0B41D7024B600F568EA /* ScaryBugData.swift in Sources */,
 				A808C0A61D70246D00F568EA /* DocMainViewController+Delegate.swift in Sources */,
 				A8FD0C371D97887D00D969B0 /* DocSplitViewController.swift in Sources */,
 				A808C0771D7022FF00F568EA /* DocTreeInfoData.swift in Sources */,

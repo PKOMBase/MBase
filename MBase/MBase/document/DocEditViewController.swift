@@ -13,7 +13,7 @@ import MBaseMarkdown
 
 class DocEditViewController: NSViewController {
     
-    @IBOutlet var docEditView: NSTextView!
+    @IBOutlet var docEditView: DocEditTextView!
     
     @IBOutlet weak var docEditScrollView: NSScrollView!
     
@@ -70,7 +70,7 @@ class DocEditViewController: NSViewController {
         self.docEditView.textContainer!.widthTracksTextView = true;
 
         // 3.2. 剪切版
-        self.docEditView.register(forDraggedTypes: [NSPasteboardTypeString, NSPasteboardTypePNG]);
+        self.docEditView.register(forDraggedTypes: [NSPasteboardTypeString, NSPasteboardTypeTIFF, NSPasteboardTypePNG]);
         // 3.3. 状态＋颜色
         self.docEditView.backgroundColor = MarkdownConstsManager.docEditDisableBgColor;
         self.docEditView.font = NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize);
@@ -86,7 +86,8 @@ class DocEditViewController: NSViewController {
         self.docEditView.isAutomaticSpellingCorrectionEnabled = false;
         self.docEditView.smartInsertDeleteEnabled = true;
         self.docEditView.allowsUndo = true;
-
+        self.docEditView.docEditViewController = self;
+        
         //给滚动条添加通知        
         NotificationCenter.default.addObserver(self, selector: #selector(changeScroll), name: NSNotification.Name.NSViewBoundsDidChange, object: nil)
         
