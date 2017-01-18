@@ -13,6 +13,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     var mainWindowController : MainWindowController!;
     
+    @IBOutlet weak var pasteMenu: NSMenuItem!
+    
     @IBOutlet weak var editAndMainVIewMenu: NSMenuItem!
     
     @IBOutlet weak var mainVIewMenu: NSMenuItem!
@@ -61,6 +63,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         editAndMainVIewMenu.state = 1;
         mainVIewMenu.state = 0;
         editVIewMenu.state = 0;
+        
+        //判断是否可以粘贴（根据剪切板中是否有内容）
+//        NotificationCenter.default.addObserver(self, selector: #selector(changeScroll), name: NSNotification., object: nil);
+//        Notification.Name.change
+//        let pasteboard = NSPasteboard.general();
+//        if pasteboard.changeCount <= 0 {
+//            self.pasteMenu.isEnabled = false;
+//        }else{
+//            self.pasteMenu.isEnabled = true;
+//        }
     }
     
     

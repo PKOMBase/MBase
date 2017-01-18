@@ -78,7 +78,6 @@
 		A827E83C1E1DF4FD00919A27 /* MBaseMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */; };
 		A827E83D1E1DF50500919A27 /* MBaseMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A828C7D51D7991F900AA3043 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C7D41D7991F900AA3043 /* DateUtils.swift */; };
-		A8478EC01E2B371800790DF2 /* DocEditTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8478EBF1E2B371800790DF2 /* DocEditTextView.swift */; };
 		A86220B41D406FA000BAC828 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86220B21D406FA000BAC828 /* MainMenu.xib */; };
 		A871B4EB1D8A696E003D598C /* ExportUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4EA1D8A696E003D598C /* ExportUtils.swift */; };
 		A871B4EE1D8AE4E2003D598C /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4ED1D8AE4E2003D598C /* AlertUtils.swift */; };
@@ -174,7 +173,6 @@
 		A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBaseMarkdown.framework; path = "../../../Library/Developer/Xcode/DerivedData/MBaseWorkSpace-caynkmstwhqnspdfkdwytilftsax/Build/Products/Debug/MBaseMarkdown.framework"; sourceTree = "<group>"; };
 		A828C7D41D7991F900AA3043 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtils.swift; path = system/manager/DateUtils.swift; sourceTree = "<group>"; };
 		A82AD7641D4453E100F457B6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
-		A8478EBF1E2B371800790DF2 /* DocEditTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocEditTextView.swift; sourceTree = "<group>"; };
 		A86220AB1D406FA000BAC828 /* MBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86220B31D406FA000BAC828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A86220B51D406FA000BAC828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -423,7 +421,6 @@
 		A8F60CFE1D520A66009768B6 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				A8478EBF1E2B371800790DF2 /* DocEditTextView.swift */,
 				A808C0A71D70248600F568EA /* DocEditViewController.xib */,
 				A808C0A81D70248600F568EA /* DocMainViewController.xib */,
 			);
@@ -602,7 +599,6 @@
 				A80F86781DF7FD6E00DC4217 /* ConstsManager.swift in Sources */,
 				A808C0A41D70246D00F568EA /* DocEditViewController+Delegate.swift in Sources */,
 				A871B4EE1D8AE4E2003D598C /* AlertUtils.swift in Sources */,
-				A8478EC01E2B371800790DF2 /* DocEditTextView.swift in Sources */,
 				A808C0981D70240F00F568EA /* UserInfo+CoreDataProperties.swift in Sources */,
 				A808C0781D7022FF00F568EA /* DocTree+CoreDataProperties.swift in Sources */,
 				A808C0871D70231900F568EA /* DocTreeViewController.swift in Sources */,

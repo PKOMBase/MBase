@@ -19,6 +19,7 @@
                 <outlet property="editAndMainVIewMenu" destination="swI-uH-JfC" id="lU1-fo-UEh"/>
                 <outlet property="editVIewMenu" destination="Re2-JQ-Nkg" id="ZEn-nT-x7i"/>
                 <outlet property="mainVIewMenu" destination="chK-bk-B0D" id="3Jv-ni-Gwl"/>
+                <outlet property="pasteMenu" destination="WeT-3V-zwk" id="bpY-sw-dpa"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -160,7 +161,7 @@
                             </menuItem>
                             <menuItem title="Paste" keyEquivalent="v" id="WeT-3V-zwk">
                                 <connections>
-                                    <action selector="paste:" target="-1" id="X5b-iu-qch"/>
+                                    <action selector="paste:" target="Voe-Tx-rLC" id="ENe-pP-4tb"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Delete" id="pa3-QI-u2k">

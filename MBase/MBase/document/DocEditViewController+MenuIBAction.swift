@@ -65,14 +65,13 @@ extension DocEditViewController: NSTextViewDelegate {
         pasteboard.setString(html as! String, forType: NSPasteboardTypeString);
     }
     
-    func pasteAction() {
+    func pasteAction(_ menuItem: NSMenuItem) {
         let pasteboard = NSPasteboard.general();
         if pasteboard.changeCount <= 0 {
             return;
         }
         let normalAttributes = [NSParagraphStyleAttributeName : MarkdownConstsManager.getDefaultParagraphStyle(), NSFontAttributeName : NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize), NSForegroundColorAttributeName : MarkdownConstsManager.defaultFontColor];
         let mutableAttributedString = NSMutableAttributedString();
-//        var resultRange: NSRange? = nil;
         if pasteboard.canReadItem(withDataConformingToTypes: [NSPasteboardTypeTIFF, NSPasteboardTypePNG]){
             print("==NSPasteboardTypePNG=")
             let data = pasteboard.data(forType: NSPasteboardTypeTIFF);
@@ -99,7 +98,7 @@ extension DocEditViewController: NSTextViewDelegate {
             path = path+"/"+UUID().uuidString+".png";
             print("==image path=="+path);
             manager.createFile(atPath: Bundle.main.resourcePath!+path, contents: data!, attributes: [:]);
-            mutableAttributedString.append(NSAttributedString(string: "![]("+path+")\n", attributes: normalAttributes));
+            mutableAttributedString.append(NSAttributedString(string: "\n![]("+path+")\n", attributes: normalAttributes));
             
             //展示图片
             let image = NSImage(data: data!);
@@ -127,6 +126,8 @@ extension DocEditViewController: NSTextViewDelegate {
         self.docEditView.textStorage!.replaceCharacters(in: pasteObject.oldRange!, with: pasteObject.newMutableAttributedString!);
         //光标跳转
         self.docEditView.setSelectedRange(NSMakeRange(pasteObject.oldRange!.location+pasteObject.newMutableAttributedString!.length, 0));
+        // 刷新样式
+        self.changeTextFont();
         
         // 需要undo的pasteObject
         let pasteObjectUndo = PasteObject(newRange: pasteObject.oldRange!, newMutableAttributedString: pasteObject.oldMutableAttributedString!, oldRange: pasteObject.newRange!, oldMutableAttributedString: pasteObject.newMutableAttributedString!);
@@ -139,11 +140,12 @@ extension DocEditViewController: NSTextViewDelegate {
         self.docEditView.textStorage!.deleteCharacters(in: pasteObject.oldRange!);
         //光标跳转
         self.docEditView.setSelectedRange(NSMakeRange(pasteObject.oldRange!.location, 0));
+        // 刷新样式
+        self.changeTextFont();
         
         // 需要redo的pasteObject
         let pasteObjectUndo = PasteObject(newRange: pasteObject.oldRange!, newMutableAttributedString: pasteObject.oldMutableAttributedString!, oldRange: pasteObject.newRange!, oldMutableAttributedString: pasteObject.newMutableAttributedString!);
         self.registerPasteRedo(paste: pasteObjectUndo);
-
     }
     
     func registerPasteUndo(paste: PasteObject){

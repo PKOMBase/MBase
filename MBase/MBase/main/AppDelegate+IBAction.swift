@@ -10,20 +10,17 @@ import Cocoa
 
 // MARK: - IBActions
 extension AppDelegate: NSMenuDelegate {
-
     
-    func menuWillOpen(){
-        print("==menu==")
+    @IBAction func paste(_ sender: Any) {
+        let menu = sender as! NSMenuItem;
+        if self.mainWindowController.mainSplitViewController!.docSplitViewController.docEditViewController.becomeFirstResponder(){
+            self.mainWindowController.mainSplitViewController!.docSplitViewController.docEditViewController.pasteAction(menu);
+        }
     }
     
-    func menu(_ menu: NSMenu, update item: NSMenuItem, at index: Int, shouldCancel: Bool) -> Bool{
-        print("====menu===="+menu.title)
-        return true
-    }
-    
-    @IBAction func fileNew(_ sender: AnyObject) {
-        if (!mainWindowController.window!.isVisible) {
-            mainWindowController.showWindow(mainWindowController?.window);
+    @IBAction func fileNew(_ sender: Any) {
+        if (!self.mainWindowController.window!.isVisible) {
+            self.mainWindowController.showWindow(mainWindowController?.window);
         }
     }
     
@@ -68,7 +65,7 @@ extension AppDelegate: NSMenuDelegate {
         editVIewMenu.state = 1;
     }
     
-    @IBAction func exportHtml(_ sender: AnyObject) {
+    @IBAction func exportHtml(_ sender: Any) {
         if self.mainWindowController.mainSplitViewController.docTreeViewController.selectedTree() == nil{
             AlertUtils.alert("无法操作", content: "请选择需要导出的文件或文件夹", buttons: ["确定"], buttonEvents: [{}])
             return;
@@ -76,7 +73,7 @@ extension AppDelegate: NSMenuDelegate {
         self.export("html");
     }
     
-    @IBAction func exportText(_ sender: AnyObject) {
+    @IBAction func exportText(_ sender: Any) {
         if self.mainWindowController.mainSplitViewController.docTreeViewController.selectedTree() == nil{
             AlertUtils.alert("无法操作", content: "请选择需要导出的文件或文件夹", buttons: ["确定"], buttonEvents: [{}])
             return;

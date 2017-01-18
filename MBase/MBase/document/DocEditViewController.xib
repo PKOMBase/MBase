@@ -25,7 +25,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView importsGraphics="NO" selectionGranularity="word" findStyle="panel" allowsUndo="YES" allowsImageEditing="YES" allowsNonContiguousLayout="YES" id="ntM-Em-Fgy" userLabel="docEditView" customClass="DocEditTextView" customModule="MBase" customModuleProvider="target">
+                            <textView importsGraphics="NO" selectionGranularity="word" findStyle="panel" allowsUndo="YES" allowsImageEditing="YES" allowsNonContiguousLayout="YES" id="ntM-Em-Fgy" userLabel="docEditView">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

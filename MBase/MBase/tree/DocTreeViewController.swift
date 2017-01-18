@@ -63,7 +63,7 @@ class DocTreeViewController: NSViewController, NSDraggingDestination {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.docTreeView.register(forDraggedTypes: [NSPasteboardTypeString]);
-        NotificationCenter.default.addObserver(self, selector: #selector(changeDocImageAll), name: NSNotification.Name(rawValue: "changeDocImageAll"), object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(changeDocImageAll), name: Notification.Name(rawValue: "changeDocImageAll"), object: nil);
         // 自动展开并记录的节点
         if let selectedDocTree = self.userInfo.selectDocTree {
             // 展开节点

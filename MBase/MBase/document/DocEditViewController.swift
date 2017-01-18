@@ -13,7 +13,7 @@ import MBaseMarkdown
 
 class DocEditViewController: NSViewController {
     
-    @IBOutlet var docEditView: DocEditTextView!
+    @IBOutlet var docEditView: NSTextView!
     
     @IBOutlet weak var docEditScrollView: NSScrollView!
     
@@ -86,12 +86,11 @@ class DocEditViewController: NSViewController {
         self.docEditView.isAutomaticSpellingCorrectionEnabled = false;
         self.docEditView.smartInsertDeleteEnabled = true;
         self.docEditView.allowsUndo = true;
-        self.docEditView.docEditViewController = self;
         
         //给滚动条添加通知        
-        NotificationCenter.default.addObserver(self, selector: #selector(changeScroll), name: NSNotification.Name.NSViewBoundsDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeScroll), name: Notification.Name.NSViewBoundsDidChange, object: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(setScroll), name: NSNotification.Name(rawValue: "setScroll"), object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(setScroll), name: Notification.Name(rawValue: "setScroll"), object: nil);
     }
     
     func changeScroll(){
