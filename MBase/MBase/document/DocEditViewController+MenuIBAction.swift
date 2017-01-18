@@ -10,7 +10,26 @@ import Cocoa
 import MBaseMarkdown
 
 extension DocEditViewController: NSTextViewDelegate {
-
+    
+    class PasteObject {
+    
+        var newRange: NSRange?
+        
+        var newMutableAttributedString: NSAttributedString?
+        
+        var oldRange: NSRange?
+        
+        var oldMutableAttributedString: NSAttributedString?
+        
+        init(newRange: NSRange, newMutableAttributedString: NSAttributedString, oldRange: NSRange, oldMutableAttributedString: NSAttributedString){
+            self.newRange = newRange;
+            self.newMutableAttributedString = newMutableAttributedString;
+            self.oldRange = oldRange;
+            self.oldMutableAttributedString = oldMutableAttributedString;
+        }
+        
+    }
+    
     func textView(_ view: NSTextView, menu: NSMenu, for event: NSEvent, at charIndex: Int) -> NSMenu? {
         var pasteIndex = 0;
         for item in menu.items {
@@ -97,28 +116,42 @@ extension DocEditViewController: NSTextViewDelegate {
             }
             mutableAttributedString.append(NSAttributedString(string: string!, attributes: normalAttributes));
         }
-        self.pasteText(range: self.docEditView.selectedRange(), mutableAttributedString: mutableAttributedString);
+        
+        let pasteObject = PasteObject(newRange: NSMakeRange(self.docEditView.selectedRange().location, mutableAttributedString.length), newMutableAttributedString: mutableAttributedString, oldRange: self.docEditView.selectedRange(), oldMutableAttributedString: self.docEditView.textStorage!.attributedSubstring(from: self.docEditView.selectedRange()));
+        self.pasteText(paste: pasteObject);
     }
     
-    func pasteText(range: NSRange, mutableAttributedString: NSAttributedString) {
-        self.docEditView.textStorage!.replaceCharacters(in: range, with: mutableAttributedString);
-        let resultRange = NSMakeRange(self.docEditView.selectedRange().location, mutableAttributedString.length);
-        self.registerPasteUndo(range: resultRange, mutableAttributedString: mutableAttributedString);
+    func pasteText(paste: Any) {
+        let pasteObject = paste as! PasteObject;
+        print("==pasteText=="+String(pasteObject.oldRange!.location)+"==="+String(pasteObject.oldRange!.length));
+        self.docEditView.textStorage!.replaceCharacters(in: pasteObject.oldRange!, with: pasteObject.newMutableAttributedString!);
+        //光标跳转
+        self.docEditView.setSelectedRange(NSMakeRange(pasteObject.oldRange!.location+pasteObject.newMutableAttributedString!.length, 0));
+        
+        // 需要undo的pasteObject
+        let pasteObjectUndo = PasteObject(newRange: pasteObject.oldRange!, newMutableAttributedString: pasteObject.oldMutableAttributedString!, oldRange: pasteObject.newRange!, oldMutableAttributedString: pasteObject.newMutableAttributedString!);
+        self.registerPasteUndo(paste: pasteObjectUndo);
     }
     
-    func removeText(range: Any) {
-        print("==removeText=="+String((range as! NSRange).location));
-        self.docEditView.textStorage!.deleteCharacters(in: (range as! NSRange));
+    func removeText(paste: Any) {
+        let pasteObject = paste as! PasteObject;
+        print("==removeText=="+String(pasteObject.oldRange!.location)+"==="+String(pasteObject.oldRange!.length));
+        self.docEditView.textStorage!.deleteCharacters(in: pasteObject.oldRange!);
+        //光标跳转
+        self.docEditView.setSelectedRange(NSMakeRange(pasteObject.oldRange!.location, 0));
+        
+        // 需要redo的pasteObject
+        let pasteObjectUndo = PasteObject(newRange: pasteObject.oldRange!, newMutableAttributedString: pasteObject.oldMutableAttributedString!, oldRange: pasteObject.newRange!, oldMutableAttributedString: pasteObject.newMutableAttributedString!);
+        self.registerPasteRedo(paste: pasteObjectUndo);
+
     }
     
-    func registerPasteUndo(range: NSRange, mutableAttributedString: NSAttributedString){
-        print("==re undo=="+String(range.location)+"==="+String(range.length))
-        self.docEditView.undoManager?.registerUndo(withTarget: self, selector: #selector(DocEditViewController.removeText(range:)), object: range);
+    func registerPasteUndo(paste: PasteObject){
+        self.docEditView.undoManager?.registerUndo(withTarget: self, selector: #selector(DocEditViewController.removeText(paste:)), object: paste);
     }
     
-    func registerPasteRedo(range: NSRange, mutableAttributedString: NSAttributedString) {
-        print("==re redo==")
-        self.docEditView.undoManager?.registerUndo(withTarget: self, selector: #selector(DocEditViewController.pasteText(range:mutableAttributedString:)), object: range);
+    func registerPasteRedo(paste: PasteObject) {
+        self.docEditView.undoManager?.registerUndo(withTarget: self, selector: #selector(DocEditViewController.pasteText(paste:)), object: paste);
     }
     
     func test(_ menuItem: NSMenuItem) {
@@ -167,3 +200,5 @@ extension DocEditViewController: NSTextViewDelegate {
     
     }
 }
+
+
