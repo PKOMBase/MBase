@@ -12,6 +12,8 @@ open class MarkdownEditManager: NSObject {
     
     var textStorage: NSTextStorage;
     
+    let normalAttributes = [NSParagraphStyleAttributeName : MarkdownConstsManager.getDefaultParagraphStyle(), NSFontAttributeName : NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize), NSForegroundColorAttributeName : MarkdownConstsManager.defaultFontColor];
+    
     public init(textStorage: NSTextStorage) {
         self.textStorage = textStorage;
     }
@@ -20,12 +22,12 @@ open class MarkdownEditManager: NSObject {
         
         // 全文
         let textString = NSString(string: self.textStorage.string);
-        // 选择行
-        let lineRange = NSUnionRange(selectedRange, textString.lineRange(for: editedRange));
-        // 上半段
-        let preRange = NSMakeRange(0, lineRange.location);
-        // 下半段
-        let backRange = NSMakeRange(NSMaxRange(lineRange), textString.length - NSMaxRange(lineRange));
+//        // 选择行
+//        let lineRange = NSUnionRange(selectedRange, textString.lineRange(for: editedRange));
+//        // 上半段
+//        let preRange = NSMakeRange(0, lineRange.location);
+//        // 下半段
+//        let backRange = NSMakeRange(NSMaxRange(lineRange), textString.length - NSMaxRange(lineRange));
         
         // 段落
         var ranges = [NSRange]();
@@ -35,7 +37,7 @@ open class MarkdownEditManager: NSObject {
                 continue;
             }
             if ranges.count == 0 {
-//                let changeRange = self.getChangeRange(tagRegex, string: textString, lineRange: lineRange, preRange: preRange, backRange: backRange);
+                //                let changeRange = self.getChangeRange(tagRegex, string: textString, lineRange: lineRange, preRange: preRange, backRange: backRange);
                 let changeRange = NSMakeRange(0, textString.length);
                 ranges.append(changeRange);
                 // 默认
@@ -55,17 +57,29 @@ open class MarkdownEditManager: NSObject {
         for tagRegex in MarkdownRegexHeaderEnum.values4Edit {
             self.applyStylesToRange4Header(tagRegex, textString: textString, ranges: ranges);
         }
-
+        
         // 行
         for tagRegex in MarkdownRegexLineEnum.values {
             self.applyStylesToRange4Line(tagRegex, textString: textString, ranges: ranges);
         }
         
-        return self.textStorage.string;
+        // 公共
+        for tagRegex in MarkdownRegexCommonEnum.values {
+            self.applyStylesToRange4Common(tagRegex, textString: textString, ranges: ranges);
+        }
+        
+        // 结果
+        let result = self.textStorage.string;
+        
+        // 添加信息(包括img、等)
+        self.applyAddInfo(editedRange: editedRange);
+        
+        return result;
         
     }
     
     open func handlerInitFont(){
+        
         // 全文
         let textString = NSString(string: self.textStorage.string);
         
@@ -103,6 +117,10 @@ open class MarkdownEditManager: NSObject {
         for tagRegex in MarkdownRegexCommonEnum.values {
             self.applyStylesToRange4Common(tagRegex, textString: textString, ranges: ranges);
         }
+        
+        // 添加信息(包括img、等)
+        self.applyAddInfo(editedRange: changeRange);
+        
     }
     
     // 获取段与段间，以```为例。思路：按选择行将文章分为两份，上半份倒查段的关键字；下半份正查段的关键字。
@@ -148,8 +166,7 @@ open class MarkdownEditManager: NSObject {
     }
     
     func applyStylesToRange4Default(_ range: NSRange){
-        let normalAttributes = [NSParagraphStyleAttributeName : MarkdownConstsManager.getDefaultParagraphStyle(), NSFontAttributeName : NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize), NSForegroundColorAttributeName : MarkdownConstsManager.defaultFontColor];
-        self.textStorage.addAttributes(normalAttributes, range: range);
+        self.textStorage.addAttributes(self.normalAttributes, range: range);
     }
     
     func applyStylesToRange4Paragraph(_ tagRegex : MarkdownRegexParagraphEnum, textString: NSString, ranges: [NSRange]) -> [NSRange]{
@@ -251,4 +268,83 @@ open class MarkdownEditManager: NSObject {
             }
         }
     }
+    
+    func initStorage(){
+        if !self.textStorage.containsAttachments {
+            return;
+        }
+        print("==containsAttachments=="+String(self.textStorage.length));
+        
+        for paragraph in self.textStorage.paragraphs {
+            if !paragraph.containsAttachments {
+                continue;
+            }
+            for word in paragraph.words {
+                if !word.containsAttachments {
+                    continue;
+                }
+                for character in word.characters {
+                    print("==containsAttachments 1==");
+                    if !character.containsAttachments {
+                        continue;
+                    }
+                    print("==containsAttachments 2=="+character.string);
+                    character.deleteCharacters(in:  NSMakeRange(0, 1));
+                    print("==containsAttachments 3==");
+                    break;
+                }
+            }
+        }
+    }
+    
+    func applyAddInfo(editedRange: NSRange) {
+        // 清除附件、图片
+        self.initStorage();
+        print("==applyAddInfo==");
+        
+        var regex: NSRegularExpression?;
+        do{
+            regex = try NSRegularExpression(pattern: "(^\\!\\[(.)*\\]\\((.)*\\)$)", options: [.anchorsMatchLines])
+        }catch{
+            let nserror = error as NSError
+            NSApplication.shared().presentError(nserror)
+        }
+        var offset = 0;
+        var endLocation = 0;
+        for textCheckingResult in regex!.matches(in: self.textStorage.string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.textStorage.length)) {
+            let range = NSMakeRange(textCheckingResult.range.location+offset, textCheckingResult.range.length);
+            var path = self.textStorage.attributedSubstring(from: range).string;
+            print("==applyAddInfo 1=="+String(path));
+            let pathArr = path.components(separatedBy: "](");
+            if pathArr.count < 2{
+                continue;
+            }
+            path = pathArr[1].replacingOccurrences(of: ")", with: "");
+            
+            print("==applyAddInfo 2=="+String(path));
+            endLocation = NSMaxRange(textCheckingResult.range)+offset;
+            let url = URL(fileURLWithPath: Bundle.main.resourcePath!+"/"+path);
+            if !url.isFileURL {
+                print("==not file==");
+                continue;
+            }
+            let image = NSImage(byReferencing: url);
+            if image.size.width == 0 || image.size.height == 0 {
+                print("==not image==");
+                continue;
+            }
+            let textAttachment = NSTextAttachment();
+            let attachmentCell = NSTextAttachmentCell(imageCell: image);
+            textAttachment.attachmentCell = attachmentCell;
+            let mutableAttributedString = NSMutableAttributedString();
+            
+            //            mutableAttributedString.append(NSAttributedString(string: "\n", attributes: self.normalAttributes));
+            mutableAttributedString.append(NSAttributedString(attachment: textAttachment));
+            print("==applyAddInfo 3=="+String(self.textStorage.length)+"===="+String(endLocation));
+            self.textStorage.insert(mutableAttributedString, at: endLocation);
+            print("==applyAddInfo 4==");
+            offset += mutableAttributedString.length;
+        }
+    }
+    
 }

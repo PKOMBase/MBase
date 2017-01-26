@@ -75,9 +75,9 @@
 		A808C0C51D70253C00F568EA /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0C11D70253C00F568EA /* MainWindowController.xib */; };
 		A80F86781DF7FD6E00DC4217 /* ConstsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F86771DF7FD6E00DC4217 /* ConstsManager.swift */; };
 		A81CC89A1D754AAF0000401B /* DocEditViewController+MenuIBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81CC8991D754AAF0000401B /* DocEditViewController+MenuIBAction.swift */; };
-		A827E83C1E1DF4FD00919A27 /* MBaseMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */; };
-		A827E83D1E1DF50500919A27 /* MBaseMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A828C7D51D7991F900AA3043 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A828C7D41D7991F900AA3043 /* DateUtils.swift */; };
+		A85645231E39D53A00956A10 /* MBaseMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A85645221E39D53A00956A10 /* MBaseMarkdown.framework */; };
+		A85645241E39D54100956A10 /* MBaseMarkdown.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A85645221E39D53A00956A10 /* MBaseMarkdown.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A86220B41D406FA000BAC828 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A86220B21D406FA000BAC828 /* MainMenu.xib */; };
 		A871B4EB1D8A696E003D598C /* ExportUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4EA1D8A696E003D598C /* ExportUtils.swift */; };
 		A871B4EE1D8AE4E2003D598C /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A871B4ED1D8AE4E2003D598C /* AlertUtils.swift */; };
@@ -92,7 +92,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A827E83D1E1DF50500919A27 /* MBaseMarkdown.framework in CopyFiles */,
+				A85645241E39D54100956A10 /* MBaseMarkdown.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,9 +170,9 @@
 		A808C0C11D70253C00F568EA /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowController.xib; path = main/MainWindowController.xib; sourceTree = "<group>"; };
 		A80F86771DF7FD6E00DC4217 /* ConstsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstsManager.swift; path = system/manager/ConstsManager.swift; sourceTree = "<group>"; };
 		A81CC8991D754AAF0000401B /* DocEditViewController+MenuIBAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocEditViewController+MenuIBAction.swift"; path = "document/DocEditViewController+MenuIBAction.swift"; sourceTree = "<group>"; };
-		A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBaseMarkdown.framework; path = "../../../Library/Developer/Xcode/DerivedData/MBaseWorkSpace-caynkmstwhqnspdfkdwytilftsax/Build/Products/Debug/MBaseMarkdown.framework"; sourceTree = "<group>"; };
 		A828C7D41D7991F900AA3043 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateUtils.swift; path = system/manager/DateUtils.swift; sourceTree = "<group>"; };
 		A82AD7641D4453E100F457B6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
+		A85645221E39D53A00956A10 /* MBaseMarkdown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBaseMarkdown.framework; path = "../../../Library/Developer/Xcode/DerivedData/MBaseWorkSpace-caynkmstwhqnspdfkdwytilftsax/Build/Products/Debug/MBaseMarkdown.framework"; sourceTree = "<group>"; };
 		A86220AB1D406FA000BAC828 /* MBase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MBase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86220B31D406FA000BAC828 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A86220B51D406FA000BAC828 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A827E83C1E1DF4FD00919A27 /* MBaseMarkdown.framework in Frameworks */,
+				A85645231E39D53A00956A10 /* MBaseMarkdown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -391,7 +391,7 @@
 		A8DB35431E08CCEB0049B7A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A827E83B1E1DF4FD00919A27 /* MBaseMarkdown.framework */,
+				A85645221E39D53A00956A10 /* MBaseMarkdown.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

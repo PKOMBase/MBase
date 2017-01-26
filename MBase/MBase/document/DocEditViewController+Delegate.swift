@@ -10,11 +10,15 @@ import Cocoa
 import MBaseMarkdown
 
 extension DocEditViewController: NSTextStorageDelegate {
-
+    
     func textStorage(_ textStorage: NSTextStorage, didProcessEditing editedMask: NSTextStorageEditActions, range editedRange: NSRange, changeInLength delta: Int){
         if editedMask != .editedAttributes {
             self.editedRange = editedRange;
         }
+    }
+    
+    func textDidBeginEditing(_ notification: Notification) {
+        print("==textDidBeginEditing==");
     }
     
     func textDidChange(_ notification: Notification) {

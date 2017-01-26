@@ -15,6 +15,8 @@ extension DocTreeViewController: NSOutlineViewDelegate {
         if selectedDocTree == nil {
             return;
         }
+        //清除undo、redo
+        self.docEditViewController.clearUndoAndRedo();
         
         //获取并展示docmain
         self.docEditViewController.initDocEditDatas(selectedDocTree!.docMain);

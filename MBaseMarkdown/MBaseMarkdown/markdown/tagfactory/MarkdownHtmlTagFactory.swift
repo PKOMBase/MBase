@@ -35,7 +35,7 @@ class MarkdownHtmlTagFactory: NSObject {
     }
     
     static func getMarkdownHtmlTag(_ tagRegex: MarkdownRegexHeaderEnum, range: NSRange, string: String, index: Int) -> MarkdownHtmlTagHeader{
-        let level = (string as! NSString).range(of: "(\\#{1,6})", options: .regularExpression, range: NSMakeRange(0, (string as! NSString).length), locale: nil).length;
+        let level = (string as NSString).range(of: "(\\#{1,6})", options: .regularExpression, range: NSMakeRange(0, (string as NSString).length), locale: nil).length;
         switch level {
         case 1:
             return MarkdownHtmlTag4h1(range: range, string: string, index: index);

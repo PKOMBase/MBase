@@ -97,8 +97,7 @@ open class MarkdownManager: NSObject {
                }
                rangeTemps = [NSRange]();
                var level = 0;
-               var html = "";
-               var rootTree = Tree(id: 0, level: 0, name: "root");
+               let rootTree = Tree(id: 0, level: 0, name: "root");
                var lastTree: Tree?;
                var nowTree: Tree?;
                for range in ranges {
@@ -208,7 +207,7 @@ open class MarkdownManager: NSObject {
      }
      
      static func getStructure(_ string: String) -> NSString{
-          var sourceString = NSString(string: string);
+          let sourceString = NSString(string: string);
           
           
           var rangeTemps: [NSRange];
@@ -232,7 +231,7 @@ open class MarkdownManager: NSObject {
                NSApplication.shared().presentError(nserror)
           }
           for range in ranges {
-               for textCheckingResult in regex!.matches(in: sourceString as String, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, sourceString.length)) {
+               for textCheckingResult in regex!.matches(in: sourceString.substring(with: range), options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, range.length)) {
                     let stringRange = textCheckingResult.range;
                     var stringTemp = sourceString.substring(with: stringRange);
                     //确定header类型

@@ -91,8 +91,9 @@ class DocEditViewController: NSViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(changeScroll), name: Notification.Name.NSViewBoundsDidChange, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(setScroll), name: Notification.Name(rawValue: "setScroll"), object: nil);
+        
     }
-    
+
     func changeScroll(){
         if !docEditScrollView.hasVerticalScroller {
             return;
@@ -112,6 +113,10 @@ class DocEditViewController: NSViewController {
 
         self.docEditScrollView.reflectScrolledClipView(self.docEditScrollView.contentView);
         
+    }
+    
+    func clearUndoAndRedo(){
+        self.docEditView.undoManager?.removeAllActions();
     }
     
 }
