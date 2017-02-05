@@ -44,14 +44,14 @@ class DocSplitViewController: NSViewController {
         let width = rect.width;
         let height = rect.height;
         if !self.docEditViewController.view.isHidden && self.docMainViewController.view.isHidden {
-            self.docEditViewController.view.frame = NSMakeRect(0, 0, width, height);
+            self.docEditViewController.changeSize(rect: NSMakeRect(0, 0, width, height));
             self.docMainViewController.view.frame = NSMakeRect(width, 0, 0, height);
         }else
         if self.docEditViewController.view.isHidden && !self.docMainViewController.view.isHidden{
-            self.docEditViewController.view.frame = NSMakeRect(0, 0, 0, height);
+            self.docEditViewController.changeSize(rect: NSMakeRect(0, 0, 0, height));
             self.docMainViewController.view.frame = NSMakeRect(0, 0, width, height);
         }else{
-            self.docEditViewController.view.frame = NSMakeRect(0, 0, width / 2, height);
+            self.docEditViewController.changeSize(rect: NSMakeRect(0, 0, width / 2, height));
             self.docMainViewController.view.frame = NSMakeRect(width / 2, 0, width / 2, height);
         }
     }
@@ -61,7 +61,7 @@ class DocSplitViewController: NSViewController {
         self.docMainViewController.view.isHidden = true;
         let width = self.view.frame.width;
         let height = self.view.frame.height;
-        self.docEditViewController.view.frame = NSMakeRect(0, 0, width, height);
+        self.docEditViewController.changeSize(rect: NSMakeRect(0, 0, width, height));
         self.docMainViewController.view.frame = NSMakeRect(width, 0, 0, height);
     }
     
@@ -70,7 +70,7 @@ class DocSplitViewController: NSViewController {
         self.docMainViewController.view.isHidden = false;
         let width = self.view.frame.width;
         let height = self.view.frame.height;
-        self.docEditViewController.view.frame = NSMakeRect(0, 0, 0, height);
+        self.docEditViewController.changeSize(rect: NSMakeRect(0, 0, 0, height));
         self.docMainViewController.view.frame = NSMakeRect(0, 0, width, height);
     }
     
@@ -79,7 +79,7 @@ class DocSplitViewController: NSViewController {
         self.docMainViewController.view.isHidden = false;
         let width = self.view.frame.width;
         let height = self.view.frame.height;
-        self.docEditViewController.view.frame = NSMakeRect(0, 0, width / 2, height);
+        self.docEditViewController.changeSize(rect: NSMakeRect(0, 0, width / 2, height));
         self.docMainViewController.view.frame = NSMakeRect(width / 2, 0, width / 2, height);
     }
     

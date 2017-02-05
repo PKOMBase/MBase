@@ -12,10 +12,13 @@ open class MarkdownEditManager: NSObject {
     
     var textStorage: NSTextStorage;
     
+    var size: NSSize;
+    
     let normalAttributes = [NSParagraphStyleAttributeName : MarkdownConstsManager.getDefaultParagraphStyle(), NSFontAttributeName : NSFont.systemFont(ofSize: MarkdownConstsManager.defaultFontSize), NSForegroundColorAttributeName : MarkdownConstsManager.defaultFontColor];
     
-    public init(textStorage: NSTextStorage) {
+    public init(textStorage: NSTextStorage, size: NSSize) {
         self.textStorage = textStorage;
+        self.size = size;
     }
     
     open func changeTextFont(_ selectedRange: NSRange, editedRange: NSRange) -> String {
@@ -68,11 +71,14 @@ open class MarkdownEditManager: NSObject {
             self.applyStylesToRange4Common(tagRegex, textString: textString, ranges: ranges);
         }
         
+        // 清除附件、图片
+        self.initStorage();
+        
         // 结果
         let result = self.textStorage.string;
         
         // 添加信息(包括img、等)
-        self.applyAddInfo(editedRange: editedRange);
+        self.applyAddInfo();
         
         return result;
         
@@ -118,9 +124,64 @@ open class MarkdownEditManager: NSObject {
             self.applyStylesToRange4Common(tagRegex, textString: textString, ranges: ranges);
         }
         
-        // 添加信息(包括img、等)
-        self.applyAddInfo(editedRange: changeRange);
+        // 清除附件、图片
+        self.initStorage();
         
+        // 添加信息(包括img、等)
+        self.applyAddInfo();
+        
+    }
+    
+    open func initStorage(){
+        if !self.textStorage.containsAttachments {
+            return;
+        }
+        for paragraph in self.textStorage.paragraphs {
+            if !paragraph.containsAttachments {
+                continue;
+            }
+            for word in paragraph.words {
+                if !word.containsAttachments {
+                    continue;
+                }
+                for character in word.characters {
+                    if !character.containsAttachments {
+                        continue;
+                    }
+                    character.deleteCharacters(in:  NSMakeRange(0, 1));
+                    break;
+                }
+            }
+        }
+    }
+    
+    open func changeImageSize(){
+        if !self.textStorage.containsAttachments {
+            return;
+        }
+        for paragraph in self.textStorage.paragraphs {
+            if !paragraph.containsAttachments {
+                continue;
+            }
+            for word in paragraph.words {
+                if !word.containsAttachments {
+                    continue;
+                }
+                for character in word.characters {
+                    if !character.containsAttachments {
+                        continue;
+                    }
+                    let attachment = character.attribute(NSAttachmentAttributeName, at: 0, effectiveRange: nil)! as! NSTextAttachment;
+                    let image = (attachment.attachmentCell as! NSCell).image!;
+                    print("===bbb=="+String(describing: self.size.width)+"====="+String(describing: image.size.height));
+                    if image.size.width > self.size.width*0.9 {
+                        let d = image.size.width/image.size.height;
+                        image.size.width = self.size.width*0.9
+                        image.size.height = image.size.width*0.9/d
+                    }
+                }
+            }
+        }
     }
     
     // 获取段与段间，以```为例。思路：按选择行将文章分为两份，上半份倒查段的关键字；下半份正查段的关键字。
@@ -269,39 +330,7 @@ open class MarkdownEditManager: NSObject {
         }
     }
     
-    func initStorage(){
-        if !self.textStorage.containsAttachments {
-            return;
-        }
-        print("==containsAttachments=="+String(self.textStorage.length));
-        
-        for paragraph in self.textStorage.paragraphs {
-            if !paragraph.containsAttachments {
-                continue;
-            }
-            for word in paragraph.words {
-                if !word.containsAttachments {
-                    continue;
-                }
-                for character in word.characters {
-                    print("==containsAttachments 1==");
-                    if !character.containsAttachments {
-                        continue;
-                    }
-                    print("==containsAttachments 2=="+character.string);
-                    character.deleteCharacters(in:  NSMakeRange(0, 1));
-                    print("==containsAttachments 3==");
-                    break;
-                }
-            }
-        }
-    }
-    
-    func applyAddInfo(editedRange: NSRange) {
-        // 清除附件、图片
-        self.initStorage();
-        print("==applyAddInfo==");
-        
+    func applyAddInfo() {
         var regex: NSRegularExpression?;
         do{
             regex = try NSRegularExpression(pattern: "(^\\!\\[(.)*\\]\\((.)*\\)$)", options: [.anchorsMatchLines])
@@ -314,14 +343,12 @@ open class MarkdownEditManager: NSObject {
         for textCheckingResult in regex!.matches(in: self.textStorage.string, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.textStorage.length)) {
             let range = NSMakeRange(textCheckingResult.range.location+offset, textCheckingResult.range.length);
             var path = self.textStorage.attributedSubstring(from: range).string;
-            print("==applyAddInfo 1=="+String(path));
             let pathArr = path.components(separatedBy: "](");
             if pathArr.count < 2{
                 continue;
             }
             path = pathArr[1].replacingOccurrences(of: ")", with: "");
             
-            print("==applyAddInfo 2=="+String(path));
             endLocation = NSMaxRange(textCheckingResult.range)+offset;
             let url = URL(fileURLWithPath: Bundle.main.resourcePath!+"/"+path);
             if !url.isFileURL {
@@ -333,6 +360,13 @@ open class MarkdownEditManager: NSObject {
                 print("==not image==");
                 continue;
             }
+            // image 缩小
+            print("==with height==");
+            if image.size.width > self.size.width*0.9 {
+                let d = image.size.width/image.size.height;
+                image.size.width = self.size.width*0.9
+                image.size.height = image.size.width*0.9/d
+            }
             let textAttachment = NSTextAttachment();
             let attachmentCell = NSTextAttachmentCell(imageCell: image);
             textAttachment.attachmentCell = attachmentCell;
@@ -340,11 +374,9 @@ open class MarkdownEditManager: NSObject {
             
             //            mutableAttributedString.append(NSAttributedString(string: "\n", attributes: self.normalAttributes));
             mutableAttributedString.append(NSAttributedString(attachment: textAttachment));
-            print("==applyAddInfo 3=="+String(self.textStorage.length)+"===="+String(endLocation));
             self.textStorage.insert(mutableAttributedString, at: endLocation);
-            print("==applyAddInfo 4==");
             offset += mutableAttributedString.length;
         }
     }
-    
+
 }

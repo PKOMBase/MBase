@@ -17,17 +17,14 @@ extension DocEditViewController: NSTextStorageDelegate {
         }
     }
     
-    func textDidBeginEditing(_ notification: Notification) {
-        print("==textDidBeginEditing==");
-    }
-    
     func textDidChange(_ notification: Notification) {
         NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(changeTextFont), object: nil);
         self.perform(#selector(changeTextFont), with: nil, afterDelay: 0.3);
     }
 
     func changeTextFont(){
-        let markdownEditManager = MarkdownEditManager(textStorage: self.docEditView.textStorage!);
+        print("==changeTextFont=="+String(describing: self.view.frame.size.width));
+        let markdownEditManager = MarkdownEditManager(textStorage: self.docEditView.textStorage!, size: self.view.frame.size);
         self.editedRange = NSMakeRange(0, self.docEditView.textStorage!.length);
         let content =  markdownEditManager.changeTextFont(self.docEditView.selectedRange(), editedRange: self.editedRange!);
         
@@ -42,7 +39,7 @@ extension DocEditViewController: NSTextStorageDelegate {
     }
     
     func handlerInitFont(){
-        let markdownEditManager = MarkdownEditManager(textStorage: self.docEditView.textStorage!);
+        let markdownEditManager = MarkdownEditManager(textStorage: self.docEditView.textStorage!, size: self.view.frame.size);
         
         markdownEditManager.handlerInitFont();
     }

@@ -108,15 +108,20 @@ class DocEditViewController: NSViewController {
     }
     
     func setScroll() {
-        
         self.docEditScrollView.contentView.scroll(NSMakePoint(0, CGFloat(1000)));
-
         self.docEditScrollView.reflectScrolledClipView(self.docEditScrollView.contentView);
         
     }
     
     func clearUndoAndRedo(){
         self.docEditView.undoManager?.removeAllActions();
+    }
+    
+    func changeSize(rect: NSRect){
+        self.view.frame = rect;
+        // 图片
+        let markdownEditManager = MarkdownEditManager(textStorage: self.docEditView.textStorage!, size: rect.size);
+        markdownEditManager.changeImageSize();
     }
     
 }
