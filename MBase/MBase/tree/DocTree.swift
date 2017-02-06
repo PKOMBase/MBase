@@ -6,9 +6,9 @@
 //  Copyright © 2016年 popkidorc. All rights reserved.
 //
 
+import Cocoa
 import Foundation
 import CoreData
-
 
 class DocTree: NSManagedObject {
 

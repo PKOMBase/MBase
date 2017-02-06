@@ -32,7 +32,7 @@ class DocEditViewController: NSViewController {
     
     func initDocEditDatas(_ docMainData: DocMain!){
         self.docMainData = docMainData;
-        
+
         if DocMain.DocMainType.NotEdit.rawValue == docMainData.type {
             self.docEditView.isEditable = false;
             self.docEditView.backgroundColor = MarkdownConstsManager.docEditDisableBgColor;

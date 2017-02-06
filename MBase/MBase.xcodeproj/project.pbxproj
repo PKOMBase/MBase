@@ -70,8 +70,6 @@
 		A808C0A91D70248600F568EA /* DocEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0A71D70248600F568EA /* DocEditViewController.xib */; };
 		A808C0AA1D70248600F568EA /* DocMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0A81D70248600F568EA /* DocMainViewController.xib */; };
 		A808C0B91D7024C900F568EA /* MBase.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A808C0B71D7024C900F568EA /* MBase.xcdatamodeld */; };
-		A808C0BF1D70251100F568EA /* EDStarRating.m in Sources */ = {isa = PBXBuildFile; fileRef = A808C0BB1D70251100F568EA /* EDStarRating.m */; };
-		A808C0C01D70251100F568EA /* NSImage+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = A808C0BE1D70251100F568EA /* NSImage+Extras.m */; };
 		A808C0C51D70253C00F568EA /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A808C0C11D70253C00F568EA /* MainWindowController.xib */; };
 		A80F86781DF7FD6E00DC4217 /* ConstsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80F86771DF7FD6E00DC4217 /* ConstsManager.swift */; };
 		A81CC89A1D754AAF0000401B /* DocEditViewController+MenuIBAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A81CC8991D754AAF0000401B /* DocEditViewController+MenuIBAction.swift */; };
@@ -162,11 +160,6 @@
 		A808C0A71D70248600F568EA /* DocEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocEditViewController.xib; path = document/DocEditViewController.xib; sourceTree = "<group>"; };
 		A808C0A81D70248600F568EA /* DocMainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocMainViewController.xib; path = document/DocMainViewController.xib; sourceTree = "<group>"; };
 		A808C0B81D7024C900F568EA /* MBase.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MBase.xcdatamodel; sourceTree = "<group>"; };
-		A808C0BA1D70251100F568EA /* MBase-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MBase-Bridging-Header.h"; path = "supporting/MBase-Bridging-Header.h"; sourceTree = "<group>"; };
-		A808C0BB1D70251100F568EA /* EDStarRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDStarRating.m; path = supporting/EDStarRating.m; sourceTree = "<group>"; };
-		A808C0BC1D70251100F568EA /* EDStarRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDStarRating.h; path = supporting/EDStarRating.h; sourceTree = "<group>"; };
-		A808C0BD1D70251100F568EA /* NSImage+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+Extras.h"; path = "supporting/NSImage+Extras.h"; sourceTree = "<group>"; };
-		A808C0BE1D70251100F568EA /* NSImage+Extras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+Extras.m"; path = "supporting/NSImage+Extras.m"; sourceTree = "<group>"; };
 		A808C0C11D70253C00F568EA /* MainWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainWindowController.xib; path = main/MainWindowController.xib; sourceTree = "<group>"; };
 		A80F86771DF7FD6E00DC4217 /* ConstsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstsManager.swift; path = system/manager/ConstsManager.swift; sourceTree = "<group>"; };
 		A81CC8991D754AAF0000401B /* DocEditViewController+MenuIBAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "DocEditViewController+MenuIBAction.swift"; path = "document/DocEditViewController+MenuIBAction.swift"; sourceTree = "<group>"; };
@@ -179,7 +172,6 @@
 		A871B4EA1D8A696E003D598C /* ExportUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExportUtils.swift; path = system/manager/ExportUtils.swift; sourceTree = "<group>"; };
 		A871B4ED1D8AE4E2003D598C /* AlertUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertUtils.swift; path = system/manager/AlertUtils.swift; sourceTree = "<group>"; };
 		A8D6EB5C1DFE6D8600D73C60 /* DocSplitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DocSplitViewController.xib; path = split/DocSplitViewController.xib; sourceTree = "<group>"; };
-		A8F60CEC1D52034B009768B6 /* Hoedown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Hoedown.framework; path = ../Carthage/Build/Mac/Hoedown.framework; sourceTree = "<group>"; };
 		A8FD0C351D97887D00D969B0 /* DocSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocSplitViewController.swift; path = split/DocSplitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -254,7 +246,6 @@
 				A890F6FB1D40D3A3003FF760 /* main */,
 				A86220BB1D40705F00BAC828 /* tree */,
 				A86220B51D406FA000BAC828 /* Info.plist */,
-				A86220C31D4072DE00BAC828 /* Supporting Files */,
 			);
 			path = MBase;
 			sourceTree = "<group>";
@@ -290,19 +281,6 @@
 				A808C07F1D70231900F568EA /* DocTreeInfoViewController+Delegate.swift */,
 			);
 			name = controller;
-			sourceTree = "<group>";
-		};
-		A86220C31D4072DE00BAC828 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A808C0BA1D70251100F568EA /* MBase-Bridging-Header.h */,
-				A808C0BB1D70251100F568EA /* EDStarRating.m */,
-				A808C0BC1D70251100F568EA /* EDStarRating.h */,
-				A808C0BD1D70251100F568EA /* NSImage+Extras.h */,
-				A808C0BE1D70251100F568EA /* NSImage+Extras.m */,
-				A8F60CEC1D52034B009768B6 /* Hoedown.framework */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		A89099741D59B79B00E25D8E /* system */ = {
@@ -589,7 +567,6 @@
 			files = (
 				A808C0851D70231900F568EA /* DocTreeViewController+Delegate.swift in Sources */,
 				A808C0A51D70246D00F568EA /* DocEditViewController.swift in Sources */,
-				A808C0BF1D70251100F568EA /* EDStarRating.m in Sources */,
 				A808C0881D70231900F568EA /* DocTreeViewController+MenuIBAction.swift in Sources */,
 				A808C0A31D70246D00F568EA /* DocMainViewController.swift in Sources */,
 				A808C08E1D70235F00F568EA /* AppDelegate+IBAction.swift in Sources */,
@@ -606,7 +583,6 @@
 				A808C08D1D70235F00F568EA /* AppDelegate.swift in Sources */,
 				A81CC89A1D754AAF0000401B /* DocEditViewController+MenuIBAction.swift in Sources */,
 				A808C0931D7023F900F568EA /* DocMain.swift in Sources */,
-				A808C0C01D70251100F568EA /* NSImage+Extras.m in Sources */,
 				A808C0841D70231900F568EA /* DocTreeViewController+DataSource.swift in Sources */,
 				A808C0B91D7024C900F568EA /* MBase.xcdatamodeld in Sources */,
 				A808C0761D7022FF00F568EA /* DocTree.swift in Sources */,
@@ -741,7 +717,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pop.MBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MBase/supporting/MBase-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -763,7 +738,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pop.MBase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MBase/supporting/MBase-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
